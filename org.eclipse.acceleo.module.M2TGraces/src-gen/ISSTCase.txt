@@ -1,0 +1,200 @@
+
+El modelo tiene 5 clases:
+
+- Escuela
+- Asignatura
+- Profesor
+- Departamento
+- Estudiante
+
+#######################################################
+
+<h1 class="class" id="ISSTCase.Escuela">
+Clase Escuela.
+</h1>
+
+<h2 class="attributes" id="Escuela.properties">Los atributos de la clase Escuela son:</h2>
+<ul>
+<li class="Attribute" id="Nombre">Nombre de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Acronimo">Acronimo de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="estudiante">estudiante de tipo Estudiante con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Escuela.operations">La clase Escuela no tiene operaciones</h2>
+
+
+
+<h2 class="relationship" id="Escuela.relationships">La clase Escuela tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="matriculado en">	Algún
+		 Estudiante matriculado en 1 o más
+		  Escuela
+	</li>
+	<li class="Association" id="tiene">	1
+		 Escuela tiene 1 o más
+		  Departamento
+	</li>
+</ul>
+
+
+#######################################################
+
+<h1 class="class" id="ISSTCase.Asignatura">
+Clase Asignatura.
+</h1>
+
+<h2 class="attributes" id="Asignatura.properties">Los atributos de la clase Asignatura son:</h2>
+<ul>
+<li class="Attribute" id="Acronimo">Acronimo de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Curso">Curso de tipo Integer con visibilidad public</li>
+,
+<li class="Attribute" id="Semestre">Semestre de tipo Integer con visibilidad public</li>
+,
+<li class="Attribute" id="estudiante">estudiante de tipo Estudiante con visibilidad public</li>
+,
+<li class="Attribute" id="profesor">profesor de tipo Profesor con visibilidad public</li>
+,
+<li class="Attribute" id="departamento">departamento de tipo Departamento con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Asignatura.operations">La clase Asignatura no tiene operaciones</h2>
+
+
+
+<h2 class="relationship" id="Asignatura.relationships">La clase Asignatura tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="organiza">	1
+		 Departamento organiza 1 o más
+		  Asignatura
+	</li>
+	<li class="Association" id="asiste">	Algún
+		 Estudiante asiste Algún
+		  Asignatura
+	</li>
+	<li class="Association" id="imparte">	1 o más
+		 Profesor imparte Algún
+		  Asignatura
+	</li>
+</ul>
+
+
+#######################################################
+
+<h1 class="class" id="ISSTCase.Profesor">
+Clase Profesor.
+</h1>
+
+<h2 class="attributes" id="Profesor.properties">Los atributos de la clase Profesor son:</h2>
+<ul>
+<li class="Attribute" id="Nombre">Nombre de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="NRP">NRP de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Despacho">Despacho de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Email">Email de tipo String con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Profesor.operations">La clase Profesor no tiene operaciones</h2>
+
+
+
+<h2 class="relationship" id="Profesor.relationships">La clase Profesor tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="asignado a">	1 o más
+		 Profesor asignado a De 0 a 1
+		  Departamento
+	</li>
+	<li class="Association" id="imparte">	1 o más
+		 Profesor imparte Algún
+		  Asignatura
+	</li>
+</ul>
+
+
+#######################################################
+
+<h1 class="class" id="ISSTCase.Departamento">
+Clase Departamento.
+</h1>
+
+<h2 class="attributes" id="Departamento.properties">Los atributos de la clase Departamento son:</h2>
+<ul>
+<li class="Attribute" id="Nombre">Nombre de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Acronimo">Acronimo de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Código">Código de tipo Integer con visibilidad public</li>
+,
+<li class="Attribute" id="escuela">escuela de tipo Escuela con visibilidad public</li>
+,
+<li class="Attribute" id="profesor">profesor de tipo Profesor con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Departamento.operations">La clase Departamento no tiene operaciones</h2>
+
+
+
+<h2 class="relationship" id="Departamento.relationships">La clase Departamento tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="asignado a">	1 o más
+		 Profesor asignado a De 0 a 1
+		  Departamento
+	</li>
+	<li class="Association" id="organiza">	1
+		 Departamento organiza 1 o más
+		  Asignatura
+	</li>
+	<li class="Association" id="tiene">	1
+		 Escuela tiene 1 o más
+		  Departamento
+	</li>
+</ul>
+
+
+#######################################################
+
+<h1 class="class" id="ISSTCase.Estudiante">
+Clase Estudiante.
+</h1>
+
+<h2 class="attributes" id="Estudiante.properties">Los atributos de la clase Estudiante son:</h2>
+<ul>
+<li class="Attribute" id="Nombre">Nombre de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Matricula">Matricula de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="Email">Email de tipo String con visibilidad public</li>
+,
+<li class="Attribute" id="asignatura">asignatura de tipo Asignatura con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Estudiante.operations">Las operaciones de la clase Estudiante son:</h2>
+<ul>
+<li class="Operation" id="estudiar">
+operación estudiar con parámetros:
+<ol>
+	<li class="Parameter" name"Libro">Libro de tipo String</li>
+	<li class="Parameter" name"aprobado">aprobado de tipo Boolean</li>
+</ol>
+<p class="Return" name"aprobado">y que devuelve aprobado de tipo Boolean</p>
+</li>
+<li class="Operation" id="Aprobar">
+operación Aprobar sin parámetros
+y no devuelve nada.
+</li>
+</ul>
+
+
+
+<h2 class="relationship" id="Estudiante.relationships">La clase Estudiante tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="asiste">	Algún
+		 Estudiante asiste Algún
+		  Asignatura
+	</li>
+	<li class="Association" id="matriculado en">	Algún
+		 Estudiante matriculado en 1 o más
+		  Escuela
+	</li>
+</ul>
+
+	

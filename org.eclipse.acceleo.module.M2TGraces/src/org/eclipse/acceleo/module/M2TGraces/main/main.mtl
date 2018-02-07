@@ -1,0 +1,31 @@
+[comment encoding = UTF-8 /]
+[module main('http://www.eclipse.org/uml2/5.0.0/UML')/]
+
+[import org::eclipse::acceleo::module::M2TGraces::services::LocationServicesWrapper/]
+[import org::eclipse::acceleo::module::M2TGraces::main::classGenerator/]
+
+[template public main(aModel : Model)]
+	
+[comment @main /]
+[file (aModel.name.concat('.html'), false, 'UTF-8')]
+<html>
+<head>
+<title class="model" id="[aModel.name/]">[loc('modelHeader', Sequence{aModel.name})/]</title>
+</head>
+<body>
+
+[loc('modelClassCount', Sequence{'<b>'+aModel.name+'</b>', aModel.ownedElement -> filter(uml::Class) -> size()})/]
+<ul>
+[for (aClass: Class | aModel.ownedMember -> filter(uml::Class) -> asOrderedSet() -> sortedBy(name))]
+<li><a href="#[aClass.namespace.name/].[aClass.name/]">[aClass.name/]</a></li>
+[/for]
+</ul>
+[for (aClass: Class | aModel.ownedMember -> filter(uml::Class) -> asOrderedSet() -> sortedBy(name)) separator('\n')]
+[generateClass(aClass)/]
+[/for]
+
+
+</html>
+</body>
+[/file]
+[/template]

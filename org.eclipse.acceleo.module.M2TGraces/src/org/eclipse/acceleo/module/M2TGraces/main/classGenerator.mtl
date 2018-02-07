@@ -1,0 +1,134 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module classGenerator.
+ */]
+
+[module classGenerator('http://www.eclipse.org/uml2/5.0.0/UML')]
+[import org::eclipse::acceleo::module::M2TGraces::services::LocationServicesWrapper/]
+
+[**
+ * The documentation of the template generateClass.
+ * @param aClass
+ */]
+[template public generateClass(aClass : Class)]
+
+<h1 class="class" id="[aClass.namespace.name/].[aClass.name/]">
+[if (aClass.isAbstract)][loc('classAbstract', Sequence{aClass.name})/]
+[else][loc('classNotAbstract', Sequence{aClass.name})/]
+[/if]
+</h1>
+
+[comment][if (aClass.getAppliedStereotypes() -> size() > 0)]
+La clase es:
+[for (stereotype: Stereotype | aClass.getAppliedStereotypes()) separator(', ')]
+[stereotype.name/]
+[/for]
+[/if][/comment]
+[if (aClass.attribute -> size() > 0)]
+<h2 class="attributes" id="[aClass.name/].properties">[loc('classAttributesHeading', Sequence{aClass.name})/]</h2>
+<ul>
+[for (attr: Property | aClass.attribute -> reject(a : Property | a.association -> size() > 0 )) separator('\n')]
+<li class="Attribute" id="[attr.name/]">[loc('attributeList', Sequence{'<b>'+attr.name+'</b>', '<em>'+attr.type.name+'</em>', attr.visibility})/]</li>
+[/for]
+</ul>
+[else]<h2 class="attributes" id="[aClass.name/].attributes">[loc('noAttributeToList', Sequence{aClass.name})/]<h2>
+[/if]
+[if (aClass.ownedOperation -> size() > 0) ]
+<h2 class="operations" id="[aClass.name/].operations">[loc('operationsHeader', Sequence{aClass.name})/]</h2>
+<ul>
+[for (op: Operation | aClass.ownedOperation) ]
+<li class="Operation" id="[op.name/]">
+[if (op.ownedParameter -> size() > 0)]
+[loc('operationList', Sequence{'<b>'+op.name+'</b>'})/]
+<ol>
+[for (param: Parameter | op.ownedParameter)] 
+	<li class="Parameter" name"[param.name/]">[loc('paramList', Sequence{'<b>'+param.name+'</b>', '<em>'+param.type.name+'</em>'})/]</li>
+[/for]
+</ol>
+[else][loc('operationNoParamList', Sequence{'<b>'+op.name+'</b>'})/]
+[/if]
+[if (op.getReturnResult() -> size() > 0)]
+<p class="Return" name"[op.getReturnResult().name/]">[loc('ReturnWhat', Sequence{'<b>'+op.getReturnResult().name+'</b>', '<em>'+op.getReturnResult().type.name+'</em>'})/]</p>
+[else] [loc('noReturn', Sequence{})/]
+[/if]
+</li>
+[/for]
+</ul>
+[else]<h2 class="operations" id="[aClass.name/].operations">[loc('noOperationToList', Sequence{aClass.name})/]</h2>
+[/if]
+
+
+
+[if (aClass.getRelationships() -> size() > 0)]
+<h2 class="relationship" id="[aClass.name/].relationships">[loc('relationshipsHeading', Sequence{aClass.name})/]</h2>
+<ul>
+[comment][for (r: Relationship | (aClass.getRelationships() -> asOrderedSet() -> sortedBy(name)))][/comment]
+[comment]	[for (e: Class | r.relatedElement -> filter(uml::Class))][/comment]
+[comment]	[if not e.name.matches(aClass.name)][/comment]
+[comment]	[loc('relationshipList', Sequence{ r.toString(), e.oclAsType(Classifier).name})/][/comment]
+[for (assoc: Association | (aClass.getRelationships() -> filter(Association) -> asOrderedSet() -> sortedBy(name)))]
+[comment]	[let assoc: Association = r][/comment]
+	<li class="Association" id="[assoc.name/]">[assoc.doRelationship()/]</li>
+[comment]	[/let][/comment]
+[/for]
+</ul>
+[else]
+<h2 class="relationship" id="[aClass.name/].relationships">[loc('notRelationshipsHeading', Sequence{aClass.name})/]</h2>
+[/if]
+[/template]
+
+[comment]Parece ser que el que tiene de nombre x no tiene de clase x, sino clase y.[/comment]
+[template public doRelationship(assoc : Association)]
+[comment]	[multiplicity(assoc.memberEnd -> last())/] [assoc.memberEnd -> first().class.name/] [assoc.name/] [multiplicity(assoc.memberEnd -> first())/] [if not (assoc.endType -> asOrderedSet() -> first().name = assoc.memberEnd -> first().class.name)][assoc.endType -> asOrderedSet() -> first().name/][else][assoc.endType -> asOrderedSet() -> last().name/][/if][/comment]
+	[multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a> <b>[assoc.name/]</b> [multiplicity(assoc.memberEnd -> last())/] <a href="#[assoc.memberEnd -> last().type.namespace.name/].[assoc.memberEnd -> last().type.name/]">[assoc.memberEnd -> last().type.name/]</a>
+
+[/template]
+
+[template public doRelationship(asoccClass : AssociationClass)]
+	template_expression
+[/template]
+
+[template public doRelationship(rel : InterfaceRealization)]
+	template_expression
+[/template]
+
+[template public doRelationship(rel : Dependency)]
+	template_expression
+[/template]
+
+[template public doRelationship(rel : Usage)]
+	template_expression
+[/template]
+
+[template public doRelationship(rel : Extension)]
+	template_expression
+[/template]
+
+[template public doRelationship(rel : Generalization)]
+	template_expression
+[/template]
+
+[template public doRelationship(rel : Manifestation)]
+	template_expression
+[/template]
+
+[template public doRelationship(rel : Realization)]
+	template_expression
+[/template]
+
+[template public multiplicity(e : Property)]
+	[if (e.getLower() = e.getUpper())][loc('multiSame', Sequence{e.getLower()})/]
+	[elseif (e.getLower() = 0 and e.getUpper() = -1)][loc('multiAny', Sequence{})/]
+	[elseif (not(e.getLower() = 0) and e.getUpper() = -1)][loc('multiOneToAny',Sequence{e.getLower()} )/]
+	[else][loc('multiOneToAnother', Sequence{e.getLower(), e.getUpper()})/]
+	[/if]
+[/template]
+
+[comment]	[if (r.oclIsTypeOf(AssociationClass)) ] [/if]
+	[if (r.oclIsTypeOf(InterfaceRealization)) ] [/if]
+	[if (r.oclIsTypeOf(Dependency)) ] [/if]
+	[if (r.oclIsTypeOf(Usage)) ] [/if]
+	[if (r.oclIsTypeOf(Extension)) ] [/if]
+	[if (r.oclIsTypeOf(Generalization)) ] [/if]
+	[if (r.oclIsTypeOf(Manifestation)) ] [/if]
+	[if (r.oclIsTypeOf(Realization)) ] [/if] [/comment]

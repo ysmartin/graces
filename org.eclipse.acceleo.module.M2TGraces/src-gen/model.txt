@@ -1,0 +1,34 @@
+
+El modelo tiene 2 clases:
+
+- Patata
+- Zanahoria
+
+#######################################################
+-- ## Clase Patata. ##
+Los atributos de la clase Patata son:
+	- marca de tipo String con visibilidad private,
+- peso de tipo Real con visibilidad public
+Las operaciones de la clase Patata son:
+	frie con parámetros:
+		aceite de tipo Integer
+		patatafrita de tipo Boolean
+	y que devuelve patatafrita de tipo Boolean
+###################### RELACIONES ######################
+La clase Patata no tiene relaciones.
+
+#######################################################
+
+#######################################################
+-- ## Clase abstracta Zanahoria. ##
+La clase Zanahoria no tiene atributos.
+Las operaciones de la clase Zanahoria son:
+	frie con parámetros:
+		aceite de tipo Integer
+		patatafrita de tipo Boolean
+	y que devuelve patatafrita de tipo Boolean
+###################### RELACIONES ######################
+La clase Zanahoria no tiene relaciones.
+
+#######################################################
+	

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_iG2hgAArEeiQS8l9iVUByg" name="model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_MrmrcAAsEeiQS8l9iVUByg">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_4Pg5YAA5EeizS43IdzsMEg">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_mfNo4AArEeiQS8l9iVUByg" name="Patata" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_tTYrYAArEeiQS8l9iVUByg" name="marca" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_rTNG4AAsEeiQS8l9iVUByg" name="peso" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HoHn0ABKEeizS43IdzsMEg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HodmEABKEeizS43IdzsMEg" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_osmGcAArEeiQS8l9iVUByg" name="frie">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_k_iJYAAsEeiQS8l9iVUByg" name="aceite" visibility="public" effect="update">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CGClgAAtEeiQS8l9iVUByg" name="patatafrita" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+    <nestedClassifier xmi:type="uml:Stereotype" xmi:id="_tRlzQAA5EeizS43IdzsMEg" name="Stereotype1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2nm2gAAwEeiSwOQr0d8SXw" name="Zanahoria" visibility="private" isAbstract="true">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2nm2gwAwEeiSwOQr0d8SXw" name="frie">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_2nm2hAAwEeiSwOQr0d8SXw" name="aceite" visibility="public" effect="update">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_2nm2hQAwEeiSwOQr0d8SXw" name="patatafrita" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,194 @@
+<html>
+<head>
+<title class="model" id="ISSTCase">Modelo ISSTCase</title>
+</head>
+<body>
+
+El modelo <b>ISSTCase</b> tiene 5 clases:
+<ul>
+<li><a href="#ISSTCase.Asignatura">Asignatura</a></li>
+<li><a href="#ISSTCase.Departamento">Departamento</a></li>
+<li><a href="#ISSTCase.Escuela">Escuela</a></li>
+<li><a href="#ISSTCase.Estudiante">Estudiante</a></li>
+<li><a href="#ISSTCase.Profesor">Profesor</a></li>
+</ul>
+
+<h1 class="class" id="ISSTCase.Asignatura">
+Clase Asignatura
+</h1>
+
+<h2 class="attributes" id="Asignatura.properties">Los atributos de la clase Asignatura son:</h2>
+<ul>
+<li class="Attribute" id="acrónimo"><b>acrónimo</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="curso"><b>curso</b> de tipo <em>Integer</em> con visibilidad public</li>
+
+<li class="Attribute" id="semestre"><b>semestre</b> de tipo <em>Integer</em> con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Asignatura.operations">La clase Asignatura no tiene operaciones</h2>
+
+
+
+<h2 class="relationship" id="Asignatura.relationships">La clase Asignatura tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="asiste a  ▶">	0 o más
+		 <a href="#ISSTCase.Estudiante">Estudiante</a> <b>asiste a  ▶</b> 0 o más
+		  <a href="#ISSTCase.Asignatura">Asignatura</a>
+	</li>
+	<li class="Association" id="organiza▼">	1
+		 <a href="#ISSTCase.Departamento">Departamento</a> <b>organiza▼</b> 1 o más
+		  <a href="#ISSTCase.Asignatura">Asignatura</a>
+	</li>
+	<li class="Association" id="◀ imparte">	1 o más
+		 <a href="#ISSTCase.Profesor">Profesor</a> <b>◀ imparte</b> 0 o más
+		  <a href="#ISSTCase.Asignatura">Asignatura</a>
+	</li>
+</ul>
+
+
+
+<h1 class="class" id="ISSTCase.Departamento">
+Clase Departamento
+</h1>
+
+<h2 class="attributes" id="Departamento.properties">Los atributos de la clase Departamento son:</h2>
+<ul>
+<li class="Attribute" id="nombre"><b>nombre</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="acrónimo"><b>acrónimo</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="código"><b>código</b> de tipo <em>Integer</em> con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Departamento.operations">La clase Departamento no tiene operaciones</h2>
+
+
+
+<h2 class="relationship" id="Departamento.relationships">La clase Departamento tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="organiza▼">	1
+		 <a href="#ISSTCase.Departamento">Departamento</a> <b>organiza▼</b> 1 o más
+		  <a href="#ISSTCase.Asignatura">Asignatura</a>
+	</li>
+	<li class="Association" id="tiene  ▶">	1
+		 <a href="#ISSTCase.Escuela">Escuela</a> <b>tiene  ▶</b> 1 o más
+		  <a href="#ISSTCase.Departamento">Departamento</a>
+	</li>
+	<li class="Association" id="◀ asignado a">	1 o más
+		 <a href="#ISSTCase.Profesor">Profesor</a> <b>◀ asignado a</b> De 0 a 1
+		  <a href="#ISSTCase.Departamento">Departamento</a>
+	</li>
+</ul>
+
+
+
+<h1 class="class" id="ISSTCase.Escuela">
+Clase Escuela
+</h1>
+
+<h2 class="attributes" id="Escuela.properties">Los atributos de la clase Escuela son:</h2>
+<ul>
+<li class="Attribute" id="nombre"><b>nombre</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="acrónimo"><b>acrónimo</b> de tipo <em>String</em> con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Escuela.operations">La clase Escuela no tiene operaciones</h2>
+
+
+
+<h2 class="relationship" id="Escuela.relationships">La clase Escuela tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="tiene  ▶">	1
+		 <a href="#ISSTCase.Escuela">Escuela</a> <b>tiene  ▶</b> 1 o más
+		  <a href="#ISSTCase.Departamento">Departamento</a>
+	</li>
+	<li class="Association" id="▲ matriculado en">	0 o más
+		 <a href="#ISSTCase.Estudiante">Estudiante</a> <b>▲ matriculado en</b> 1 o más
+		  <a href="#ISSTCase.Escuela">Escuela</a>
+	</li>
+</ul>
+
+
+
+<h1 class="class" id="ISSTCase.Estudiante">
+Clase Estudiante
+</h1>
+
+<h2 class="attributes" id="Estudiante.properties">Los atributos de la clase Estudiante son:</h2>
+<ul>
+<li class="Attribute" id="nombre"><b>nombre</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="matricula"><b>matricula</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="email"><b>email</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="asignatura"><b>asignatura</b> de tipo <em>Asignatura</em> con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Estudiante.operations">Las operaciones de la clase Estudiante son:</h2>
+<ul>
+<li class="Operation" id="estudia">
+operación <b>estudia</b> sin parámetros
+y no devuelve nada.
+</li>
+</ul>
+
+
+
+<h2 class="relationship" id="Estudiante.relationships">La clase Estudiante tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="asiste a  ▶">	0 o más
+		 <a href="#ISSTCase.Estudiante">Estudiante</a> <b>asiste a  ▶</b> 0 o más
+		  <a href="#ISSTCase.Asignatura">Asignatura</a>
+	</li>
+	<li class="Association" id="▲ matriculado en">	0 o más
+		 <a href="#ISSTCase.Estudiante">Estudiante</a> <b>▲ matriculado en</b> 1 o más
+		  <a href="#ISSTCase.Escuela">Escuela</a>
+	</li>
+</ul>
+
+
+
+<h1 class="class" id="ISSTCase.Profesor">
+Clase Profesor
+</h1>
+
+<h2 class="attributes" id="Profesor.properties">Los atributos de la clase Profesor son:</h2>
+<ul>
+<li class="Attribute" id="nombre"><b>nombre</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="nrp"><b>nrp</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="despacho"><b>despacho</b> de tipo <em>String</em> con visibilidad public</li>
+
+<li class="Attribute" id="email"><b>email</b> de tipo <em>String</em> con visibilidad public</li>
+</ul>
+<h2 class="operations" id="Profesor.operations">Las operaciones de la clase Profesor son:</h2>
+<ul>
+<li class="Operation" id="evalua">
+operación <b>evalua</b> con parámetros:
+<ol>
+	<li class="Parameter" name"estudiante"><b>estudiante</b> de tipo <em>Estudiante</em></li>
+	<li class="Parameter" name"asignatura"><b>asignatura</b> de tipo <em>Asignatura</em></li>
+	<li class="Parameter" name"aprobado"><b>aprobado</b> de tipo <em>Boolean</em></li>
+</ol>
+<p class="Return" name"aprobado">y que devuelve <b>aprobado</b> de tipo <em>Boolean</em></p>
+</li>
+</ul>
+
+
+
+<h2 class="relationship" id="Profesor.relationships">La clase Profesor tiene las siguientes relaciones:</h2>
+<ul>
+	<li class="Association" id="◀ asignado a">	1 o más
+		 <a href="#ISSTCase.Profesor">Profesor</a> <b>◀ asignado a</b> De 0 a 1
+		  <a href="#ISSTCase.Departamento">Departamento</a>
+	</li>
+	<li class="Association" id="◀ imparte">	1 o más
+		 <a href="#ISSTCase.Profesor">Profesor</a> <b>◀ imparte</b> 0 o más
+		  <a href="#ISSTCase.Asignatura">Asignatura</a>
+	</li>
+</ul>
+
+
+
+</html>
+</body>

@@ -1,0 +1,17 @@
+[comment encoding = UTF-8 /]
+[module LocationServicesWrapper('http://www.eclipse.org/uml2/5.0.0/UML')/]
+
+[query public LocationServices(anOclAny: OclAny) : OclVoid
+	= invoke('org.eclipse.acceleo.module.M2TGraces.services.LocationServices', 'LocationServices()', Sequence{})
+/]
+
+[query public loc(arg0 : String) : String
+	= invoke('org.eclipse.acceleo.module.M2TGraces.services.LocationServices', 'localize(java.lang.String)', Sequence{arg0})
+/]
+
+[query public loc(arg0 : String, arg1 : Sequence(OclAny)) : String
+	= invoke('org.eclipse.acceleo.module.M2TGraces.services.LocationServices', 'localize(java.lang.String, java.util.List)', Sequence{arg0, arg1})
+/]
+
+
+
