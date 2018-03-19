@@ -3,6 +3,8 @@
 
 [import org::eclipse::acceleo::module::M2TGraces::services::LocationServicesWrapper/]
 [import org::eclipse::acceleo::module::M2TGraces::main::classGenerator/]
+[import org::eclipse::acceleo::module::M2TGraces::main::interfaceGenerator/]
+
 
 [template public main(aModel : Model)]
 	
@@ -14,14 +16,29 @@
 </head>
 <body>
 
+<h1 class="model" id="[aModel.name/]">[loc('modelHeader', Sequence{aModel.name})/]</h1>
+
 [loc('modelClassCount', Sequence{'<b>'+aModel.name+'</b>', aModel.ownedElement -> filter(uml::Class) -> size()})/]
 <ul>
 [for (aClass: Class | aModel.ownedMember -> filter(uml::Class) -> asOrderedSet() -> sortedBy(name))]
 <li><a href="#[aClass.namespace.name/].[aClass.name/]">[aClass.name/]</a></li>
 [/for]
 </ul>
+
+[loc('modelInterfaceCount', Sequence{'<b>'+aModel.name+'</b>', aModel.ownedElement -> filter(uml::Interface) -> size()})/]
+<ul>
+[for (aInterface: Interface | aModel.ownedMember -> filter(uml::Interface) -> asOrderedSet() -> sortedBy(name))]
+<li><a href="#[aInterface.namespace.name/].[aInterface.name/]">[aInterface.name/]</a></li>
+[/for]
+</ul>
+
+
 [for (aClass: Class | aModel.ownedMember -> filter(uml::Class) -> asOrderedSet() -> sortedBy(name)) separator('\n')]
 [generateClass(aClass)/]
+[/for]
+
+[for (aInterface: Interface | aModel.ownedMember -> filter(uml::Interface) -> asOrderedSet() -> sortedBy(name)) separator('\n')]
+[generateInterface(aInterface)/]
 [/for]
 
 

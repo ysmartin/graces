@@ -1,0 +1,217 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module classifierGenerator.
+ */]
+[module classifierGenerator('http://www.eclipse.org/uml2/5.0.0/UML')]
+[import org::eclipse::acceleo::module::M2TGraces::services::LocationServicesWrapper/]
+
+
+[**
+ * The documentation of the template generateElement.
+ * @param aClass
+ */]
+[template public generateElement(aClass : Class)]
+
+[/template]
+
+[template public generalizationClassifierDescription(aClassifier : Classifier)]
+[if (aClassifier.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
+	<h3 class="inheritance">[loc('inheritanceList', Sequence{})/]</h3>
+	<ul>
+	[for (gen: Generalization | (aClassifier.getSourceDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(toString())))]
+		<li class="inheritance">[gen.inheritance()/]</li>
+	[/for]
+	</ul>
+[else]
+	<h3 class="inheritance">[loc('notInheritance', Sequence{})/]</h3>
+[/if]
+
+[if (aClassifier.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
+	<h3 class="superclass">[loc('extendedList', Sequence{})/]</h3>
+	<ul>
+	[for (gen: Generalization | (aClassifier.getTargetDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(toString())))]
+		<li class="Generalization">[gen.superclass()/]</li>
+	[/for]
+	</ul>
+[else]
+	<h3 class="superclass">[loc('notExtended', Sequence{})/]</h3>
+[/if]
+[/template]
+
+[template public inheritance(gen : Generalization)]
+	<a href="#[gen.general.namespace.name/].[gen.general.name/]">[gen.general.name/]</a>
+[/template]
+
+[template public superclass(gen : Generalization)]
+	<a href="#[gen.specific.namespace.name/].[gen.specific.name/]">[gen.specific.name/]</a>
+[/template]
+
+[template public attributeClassifierDescription(aClassifier : Classifier)]
+[if (aClassifier.attribute -> size() > 0)]
+	
+	[comment]Cast the classifier to put the correct word in the string[/comment]
+	[let aClass : Class = aClassifier]
+		<h3 class="attributes" id="[aClassifier.name/].properties">[loc('classifierAttributesHeading', Sequence{aClassifier.name, loc('class', Sequence{})})/]</h3>
+	[/let]
+	[let aInterface : Interface = aClassifier]
+		<h3 class="attributes" id="[aClassifier.name/].properties">[loc('classifierAttributesHeading', Sequence{aClassifier.name, loc('interface', Sequence{})})/]</h3>
+	[/let]
+	
+	<ul>
+	[for (attr: Property | aClassifier.attribute -> reject(a : Property | a.association -> size() > 0 )) separator('\n')]
+		<li class="attribute" id="[attr.name/]">
+		[comment]Check if the attribute is static[/comment]
+		[if (attr.isStatic)]
+			[comment]Check if the type is not specified[/comment]
+			[if attr.type.name.toString() = 'invalid']
+				[comment]If is not, load the general string adding the noType string[/comment]
+				[loc('attributeList', Sequence{'<b>'+attr.name+'</b>', loc('noType', Sequence{}), loc(attr.visibility.toString(), Sequence{}),'<em>'+loc('static', Sequence{})+'</em>'})/]
+			[else]
+				[comment]If it is, load the general string adding the type string[/comment]
+				[loc('attributeList', Sequence{'<b>'+attr.name+'</b>', loc('ofType', Sequence{'<em>'+attr.type.name+'</em>'}), loc(attr.visibility.toString(), Sequence{}),'<em>'+loc('static', Sequence{})+'</em>'})/]
+			[/if]
+		[else]
+			[comment]Check if the type is not specified[/comment]
+			[if attr.type.name.toString() = 'invalid']
+				[comment]If is not, load the general string adding the noType string[/comment]
+				[loc('attributeList', Sequence{'<b>'+attr.name+'</b>', loc('noType', Sequence{}), loc(attr.visibility.toString(), Sequence{}),''})/]
+			[else]
+				[comment]If it is, load the general string adding the type string[/comment]
+				[loc('attributeList', Sequence{'<b>'+attr.name+'</b>', loc('ofType', Sequence{'<em>'+attr.type.name+'</em>'}), loc(attr.visibility.toString(), Sequence{}),''})/]
+			[/if]
+		[/if]</li>
+	[/for]
+	</ul>
+[else]
+	[comment]Cast the classifier to put the correct word in the string[/comment]
+	[let aClass : Class = aClassifier] <h3 class="attributes" id="[aClassifier.name/].attributes">[loc('noAttributeToList', Sequence{aClassifier.name, loc('class', Sequence{})})/]<h3>
+	[/let]
+	[let aInterface : Interface = aClassifier] <h3 class="attributes" id="[aClassifier.name/].attributes">[loc('noAttributeToList', Sequence{aClassifier.name, loc('interface', Sequence{})})/]<h3>
+	[/let]
+[/if]
+[/template]
+
+[template public relationshipsClassifierDescription(aClassifier : Classifier)]
+[if (aClassifier.getRelationships() -> filter(Association) -> size() > 0 or aClassifier.getRelationships() -> filter(Realization) -> size() > 0)]
+	[comment]Cast the classifier to put the correct word in the string[/comment]
+	[let aClass : Class = aClassifier]
+		<h3 class="relationship" id="[aClassifier.name/].relationships">[loc('relationshipsHeading', Sequence{aClassifier.name, loc('class', Sequence{})})/]</h3>
+	[/let]
+	[let aInterface : Interface = aClassifier]
+		<h3 class="relationship" id="[aClassifier.name/].relationships">[loc('relationshipsHeading', Sequence{aClassifier.name, loc('interface', Sequence{})})/]</h3>
+	[/let]
+	<ul>
+
+	[RealizationDescription(aClassifier)/]
+	
+	[doAssociation(aClassifier)/]
+	
+	</ul>
+[else]
+	
+	[comment]Cast the classifier to put the correct word in the string[/comment]
+	[let aClass : Class = aClassifier]
+		<h3 class="relationship" id="[aClassifier.name/].relationships">[loc('notRelationshipsHeading', Sequence{aClassifier.name, loc('class', Sequence{})})/]</h3>
+	[/let]
+	[let aInterface : Interface = aClassifier]
+		<h3 class="relationship" id="[aClassifier.name/].relationships">[loc('notRelationshipsHeading', Sequence{aClassifier.name, loc('interface', Sequence{})})/]</h3>
+	[/let]
+[/if]
+[/template]
+
+[template public RealizationDescription(aClassifier : Classifier)]
+[comment][for (ireal: InterfaceRealization | (aClassifier.getRelationships() -> filter(InterfaceRealization) -> asOrderedSet() -> sortedBy(toString())))]
+	<li class="interfaceRealization">[ireal.interfaceRealizationString()/]</li>
+[/for][/comment]
+[for (real: Realization | (aClassifier.getRelationships() -> filter(Realization) -> asOrderedSet() -> sortedBy(toString())))]
+	<li class="interfaceRealization">[real.realizationString()/]</li>
+[/for]
+[/template]
+
+[template public interfaceRealizationString(real : InterfaceRealization)]
+<a href="#[real.implementingClassifier.namespace.name/].[real.implementingClassifier.name/]">[real.implementingClassifier.name/]</a> [loc('implements', Sequence{})/] <a href="#[real.contract.namespace.name/].[real.contract.name/]">[real.contract.name/]</a>
+[/template]
+
+[template public realizationString(real : Realization)]
+<a href="#[real.client.namespace.name/].[real.client.name/]">[real.client.name/]</a> [loc('implements', Sequence{})/] <a href="#[real.supplier.namespace.name/].[real.supplier.name/]">[real.supplier.name/]</a>
+[/template]
+
+[template public doAssociation(aClassifier : Classifier)]
+
+[for (assoc: Association | (aClassifier.getRelationships() -> filter(Association) -> asOrderedSet() -> sortedBy(name.toString())))]
+[comment]    Lo del toString estropea el orden[/comment]
+	[if assoc.memberEnd -> first().isComposite or assoc.memberEnd -> last().isComposite]
+	<li class="Association" id="composition">[assoc.compositeAssociation() /]
+
+	[elseif (assoc.memberEnd -> first().aggregation.toString() = 'shared' or assoc.memberEnd -> last().aggregation.toString() = 'shared')]
+	<li class="Association" id="aggregation">[assoc.aggregateAssociation()/]
+
+	[else]<li class="Association" id="[assoc.name/]">[assoc.simpleAssociation()/]</li>
+
+	[/if]
+[/for]
+[/template]
+
+[template public compositeAssociation(assoc : Association)]
+
+[if assoc.memberEnd -> first().isComposite]
+	[multiplicity(assoc.memberEnd -> last())/] <a href="#[assoc.memberEnd -> last().type.namespace.name/].[assoc.memberEnd -> last().type.name/]">[assoc.memberEnd -> last().type.name/]</a> [if not(assoc.memberEnd -> last().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> last().name})/][/if] <b>[loc('compositeRelationship', Sequence{})/]</b> [multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> first().name})/][/if] [navigability(assoc)/]
+[/if]
+
+[if assoc.memberEnd -> last().isComposite]
+	[multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> first().name})/][/if] <b>[loc('compositeRelationship', Sequence{})/]</b> [multiplicity(assoc.memberEnd -> last())/] <a href="#[assoc.memberEnd -> last().type.namespace.name/].[assoc.memberEnd -> last().type.name/]">[assoc.memberEnd -> last().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> last().name})/][/if] [navigability(assoc)/]
+[/if]
+[/template]
+
+[template public aggregateAssociation(assoc : Association)]
+
+[if assoc.memberEnd -> first().aggregation.toString() = 'shared']
+	[multiplicity(assoc.memberEnd -> last())/] <a href="#[assoc.memberEnd -> last().type.namespace.name/].[assoc.memberEnd -> last().type.name/]">[assoc.memberEnd -> last().type.name/]</a> [if not(assoc.memberEnd -> last().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> last().name})/][/if] <b>[loc('aggregateRelationship', Sequence{})/]</b> [multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> first().name})/][/if] [navigability(assoc)/]
+[/if]
+
+[if assoc.memberEnd -> last().aggregation.toString() = 'shared']
+	[multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> first().name})/][/if] <b>[loc('aggregateRelationship', Sequence{})/]</b> [multiplicity(assoc.memberEnd -> last())/] <a href="#[assoc.memberEnd -> last().type.namespace.name/].[assoc.memberEnd -> last().type.name/]">[assoc.memberEnd -> last().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> last().name})/][/if] [navigability(assoc)/]
+[/if]
+[/template]
+
+[template public simpleAssociation(assoc : Association)]
+	[multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a>
+[comment]Check if the end of the association has a role, so it says it or not[/comment]
+[if not(assoc.memberEnd -> first().name = null)]
+	[loc('relationshipRol', Sequence{assoc.memberEnd -> first().name})/]
+[/if] <b>
+[comment]Check if the string is empty or it only haves spaces or tabs, so it can introduce a generic "is asociated" text[/comment]
+[if ((assoc.name.toString()= 'null') or assoc.name.toString().trim() = '')]
+	[loc('isAssociated', Sequence{})/]
+[else]
+	[assoc.name/]
+[/if]
+</b> [multiplicity(assoc.memberEnd -> last())/] <a href="#[assoc.memberEnd -> last().type.namespace.name/].[assoc.memberEnd -> last().type.name/]">[assoc.memberEnd -> last().type.name/]</a> 
+[if not(assoc.memberEnd -> last().name = null)]
+[loc('relationshipRol', Sequence{assoc.memberEnd -> last().name})/]
+[/if] [navigability(assoc)/]
+[/template]
+
+[template public multiplicity(e : Property)]
+	[if (e.getLower() = e.getUpper())][loc('multiSame', Sequence{e.getLower()})/]
+	[elseif (e.getLower() = 0 and e.getUpper() = -1)][loc('multiAny', Sequence{})/]
+	[elseif (not(e.getLower() = 0) and e.getUpper() = -1)][loc('multiOneToAny',Sequence{e.getLower()} )/]
+	[elseif (e.getUpper() = e.getLower() + 1)][loc('multioneOrAnother',Sequence{e.getLower(), e.getUpper()} )/]
+	[else][loc('multiOneToAnother', Sequence{e.getLower(), e.getUpper()})/]
+	[/if]
+[/template]
+
+[template public navigability(assoc : Association)]
+[if (assoc.memberEnd -> first().isNavigable())]
+	[if (assoc.memberEnd -> last().isNavigable())]
+		[loc('bothNavigable', Sequence{})/]
+	[else]
+		[loc('oneNavigable', Sequence{assoc.memberEnd -> last().type.name, assoc.memberEnd -> first().type.name})/]
+	[/if]
+[else]
+	[if (assoc.memberEnd -> last().isNavigable())]
+		[loc('oneNavigable', Sequence{assoc.memberEnd -> first().type.name, assoc.memberEnd -> last().type.name})/]
+	[/if]
+[/if]
+[/template]
+

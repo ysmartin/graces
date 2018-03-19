@@ -1,21 +1,21 @@
 [comment encoding = UTF-8 /]
 [**
- * The documentation of the module classGenerator.
+ * The documentation of the module interfaceGenerator.
  */]
-
-[module classGenerator('http://www.eclipse.org/uml2/5.0.0/UML')]
+[module interfaceGenerator('http://www.eclipse.org/uml2/5.0.0/UML')]
 [import org::eclipse::acceleo::module::M2TGraces::services::LocationServicesWrapper/]
 [import org::eclipse::acceleo::module::M2TGraces::main::classifierGenerator/]
 
+
 [**
- * Generate the text of the Class. It has the methods that can't be generalized to Classifiers.
+ * The documentation of the template generateInterface.
  * @param aClass
  */]
-[template public generateClass(aClass : Class)]
+[template public generateInterface(aInterface : Interface)]
 
-[classDescription(aClass)/]
+[interfaceDescription(aInterface)/]
 
-[generalizationDescription(aClass)/]
+[generalizationDescription(aInterface)/]
 
 [comment][if (aClass.getAppliedStereotypes() -> size() > 0)]
 La clase es:
@@ -24,60 +24,59 @@ La clase es:
 [/for]
 [/if][/comment]
 
+[attributeDescription(aInterface)/]
 
-[attributeDescription(aClass)/]
+[operationDescription(aInterface)/]
 
-[operationDescription(aClass)/]
+[relationshipsDescription(aInterface)/]
 
-
-
-[relationshipsDescription(aClass)/]
 
 [/template]
 
-[template public classDescription(aClass : Class)]
-<h2 class="class" id="[aClass.namespace.name/].[aClass.name/]">
-[if (aClass.isAbstract)][loc('classAbstract', Sequence{aClass.name, loc(aClass.visibility.toString(), Sequence{}) })/]
-[else][loc('classNotAbstract', Sequence{aClass.name, loc(aClass.visibility.toString(), Sequence{}) })/]
-[/if]
+[template public interfaceDescription(aInterface : Interface)]
+<h2 class="class" id="[aInterface.namespace.name/].[aInterface.name/]">
+[comment][if (aInterface.isAbstract)][loc('interfaceAbstract', Sequence{aInterface.name, loc(aInterface.visibility.toString(), Sequence{}) })/]
+[else][loc('interfaceNotAbstract', Sequence{aInterface.name, loc(aInterface.visibility.toString(), Sequence{}) })/]
+[/if][/comment]
+[loc('interfaceNotAbstract', Sequence{aInterface.name})/]
 </h2>
 [/template]
 
-[template public generalizationDescription(aClass : Class)]
-[comment][if (aClass.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
+[template public generalizationDescription(aInterface : Interface)]
+[comment][if (aInterface.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
 <h3 class="inheritance">[loc('inheritanceList', Sequence{})/]</h3>
 <ul>
-[for (gen: Generalization | (aClass.getSourceDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(name)))]
+[for (gen: Generalization | (aInterface.getSourceDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(name)))]
 	<li class="inheritance">[gen.inheritance()/]</li>
 [/for]
 </ul>
 [else]<h3 class="inheritance">[loc('notInheritance', Sequence{})/]</h3>[/if]
 
-[if (aClass.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
+[if (aInterface.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
 <h3 class="superclass">[loc('extendedList', Sequence{})/]</h3>
 <ul>
-[for (gen: Generalization | (aClass.getTargetDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(name)))]
+[for (gen: Generalization | (aInterface.getTargetDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(name)))]
 	<li class="Generalization">[gen.superclass()/]</li>
 [/for]
 </ul>
 [else]<h3 class="superclass">[loc('notExtended', Sequence{})/]</h3>[/if][/comment]
-[generalizationClassifierDescription(aClass)/]
+[generalizationClassifierDescription(aInterface)/]
 [/template]
 
-[template public attributeDescription(aClass : Class)]
-[attributeClassifierDescription(aClass)/]
+[template public attributeDescription(aInterface : Interface)]
+[attributeClassifierDescription(aInterface)/]
 [/template]
 
-[template public operationDescription(aClass : Class)]
-[if (aClass.ownedOperation -> size() > 0) ]
-	<h3 class="operations" id="[aClass.name/].operations">[loc('operationsHeader', Sequence{aClass.name, loc('class', Sequence{})})/]</h3>
+[template public operationDescription(aInterface : Interface)]
+[if (aInterface.ownedOperation -> size() > 0) ]
+	<h3 class="operations" id="[aInterface.name/].operations">[loc('operationsInterfaceHeader', Sequence{aInterface.name, loc('interface', Sequence{})})/]</h3>
 	<ul>
-	[for (op: Operation | aClass.ownedOperation) ]
+	[for (op: Operation | aInterface.ownedOperation) ]
 	<li class="operation" id="[op.name/]">
 
 	[comment]Check if is constructor[/comment]
 
-	[if (op.name) = aClass.name]
+	[if (op.name) = aInterface.name]
 		[if (op.ownedParameter -> size() > 0)]
 			[loc('constructorList', Sequence{'<b>'+op.name+'</b>'})/]
 			<ol>
@@ -88,7 +87,7 @@ La clase es:
 		[else]
 			[loc('constructorListNoParam', Sequence{'<b>'+op.name+'</b>'})/]
 		[/if]
-[comment]	If is not, treat it like a normal class[/comment]
+[comment]	If is not, treat it like a normal interface[/comment]
 	[else]
 [comment]Has parameters? then load the operationList string. If not, the operationNoParamList string[/comment]
 		[if (op.ownedParameter -> size() > 0)]
@@ -128,7 +127,7 @@ La clase es:
 			[/if]
 		[/if]
 		
-		[if (op.getReturnResult() -> size() > 0) or (op.getReturnResult().name) = aClass.name]
+		[if (op.getReturnResult() -> size() > 0) or (op.getReturnResult().name) = aInterface.name]
 			<p class="Return" name"[op.getReturnResult().name/]">[loc('ReturnWhat', Sequence{'<b>'+op.getReturnResult().name+'</b>', '<em>'+op.getReturnResult().type.name+'</em>'})/]</p>
 		[else] 
 			[loc('noReturn', Sequence{})/]
@@ -138,13 +137,14 @@ La clase es:
 	[/for]
 	</ul>
 [else]
-	<h3 class="operations" id="[aClass.name/].operations">[loc('noOperationToList', Sequence{aClass.name, loc('class', Sequence{})})/]</h3>
+	<h3 class="operations" id="[aInterface.name/].operations">[loc('noOperationToList', Sequence{aInterface.name, loc('interface', Sequence{})})/]</h3>
 [/if]
 [/template]
 
-[template public relationshipsDescription(aClass : Class)]
-[relationshipsClassifierDescription(aClass)/]
+[template public relationshipsDescription(aInterface : Interface)]
+[relationshipsClassifierDescription(aInterface)/]
 [/template]
+
 
 [template public inheritance(gen : Generalization)]
 	<a href="#[gen.general.namespace.name/].[gen.general.name/]">[gen.general.name/]</a>
@@ -153,3 +153,5 @@ La clase es:
 [template public superclass(gen : Generalization)]
 	<a href="#[gen.specific.namespace.name/].[gen.specific.name/]">[gen.specific.name/]</a>
 [/template]
+
+
