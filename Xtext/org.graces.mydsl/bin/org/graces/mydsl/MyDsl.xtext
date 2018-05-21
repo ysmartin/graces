@@ -1,0 +1,76 @@
+grammar org.graces.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate myDsl "http://www.graces.org/mydsl/MyDsl"
+
+
+// USAR HIDDEN TERMINAL SYMBOLS PARA TRATAR ESPACIOS Y DEMAS MORRALLA
+
+ModelDefinition:
+	'model' modelname=WORD OPENDECL ClassDecl CLOSEDECL
+;
+
+ClassDecl:
+	header=ClassHeader body=ClassBody
+;
+
+ClassHeader:
+	'class' classname=WORD 
+;
+
+ClassBody: // Posible problemon
+	OPENDECL
+	((attributes+=AttrBody CLOSELINE) | (operations+=OpBody CLOSELINE))*
+	CLOSEDECL
+;
+
+AttrBody:
+	VISIBILITY (attrname=WORD ':' attrtype=WORD)
+;
+
+OpBody:
+	'operation' (opname=WORD) (OPENARG (args+=ArgBody | args+=ArgBody ',')+ CLOSEARG)? ('return' (returntype=WORD))?
+;
+
+ArgBody:
+	('in'|'out') (argname=WORD ':' argtype=WORD)
+;
+
+
+terminal VISIBILITY:
+	('public' | 'private' | 'protected' | 'package')
+;
+
+terminal OPENDECL:
+	('{')
+;
+
+terminal CLOSEDECL:
+	('}')
+;
+
+terminal CLOSELINE:
+	(';')
+;
+
+terminal OPENARG:
+	'('
+;
+
+terminal CLOSEARG:
+	')'
+;
+
+terminal WORD: // Do not move: Needs to be after lexer rules for keywords, so they can be consumed instead of this rule.
+	(LOWERCASE | UPPERCASE | INT)+
+;
+
+terminal fragment LOWERCASE:
+	('a' .. 'z')
+;
+
+terminal fragment UPPERCASE:
+	('A' .. 'Z')
+;
+

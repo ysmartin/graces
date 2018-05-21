@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.graces.mydsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.graces.mydsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.13.0",
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.13.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.graces.mydsl.myDsl.util,
+ org.graces.mydsl.services,
+ org.graces.mydsl.myDsl.impl,
+ org.graces.mydsl.serializer,
+ org.graces.mydsl.scoping,
+ org.graces.mydsl.validation,
+ org.graces.mydsl.myDsl,
+ org.graces.mydsl,
+ org.graces.mydsl.parser.antlr,
+ org.graces.mydsl.generator,
+ org.graces.mydsl.parser.antlr.internal
+Import-Package: org.apache.log4j
