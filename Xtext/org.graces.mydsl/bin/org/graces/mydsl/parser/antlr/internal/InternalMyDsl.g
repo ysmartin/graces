@@ -43,7 +43,7 @@ import org.graces.mydsl.services.MyDslGrammarAccess;
 
     @Override
     protected String getFirstRuleName() {
-    	return "ModelDefinition";
+    	return "Model";
    	}
 
    	@Override
@@ -60,15 +60,15 @@ import org.graces.mydsl.services.MyDslGrammarAccess;
     }
 }
 
-// Entry rule entryRuleModelDefinition
-entryRuleModelDefinition returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getModelDefinitionRule()); }
-	iv_ruleModelDefinition=ruleModelDefinition
-	{ $current=$iv_ruleModelDefinition.current; }
+// Entry rule entryRuleModel
+entryRuleModel returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getModelRule()); }
+	iv_ruleModel=ruleModel
+	{ $current=$iv_ruleModel.current; }
 	EOF;
 
-// Rule ModelDefinition
-ruleModelDefinition returns [EObject current=null]
+// Rule Model
+ruleModel returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -78,54 +78,65 @@ ruleModelDefinition returns [EObject current=null]
 	(
 		otherlv_0='model'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getModelDefinitionAccess().getModelKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getModelAccess().getModelKeyword_0());
 		}
 		(
 			(
-				lv_modelname_1_0=RULE_WORD
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_modelname_1_0, grammarAccess.getModelDefinitionAccess().getModelnameWORDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getModelDefinitionRule());
+						$current = createModelElement(grammarAccess.getModelRule());
 					}
 					setWithLastConsumed(
 						$current,
-						"modelname",
-						lv_modelname_1_0,
-						"org.graces.mydsl.MyDsl.WORD");
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
 		this_OPENDECL_2=RULE_OPENDECL
 		{
-			newLeafNode(this_OPENDECL_2, grammarAccess.getModelDefinitionAccess().getOPENDECLTerminalRuleCall_2());
+			newLeafNode(this_OPENDECL_2, grammarAccess.getModelAccess().getOPENDECLTerminalRuleCall_2());
 		}
-		{
-			newCompositeNode(grammarAccess.getModelDefinitionAccess().getClassDeclParserRuleCall_3());
-		}
-		this_ClassDecl_3=ruleClassDecl
-		{
-			$current = $this_ClassDecl_3.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getModelAccess().getClazzesClassParserRuleCall_3_0());
+				}
+				lv_clazzes_3_0=ruleClass
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getModelRule());
+					}
+					add(
+						$current,
+						"clazzes",
+						lv_clazzes_3_0,
+						"org.graces.mydsl.MyDsl.Class");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
 		this_CLOSEDECL_4=RULE_CLOSEDECL
 		{
-			newLeafNode(this_CLOSEDECL_4, grammarAccess.getModelDefinitionAccess().getCLOSEDECLTerminalRuleCall_4());
+			newLeafNode(this_CLOSEDECL_4, grammarAccess.getModelAccess().getCLOSEDECLTerminalRuleCall_4());
 		}
 	)
 ;
 
-// Entry rule entryRuleClassDecl
-entryRuleClassDecl returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getClassDeclRule()); }
-	iv_ruleClassDecl=ruleClassDecl
-	{ $current=$iv_ruleClassDecl.current; }
+// Entry rule entryRuleClass
+entryRuleClass returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getClassRule()); }
+	iv_ruleClass=ruleClass
+	{ $current=$iv_ruleClass.current; }
 	EOF;
 
-// Rule ClassDecl
-ruleClassDecl returns [EObject current=null]
+// Rule Class
+ruleClass returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -136,12 +147,12 @@ ruleClassDecl returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getClassDeclAccess().getHeaderClassHeaderParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getClassAccess().getHeaderClassHeaderParserRuleCall_0_0());
 				}
 				lv_header_0_0=ruleClassHeader
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getClassDeclRule());
+						$current = createModelElementForParent(grammarAccess.getClassRule());
 					}
 					set(
 						$current,
@@ -155,12 +166,12 @@ ruleClassDecl returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getClassDeclAccess().getBodyClassBodyParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getClassAccess().getBodyClassBodyParserRuleCall_1_0());
 				}
 				lv_body_1_0=ruleClassBody
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getClassDeclRule());
+						$current = createModelElementForParent(grammarAccess.getClassRule());
 					}
 					set(
 						$current,
@@ -196,9 +207,9 @@ ruleClassHeader returns [EObject current=null]
 		}
 		(
 			(
-				lv_classname_1_0=RULE_WORD
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_classname_1_0, grammarAccess.getClassHeaderAccess().getClassnameWORDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getClassHeaderAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -206,9 +217,9 @@ ruleClassHeader returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"classname",
-						lv_classname_1_0,
-						"org.graces.mydsl.MyDsl.WORD");
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
@@ -318,9 +329,9 @@ ruleAttrBody returns [EObject current=null]
 		(
 			(
 				(
-					lv_attrname_1_0=RULE_WORD
+					lv_name_1_0=RULE_ID
 					{
-						newLeafNode(lv_attrname_1_0, grammarAccess.getAttrBodyAccess().getAttrnameWORDTerminalRuleCall_1_0_0());
+						newLeafNode(lv_name_1_0, grammarAccess.getAttrBodyAccess().getNameIDTerminalRuleCall_1_0_0());
 					}
 					{
 						if ($current==null) {
@@ -328,9 +339,9 @@ ruleAttrBody returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"attrname",
-							lv_attrname_1_0,
-							"org.graces.mydsl.MyDsl.WORD");
+							"name",
+							lv_name_1_0,
+							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
 			)
@@ -340,9 +351,9 @@ ruleAttrBody returns [EObject current=null]
 			}
 			(
 				(
-					lv_attrtype_3_0=RULE_WORD
+					lv_type_3_0=RULE_ID
 					{
-						newLeafNode(lv_attrtype_3_0, grammarAccess.getAttrBodyAccess().getAttrtypeWORDTerminalRuleCall_1_2_0());
+						newLeafNode(lv_type_3_0, grammarAccess.getAttrBodyAccess().getTypeIDTerminalRuleCall_1_2_0());
 					}
 					{
 						if ($current==null) {
@@ -350,9 +361,9 @@ ruleAttrBody returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"attrtype",
-							lv_attrtype_3_0,
-							"org.graces.mydsl.MyDsl.WORD");
+							"type",
+							lv_type_3_0,
+							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
 			)
@@ -382,9 +393,9 @@ ruleOpBody returns [EObject current=null]
 		}
 		(
 			(
-				lv_opname_1_0=RULE_WORD
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_opname_1_0, grammarAccess.getOpBodyAccess().getOpnameWORDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getOpBodyAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -392,22 +403,22 @@ ruleOpBody returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"opname",
-						lv_opname_1_0,
-						"org.graces.mydsl.MyDsl.WORD");
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
+		this_OPENARG_2=RULE_OPENARG
+		{
+			newLeafNode(this_OPENARG_2, grammarAccess.getOpBodyAccess().getOPENARGTerminalRuleCall_2());
+		}
 		(
-			this_OPENARG_2=RULE_OPENARG
-			{
-				newLeafNode(this_OPENARG_2, grammarAccess.getOpBodyAccess().getOPENARGTerminalRuleCall_2_0());
-			}
 			(
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOpBodyAccess().getArgsArgBodyParserRuleCall_2_1_0_0());
+							newCompositeNode(grammarAccess.getOpBodyAccess().getArgsArgBodyParserRuleCall_3_0_0_0());
 						}
 						lv_args_3_0=ruleArgBody
 						{
@@ -423,48 +434,45 @@ ruleOpBody returns [EObject current=null]
 						}
 					)
 				)
-				    |
+				otherlv_4=','
+				{
+					newLeafNode(otherlv_4, grammarAccess.getOpBodyAccess().getCommaKeyword_3_0_1());
+				}
+			)*
+			(
 				(
-					(
-						(
-							{
-								newCompositeNode(grammarAccess.getOpBodyAccess().getArgsArgBodyParserRuleCall_2_1_1_0_0());
-							}
-							lv_args_4_0=ruleArgBody
-							{
-								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getOpBodyRule());
-								}
-								add(
-									$current,
-									"args",
-									lv_args_4_0,
-									"org.graces.mydsl.MyDsl.ArgBody");
-								afterParserOrEnumRuleCall();
-							}
-						)
-					)
-					otherlv_5=','
 					{
-						newLeafNode(otherlv_5, grammarAccess.getOpBodyAccess().getCommaKeyword_2_1_1_1());
+						newCompositeNode(grammarAccess.getOpBodyAccess().getArgsArgBodyParserRuleCall_3_1_0());
+					}
+					lv_args_5_0=ruleArgBody
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOpBodyRule());
+						}
+						add(
+							$current,
+							"args",
+							lv_args_5_0,
+							"org.graces.mydsl.MyDsl.ArgBody");
+						afterParserOrEnumRuleCall();
 					}
 				)
-			)+
-			this_CLOSEARG_6=RULE_CLOSEARG
-			{
-				newLeafNode(this_CLOSEARG_6, grammarAccess.getOpBodyAccess().getCLOSEARGTerminalRuleCall_2_2());
-			}
+			)
 		)?
+		this_CLOSEARG_6=RULE_CLOSEARG
+		{
+			newLeafNode(this_CLOSEARG_6, grammarAccess.getOpBodyAccess().getCLOSEARGTerminalRuleCall_4());
+		}
 		(
 			otherlv_7='return'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getOpBodyAccess().getReturnKeyword_3_0());
+				newLeafNode(otherlv_7, grammarAccess.getOpBodyAccess().getReturnKeyword_5_0());
 			}
 			(
 				(
-					lv_returntype_8_0=RULE_WORD
+					lv_type_8_0=RULE_ID
 					{
-						newLeafNode(lv_returntype_8_0, grammarAccess.getOpBodyAccess().getReturntypeWORDTerminalRuleCall_3_1_0());
+						newLeafNode(lv_type_8_0, grammarAccess.getOpBodyAccess().getTypeIDTerminalRuleCall_5_1_0());
 					}
 					{
 						if ($current==null) {
@@ -472,9 +480,9 @@ ruleOpBody returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"returntype",
-							lv_returntype_8_0,
-							"org.graces.mydsl.MyDsl.WORD");
+							"type",
+							lv_type_8_0,
+							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
 			)
@@ -512,9 +520,9 @@ ruleArgBody returns [EObject current=null]
 		(
 			(
 				(
-					lv_argname_2_0=RULE_WORD
+					lv_name_2_0=RULE_ID
 					{
-						newLeafNode(lv_argname_2_0, grammarAccess.getArgBodyAccess().getArgnameWORDTerminalRuleCall_1_0_0());
+						newLeafNode(lv_name_2_0, grammarAccess.getArgBodyAccess().getNameIDTerminalRuleCall_1_0_0());
 					}
 					{
 						if ($current==null) {
@@ -522,9 +530,9 @@ ruleArgBody returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"argname",
-							lv_argname_2_0,
-							"org.graces.mydsl.MyDsl.WORD");
+							"name",
+							lv_name_2_0,
+							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
 			)
@@ -534,9 +542,9 @@ ruleArgBody returns [EObject current=null]
 			}
 			(
 				(
-					lv_argtype_4_0=RULE_WORD
+					lv_type_4_0=RULE_ID
 					{
-						newLeafNode(lv_argtype_4_0, grammarAccess.getArgBodyAccess().getArgtypeWORDTerminalRuleCall_1_2_0());
+						newLeafNode(lv_type_4_0, grammarAccess.getArgBodyAccess().getTypeIDTerminalRuleCall_1_2_0());
 					}
 					{
 						if ($current==null) {
@@ -544,9 +552,9 @@ ruleArgBody returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"argtype",
-							lv_argtype_4_0,
-							"org.graces.mydsl.MyDsl.WORD");
+							"type",
+							lv_type_4_0,
+							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
 			)
@@ -566,15 +574,13 @@ RULE_OPENARG : '(';
 
 RULE_CLOSEARG : ')';
 
-RULE_WORD : (RULE_LOWERCASE|RULE_UPPERACASE|RULE_INT)+;
-
 fragment RULE_LOWERCASE : 'a'..'z';
 
-fragment RULE_UPPERACASE : 'A'..'Z';
+fragment RULE_UPPERCASE : 'A'..'Z';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-fragment RULE_INT : ('0'..'9')+;
+RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 

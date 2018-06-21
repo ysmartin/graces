@@ -11,7 +11,14 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.graces.mydsl.myDsl.*;
+import org.graces.mydsl.myDsl.ArgBody;
+import org.graces.mydsl.myDsl.AttrBody;
+import org.graces.mydsl.myDsl.ClassBody;
+import org.graces.mydsl.myDsl.ClassHeader;
+import org.graces.mydsl.myDsl.Model;
+import org.graces.mydsl.myDsl.MyDslFactory;
+import org.graces.mydsl.myDsl.MyDslPackage;
+import org.graces.mydsl.myDsl.OpBody;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,8 +72,8 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     switch (eClass.getClassifierID())
     {
-      case MyDslPackage.MODEL_DEFINITION: return createModelDefinition();
-      case MyDslPackage.CLASS_DECL: return createClassDecl();
+      case MyDslPackage.MODEL: return createModel();
+      case MyDslPackage.CLASS: return createClass();
       case MyDslPackage.CLASS_HEADER: return createClassHeader();
       case MyDslPackage.CLASS_BODY: return createClassBody();
       case MyDslPackage.ATTR_BODY: return createAttrBody();
@@ -82,10 +89,10 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelDefinition createModelDefinition()
+  public Model createModel()
   {
-    ModelDefinitionImpl modelDefinition = new ModelDefinitionImpl();
-    return modelDefinition;
+    ModelImpl model = new ModelImpl();
+    return model;
   }
 
   /**
@@ -93,10 +100,10 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ClassDecl createClassDecl()
+  public org.graces.mydsl.myDsl.Class createClass()
   {
-    ClassDeclImpl classDecl = new ClassDeclImpl();
-    return classDecl;
+    ClassImpl class_ = new ClassImpl();
+    return class_;
   }
 
   /**

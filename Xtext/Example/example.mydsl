@@ -1,0 +1,13 @@
+model ISSTCase {
+	class Profesor {
+		public nombre:String;
+		public nrp:String;
+		public despacho:String;
+		public email:String;
+		operation Profesor (in nombre:String);
+		operation evalua
+				(in estudiante:Estudiante,
+					in asignatura:Asignatura)
+			return Boolean;
+	}
+}

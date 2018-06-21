@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.graces.mydsl.myDsl.AttrBody#getAttrname <em>Attrname</em>}</li>
- *   <li>{@link org.graces.mydsl.myDsl.AttrBody#getAttrtype <em>Attrtype</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.AttrBody#getName <em>Name</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.AttrBody#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.graces.mydsl.myDsl.MyDslPackage#getAttrBody()
@@ -25,55 +25,55 @@ import org.eclipse.emf.ecore.EObject;
 public interface AttrBody extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Attrname</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Attrname</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Attrname</em>' attribute.
-   * @see #setAttrname(String)
-   * @see org.graces.mydsl.myDsl.MyDslPackage#getAttrBody_Attrname()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.graces.mydsl.myDsl.MyDslPackage#getAttrBody_Name()
    * @model
    * @generated
    */
-  String getAttrname();
+  String getName();
 
   /**
-   * Sets the value of the '{@link org.graces.mydsl.myDsl.AttrBody#getAttrname <em>Attrname</em>}' attribute.
+   * Sets the value of the '{@link org.graces.mydsl.myDsl.AttrBody#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Attrname</em>' attribute.
-   * @see #getAttrname()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setAttrname(String value);
+  void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Attrtype</b></em>' attribute.
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Attrtype</em>' attribute isn't clear,
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Attrtype</em>' attribute.
-   * @see #setAttrtype(String)
-   * @see org.graces.mydsl.myDsl.MyDslPackage#getAttrBody_Attrtype()
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
+   * @see org.graces.mydsl.myDsl.MyDslPackage#getAttrBody_Type()
    * @model
    * @generated
    */
-  String getAttrtype();
+  String getType();
 
   /**
-   * Sets the value of the '{@link org.graces.mydsl.myDsl.AttrBody#getAttrtype <em>Attrtype</em>}' attribute.
+   * Sets the value of the '{@link org.graces.mydsl.myDsl.AttrBody#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Attrtype</em>' attribute.
-   * @see #getAttrtype()
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see #getType()
    * @generated
    */
-  void setAttrtype(String value);
+  void setType(String value);
 
 } // AttrBody

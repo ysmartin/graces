@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<myDsl:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:myDsl="http://www.graces.org/mydsl/MyDsl" name="ISSTCase">
+  <clazzes>
+    <header name="Profesor"/>
+    <body>
+      <attributes name="nombre" type="String"/>
+      <attributes name="nrp" type="String"/>
+      <attributes name="despacho" type="String"/>
+      <attributes name="email" type="String"/>
+      <operations name="Profesor">
+        <args name="nombre" type="String"/>
+      </operations>
+      <operations name="evalua" type="Boolean">
+        <args name="estudiante" type="Estudiante"/>
+        <args name="asignatura" type="Asignatura"/>
+      </operations>
+    </body>
+  </clazzes>
+</myDsl:Model>

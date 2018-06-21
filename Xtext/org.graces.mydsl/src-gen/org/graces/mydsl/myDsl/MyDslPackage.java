@@ -58,51 +58,51 @@ public interface MyDslPackage extends EPackage
   MyDslPackage eINSTANCE = org.graces.mydsl.myDsl.impl.MyDslPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ModelDefinitionImpl <em>Model Definition</em>}' class.
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ModelImpl <em>Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.graces.mydsl.myDsl.impl.ModelDefinitionImpl
-   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getModelDefinition()
+   * @see org.graces.mydsl.myDsl.impl.ModelImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getModel()
    * @generated
    */
-  int MODEL_DEFINITION = 0;
+  int MODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Modelname</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_DEFINITION__MODELNAME = 0;
+  int MODEL__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Model Definition</em>' class.
+   * The feature id for the '<em><b>Clazzes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_DEFINITION_FEATURE_COUNT = 1;
+  int MODEL__CLAZZES = 1;
 
   /**
-   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ClassDeclImpl <em>Class Decl</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.graces.mydsl.myDsl.impl.ClassDeclImpl
-   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getClassDecl()
-   * @generated
-   */
-  int CLASS_DECL = 1;
-
-  /**
-   * The feature id for the '<em><b>Modelname</b></em>' attribute.
+   * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DECL__MODELNAME = MODEL_DEFINITION__MODELNAME;
+  int MODEL_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ClassImpl <em>Class</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.ClassImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getClass_()
+   * @generated
+   */
+  int CLASS = 1;
 
   /**
    * The feature id for the '<em><b>Header</b></em>' containment reference.
@@ -111,7 +111,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DECL__HEADER = MODEL_DEFINITION_FEATURE_COUNT + 0;
+  int CLASS__HEADER = 0;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -120,16 +120,16 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_DECL__BODY = MODEL_DEFINITION_FEATURE_COUNT + 1;
+  int CLASS__BODY = 1;
 
   /**
-   * The number of structural features of the '<em>Class Decl</em>' class.
+   * The number of structural features of the '<em>Class</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_DECL_FEATURE_COUNT = MODEL_DEFINITION_FEATURE_COUNT + 2;
+  int CLASS_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ClassHeaderImpl <em>Class Header</em>}' class.
@@ -142,13 +142,13 @@ public interface MyDslPackage extends EPackage
   int CLASS_HEADER = 2;
 
   /**
-   * The feature id for the '<em><b>Classname</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_HEADER__CLASSNAME = 0;
+  int CLASS_HEADER__NAME = 0;
 
   /**
    * The number of structural features of the '<em>Class Header</em>' class.
@@ -207,22 +207,22 @@ public interface MyDslPackage extends EPackage
   int ATTR_BODY = 4;
 
   /**
-   * The feature id for the '<em><b>Attrname</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTR_BODY__ATTRNAME = 0;
+  int ATTR_BODY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Attrtype</b></em>' attribute.
+   * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTR_BODY__ATTRTYPE = 1;
+  int ATTR_BODY__TYPE = 1;
 
   /**
    * The number of structural features of the '<em>Attr Body</em>' class.
@@ -244,13 +244,13 @@ public interface MyDslPackage extends EPackage
   int OP_BODY = 5;
 
   /**
-   * The feature id for the '<em><b>Opname</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OP_BODY__OPNAME = 0;
+  int OP_BODY__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -262,13 +262,13 @@ public interface MyDslPackage extends EPackage
   int OP_BODY__ARGS = 1;
 
   /**
-   * The feature id for the '<em><b>Returntype</b></em>' attribute.
+   * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OP_BODY__RETURNTYPE = 2;
+  int OP_BODY__TYPE = 2;
 
   /**
    * The number of structural features of the '<em>Op Body</em>' class.
@@ -290,22 +290,22 @@ public interface MyDslPackage extends EPackage
   int ARG_BODY = 6;
 
   /**
-   * The feature id for the '<em><b>Argname</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ARG_BODY__ARGNAME = 0;
+  int ARG_BODY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Argtype</b></em>' attribute.
+   * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ARG_BODY__ARGTYPE = 1;
+  int ARG_BODY__TYPE = 1;
 
   /**
    * The number of structural features of the '<em>Arg Body</em>' class.
@@ -318,57 +318,68 @@ public interface MyDslPackage extends EPackage
 
 
   /**
-   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.ModelDefinition <em>Model Definition</em>}'.
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Model <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model Definition</em>'.
-   * @see org.graces.mydsl.myDsl.ModelDefinition
+   * @return the meta object for class '<em>Model</em>'.
+   * @see org.graces.mydsl.myDsl.Model
    * @generated
    */
-  EClass getModelDefinition();
+  EClass getModel();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ModelDefinition#getModelname <em>Modelname</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.Model#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Modelname</em>'.
-   * @see org.graces.mydsl.myDsl.ModelDefinition#getModelname()
-   * @see #getModelDefinition()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.graces.mydsl.myDsl.Model#getName()
+   * @see #getModel()
    * @generated
    */
-  EAttribute getModelDefinition_Modelname();
+  EAttribute getModel_Name();
 
   /**
-   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.ClassDecl <em>Class Decl</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.graces.mydsl.myDsl.Model#getClazzes <em>Clazzes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Class Decl</em>'.
-   * @see org.graces.mydsl.myDsl.ClassDecl
+   * @return the meta object for the containment reference list '<em>Clazzes</em>'.
+   * @see org.graces.mydsl.myDsl.Model#getClazzes()
+   * @see #getModel()
    * @generated
    */
-  EClass getClassDecl();
+  EReference getModel_Clazzes();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.ClassDecl#getHeader <em>Header</em>}'.
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Class <em>Class</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Class</em>'.
+   * @see org.graces.mydsl.myDsl.Class
+   * @generated
+   */
+  EClass getClass_();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.Class#getHeader <em>Header</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Header</em>'.
-   * @see org.graces.mydsl.myDsl.ClassDecl#getHeader()
-   * @see #getClassDecl()
+   * @see org.graces.mydsl.myDsl.Class#getHeader()
+   * @see #getClass_()
    * @generated
    */
-  EReference getClassDecl_Header();
+  EReference getClass_Header();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.ClassDecl#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.Class#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Body</em>'.
-   * @see org.graces.mydsl.myDsl.ClassDecl#getBody()
-   * @see #getClassDecl()
+   * @see org.graces.mydsl.myDsl.Class#getBody()
+   * @see #getClass_()
    * @generated
    */
-  EReference getClassDecl_Body();
+  EReference getClass_Body();
 
   /**
    * Returns the meta object for class '{@link org.graces.mydsl.myDsl.ClassHeader <em>Class Header</em>}'.
@@ -381,15 +392,15 @@ public interface MyDslPackage extends EPackage
   EClass getClassHeader();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ClassHeader#getClassname <em>Classname</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ClassHeader#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Classname</em>'.
-   * @see org.graces.mydsl.myDsl.ClassHeader#getClassname()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.graces.mydsl.myDsl.ClassHeader#getName()
    * @see #getClassHeader()
    * @generated
    */
-  EAttribute getClassHeader_Classname();
+  EAttribute getClassHeader_Name();
 
   /**
    * Returns the meta object for class '{@link org.graces.mydsl.myDsl.ClassBody <em>Class Body</em>}'.
@@ -434,26 +445,26 @@ public interface MyDslPackage extends EPackage
   EClass getAttrBody();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AttrBody#getAttrname <em>Attrname</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AttrBody#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Attrname</em>'.
-   * @see org.graces.mydsl.myDsl.AttrBody#getAttrname()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.graces.mydsl.myDsl.AttrBody#getName()
    * @see #getAttrBody()
    * @generated
    */
-  EAttribute getAttrBody_Attrname();
+  EAttribute getAttrBody_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AttrBody#getAttrtype <em>Attrtype</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AttrBody#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Attrtype</em>'.
-   * @see org.graces.mydsl.myDsl.AttrBody#getAttrtype()
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.graces.mydsl.myDsl.AttrBody#getType()
    * @see #getAttrBody()
    * @generated
    */
-  EAttribute getAttrBody_Attrtype();
+  EAttribute getAttrBody_Type();
 
   /**
    * Returns the meta object for class '{@link org.graces.mydsl.myDsl.OpBody <em>Op Body</em>}'.
@@ -466,15 +477,15 @@ public interface MyDslPackage extends EPackage
   EClass getOpBody();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.OpBody#getOpname <em>Opname</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.OpBody#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Opname</em>'.
-   * @see org.graces.mydsl.myDsl.OpBody#getOpname()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.graces.mydsl.myDsl.OpBody#getName()
    * @see #getOpBody()
    * @generated
    */
-  EAttribute getOpBody_Opname();
+  EAttribute getOpBody_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.graces.mydsl.myDsl.OpBody#getArgs <em>Args</em>}'.
@@ -488,15 +499,15 @@ public interface MyDslPackage extends EPackage
   EReference getOpBody_Args();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.OpBody#getReturntype <em>Returntype</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.OpBody#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Returntype</em>'.
-   * @see org.graces.mydsl.myDsl.OpBody#getReturntype()
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.graces.mydsl.myDsl.OpBody#getType()
    * @see #getOpBody()
    * @generated
    */
-  EAttribute getOpBody_Returntype();
+  EAttribute getOpBody_Type();
 
   /**
    * Returns the meta object for class '{@link org.graces.mydsl.myDsl.ArgBody <em>Arg Body</em>}'.
@@ -509,26 +520,26 @@ public interface MyDslPackage extends EPackage
   EClass getArgBody();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ArgBody#getArgname <em>Argname</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ArgBody#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Argname</em>'.
-   * @see org.graces.mydsl.myDsl.ArgBody#getArgname()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.graces.mydsl.myDsl.ArgBody#getName()
    * @see #getArgBody()
    * @generated
    */
-  EAttribute getArgBody_Argname();
+  EAttribute getArgBody_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ArgBody#getArgtype <em>Argtype</em>}'.
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ArgBody#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Argtype</em>'.
-   * @see org.graces.mydsl.myDsl.ArgBody#getArgtype()
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.graces.mydsl.myDsl.ArgBody#getType()
    * @see #getArgBody()
    * @generated
    */
-  EAttribute getArgBody_Argtype();
+  EAttribute getArgBody_Type();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -554,32 +565,40 @@ public interface MyDslPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ModelDefinitionImpl <em>Model Definition</em>}' class.
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ModelImpl <em>Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.graces.mydsl.myDsl.impl.ModelDefinitionImpl
-     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getModelDefinition()
+     * @see org.graces.mydsl.myDsl.impl.ModelImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getModel()
      * @generated
      */
-    EClass MODEL_DEFINITION = eINSTANCE.getModelDefinition();
+    EClass MODEL = eINSTANCE.getModel();
 
     /**
-     * The meta object literal for the '<em><b>Modelname</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODEL_DEFINITION__MODELNAME = eINSTANCE.getModelDefinition_Modelname();
+    EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
 
     /**
-     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ClassDeclImpl <em>Class Decl</em>}' class.
+     * The meta object literal for the '<em><b>Clazzes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.graces.mydsl.myDsl.impl.ClassDeclImpl
-     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getClassDecl()
      * @generated
      */
-    EClass CLASS_DECL = eINSTANCE.getClassDecl();
+    EReference MODEL__CLAZZES = eINSTANCE.getModel_Clazzes();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ClassImpl <em>Class</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.ClassImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getClass_()
+     * @generated
+     */
+    EClass CLASS = eINSTANCE.getClass_();
 
     /**
      * The meta object literal for the '<em><b>Header</b></em>' containment reference feature.
@@ -587,7 +606,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLASS_DECL__HEADER = eINSTANCE.getClassDecl_Header();
+    EReference CLASS__HEADER = eINSTANCE.getClass_Header();
 
     /**
      * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
@@ -595,7 +614,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLASS_DECL__BODY = eINSTANCE.getClassDecl_Body();
+    EReference CLASS__BODY = eINSTANCE.getClass_Body();
 
     /**
      * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ClassHeaderImpl <em>Class Header</em>}' class.
@@ -608,12 +627,12 @@ public interface MyDslPackage extends EPackage
     EClass CLASS_HEADER = eINSTANCE.getClassHeader();
 
     /**
-     * The meta object literal for the '<em><b>Classname</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CLASS_HEADER__CLASSNAME = eINSTANCE.getClassHeader_Classname();
+    EAttribute CLASS_HEADER__NAME = eINSTANCE.getClassHeader_Name();
 
     /**
      * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ClassBodyImpl <em>Class Body</em>}' class.
@@ -652,20 +671,20 @@ public interface MyDslPackage extends EPackage
     EClass ATTR_BODY = eINSTANCE.getAttrBody();
 
     /**
-     * The meta object literal for the '<em><b>Attrname</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATTR_BODY__ATTRNAME = eINSTANCE.getAttrBody_Attrname();
+    EAttribute ATTR_BODY__NAME = eINSTANCE.getAttrBody_Name();
 
     /**
-     * The meta object literal for the '<em><b>Attrtype</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATTR_BODY__ATTRTYPE = eINSTANCE.getAttrBody_Attrtype();
+    EAttribute ATTR_BODY__TYPE = eINSTANCE.getAttrBody_Type();
 
     /**
      * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.OpBodyImpl <em>Op Body</em>}' class.
@@ -678,12 +697,12 @@ public interface MyDslPackage extends EPackage
     EClass OP_BODY = eINSTANCE.getOpBody();
 
     /**
-     * The meta object literal for the '<em><b>Opname</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OP_BODY__OPNAME = eINSTANCE.getOpBody_Opname();
+    EAttribute OP_BODY__NAME = eINSTANCE.getOpBody_Name();
 
     /**
      * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
@@ -694,12 +713,12 @@ public interface MyDslPackage extends EPackage
     EReference OP_BODY__ARGS = eINSTANCE.getOpBody_Args();
 
     /**
-     * The meta object literal for the '<em><b>Returntype</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OP_BODY__RETURNTYPE = eINSTANCE.getOpBody_Returntype();
+    EAttribute OP_BODY__TYPE = eINSTANCE.getOpBody_Type();
 
     /**
      * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ArgBodyImpl <em>Arg Body</em>}' class.
@@ -712,20 +731,20 @@ public interface MyDslPackage extends EPackage
     EClass ARG_BODY = eINSTANCE.getArgBody();
 
     /**
-     * The meta object literal for the '<em><b>Argname</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ARG_BODY__ARGNAME = eINSTANCE.getArgBody_Argname();
+    EAttribute ARG_BODY__NAME = eINSTANCE.getArgBody_Name();
 
     /**
-     * The meta object literal for the '<em><b>Argtype</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ARG_BODY__ARGTYPE = eINSTANCE.getArgBody_Argtype();
+    EAttribute ARG_BODY__TYPE = eINSTANCE.getArgBody_Type();
 
   }
 

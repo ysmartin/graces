@@ -6,32 +6,33 @@
     copyrightFields="false" runtimeVersion="2.13">
   <genPackages prefix="MyDsl" basePackage="org.graces.mydsl" disposableProviderFactory="true"
       fileExtensions="mydsl" ecorePackage="MyDsl.ecore#/">
-    <genClasses ecoreClass="MyDsl.ecore#//ModelDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ModelDefinition/modelname"/>
+    <genClasses ecoreClass="MyDsl.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Model/clazzes"/>
     </genClasses>
-    <genClasses ecoreClass="MyDsl.ecore#//ClassDecl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//ClassDecl/header"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//ClassDecl/body"/>
+    <genClasses ecoreClass="MyDsl.ecore#//Class">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Class/header"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Class/body"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ClassHeader">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ClassHeader/classname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ClassHeader/name"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ClassBody">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//ClassBody/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//ClassBody/operations"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//AttrBody">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AttrBody/attrname"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AttrBody/attrtype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AttrBody/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AttrBody/type"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//OpBody">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//OpBody/opname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//OpBody/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//OpBody/args"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//OpBody/returntype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//OpBody/type"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ArgBody">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ArgBody/argname"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ArgBody/argtype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ArgBody/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ArgBody/type"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

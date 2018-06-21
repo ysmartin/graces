@@ -22,51 +22,55 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	
-	public class ModelDefinitionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ModelDefinition");
+	public class ModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Model");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cModelKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cModelnameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cModelnameWORDTerminalRuleCall_1_0 = (RuleCall)cModelnameAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final RuleCall cOPENDECLTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final RuleCall cClassDeclParserRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final Assignment cClazzesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cClazzesClassParserRuleCall_3_0 = (RuleCall)cClazzesAssignment_3.eContents().get(0);
 		private final RuleCall cCLOSEDECLTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
 		
 		//// USAR HIDDEN TERMINAL SYMBOLS PARA TRATAR ESPACIOS Y DEMAS MORRALLA
-		//ModelDefinition:
-		//	'model' modelname=WORD OPENDECL ClassDecl CLOSEDECL;
+		//Model:
+		//	'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'model' modelname=WORD OPENDECL ClassDecl CLOSEDECL
+		//'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL
 		public Group getGroup() { return cGroup; }
 		
 		//'model'
 		public Keyword getModelKeyword_0() { return cModelKeyword_0; }
 		
-		//modelname=WORD
-		public Assignment getModelnameAssignment_1() { return cModelnameAssignment_1; }
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//WORD
-		public RuleCall getModelnameWORDTerminalRuleCall_1_0() { return cModelnameWORDTerminalRuleCall_1_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//OPENDECL
 		public RuleCall getOPENDECLTerminalRuleCall_2() { return cOPENDECLTerminalRuleCall_2; }
 		
-		//ClassDecl
-		public RuleCall getClassDeclParserRuleCall_3() { return cClassDeclParserRuleCall_3; }
+		//clazzes+=Class*
+		public Assignment getClazzesAssignment_3() { return cClazzesAssignment_3; }
+		
+		//Class
+		public RuleCall getClazzesClassParserRuleCall_3_0() { return cClazzesClassParserRuleCall_3_0; }
 		
 		//CLOSEDECL
 		public RuleCall getCLOSEDECLTerminalRuleCall_4() { return cCLOSEDECLTerminalRuleCall_4; }
 	}
-	public class ClassDeclElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ClassDecl");
+	public class ClassElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Class");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cHeaderAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cHeaderClassHeaderParserRuleCall_0_0 = (RuleCall)cHeaderAssignment_0.eContents().get(0);
 		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cBodyClassBodyParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
 		
-		//ClassDecl:
+		//Class:
 		//	header=ClassHeader body=ClassBody;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -89,24 +93,24 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ClassHeader");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cClassKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cClassnameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cClassnameWORDTerminalRuleCall_1_0 = (RuleCall)cClassnameAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//ClassHeader:
-		//	'class' classname=WORD;
+		//	'class' name=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'class' classname=WORD
+		//'class' name=ID
 		public Group getGroup() { return cGroup; }
 		
 		//'class'
 		public Keyword getClassKeyword_0() { return cClassKeyword_0; }
 		
-		//classname=WORD
-		public Assignment getClassnameAssignment_1() { return cClassnameAssignment_1; }
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//WORD
-		public RuleCall getClassnameWORDTerminalRuleCall_1_0() { return cClassnameWORDTerminalRuleCall_1_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 	}
 	public class ClassBodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ClassBody");
@@ -171,118 +175,114 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cVISIBILITYTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cAttrnameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cAttrnameWORDTerminalRuleCall_1_0_0 = (RuleCall)cAttrnameAssignment_1_0.eContents().get(0);
+		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0_0 = (RuleCall)cNameAssignment_1_0.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cAttrtypeAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cAttrtypeWORDTerminalRuleCall_1_2_0 = (RuleCall)cAttrtypeAssignment_1_2.eContents().get(0);
+		private final Assignment cTypeAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cTypeIDTerminalRuleCall_1_2_0 = (RuleCall)cTypeAssignment_1_2.eContents().get(0);
 		
 		//AttrBody:
-		//	VISIBILITY (attrname=WORD ':' attrtype=WORD);
+		//	VISIBILITY (name=ID ':' type=ID);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//VISIBILITY (attrname=WORD ':' attrtype=WORD)
+		//VISIBILITY (name=ID ':' type=ID)
 		public Group getGroup() { return cGroup; }
 		
 		//VISIBILITY
 		public RuleCall getVISIBILITYTerminalRuleCall_0() { return cVISIBILITYTerminalRuleCall_0; }
 		
-		//attrname=WORD ':' attrtype=WORD
+		//name=ID ':' type=ID
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//attrname=WORD
-		public Assignment getAttrnameAssignment_1_0() { return cAttrnameAssignment_1_0; }
+		//name=ID
+		public Assignment getNameAssignment_1_0() { return cNameAssignment_1_0; }
 		
-		//WORD
-		public RuleCall getAttrnameWORDTerminalRuleCall_1_0_0() { return cAttrnameWORDTerminalRuleCall_1_0_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0_0() { return cNameIDTerminalRuleCall_1_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
-		//attrtype=WORD
-		public Assignment getAttrtypeAssignment_1_2() { return cAttrtypeAssignment_1_2; }
+		//type=ID
+		public Assignment getTypeAssignment_1_2() { return cTypeAssignment_1_2; }
 		
-		//WORD
-		public RuleCall getAttrtypeWORDTerminalRuleCall_1_2_0() { return cAttrtypeWORDTerminalRuleCall_1_2_0; }
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_1_2_0() { return cTypeIDTerminalRuleCall_1_2_0; }
 	}
 	public class OpBodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.OpBody");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cOperationKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cOpnameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cOpnameWORDTerminalRuleCall_1_0 = (RuleCall)cOpnameAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final RuleCall cOPENARGTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
-		private final Alternatives cAlternatives_2_1 = (Alternatives)cGroup_2.eContents().get(1);
-		private final Assignment cArgsAssignment_2_1_0 = (Assignment)cAlternatives_2_1.eContents().get(0);
-		private final RuleCall cArgsArgBodyParserRuleCall_2_1_0_0 = (RuleCall)cArgsAssignment_2_1_0.eContents().get(0);
-		private final Group cGroup_2_1_1 = (Group)cAlternatives_2_1.eContents().get(1);
-		private final Assignment cArgsAssignment_2_1_1_0 = (Assignment)cGroup_2_1_1.eContents().get(0);
-		private final RuleCall cArgsArgBodyParserRuleCall_2_1_1_0_0 = (RuleCall)cArgsAssignment_2_1_1_0.eContents().get(0);
-		private final Keyword cCommaKeyword_2_1_1_1 = (Keyword)cGroup_2_1_1.eContents().get(1);
-		private final RuleCall cCLOSEARGTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cOPENARGTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cReturnKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cReturntypeAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cReturntypeWORDTerminalRuleCall_3_1_0 = (RuleCall)cReturntypeAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_0 = (Group)cGroup_3.eContents().get(0);
+		private final Assignment cArgsAssignment_3_0_0 = (Assignment)cGroup_3_0.eContents().get(0);
+		private final RuleCall cArgsArgBodyParserRuleCall_3_0_0_0 = (RuleCall)cArgsAssignment_3_0_0.eContents().get(0);
+		private final Keyword cCommaKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final Assignment cArgsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cArgsArgBodyParserRuleCall_3_1_0 = (RuleCall)cArgsAssignment_3_1.eContents().get(0);
+		private final RuleCall cCLOSEARGTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cReturnKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cTypeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cTypeIDTerminalRuleCall_5_1_0 = (RuleCall)cTypeAssignment_5_1.eContents().get(0);
 		
 		//OpBody:
-		//	'operation' opname=WORD (OPENARG (args+=ArgBody | args+=ArgBody ',')+ CLOSEARG)? ('return' returntype=WORD)?;
+		//	'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG ('return' type=ID)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'operation' opname=WORD (OPENARG (args+=ArgBody | args+=ArgBody ',')+ CLOSEARG)? ('return' returntype=WORD)?
+		//'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG ('return' type=ID)?
 		public Group getGroup() { return cGroup; }
 		
 		//'operation'
 		public Keyword getOperationKeyword_0() { return cOperationKeyword_0; }
 		
-		//opname=WORD
-		public Assignment getOpnameAssignment_1() { return cOpnameAssignment_1; }
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//WORD
-		public RuleCall getOpnameWORDTerminalRuleCall_1_0() { return cOpnameWORDTerminalRuleCall_1_0; }
-		
-		//(OPENARG (args+=ArgBody | args+=ArgBody ',')+ CLOSEARG)?
-		public Group getGroup_2() { return cGroup_2; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//OPENARG
-		public RuleCall getOPENARGTerminalRuleCall_2_0() { return cOPENARGTerminalRuleCall_2_0; }
+		public RuleCall getOPENARGTerminalRuleCall_2() { return cOPENARGTerminalRuleCall_2; }
 		
-		//(args+=ArgBody | args+=ArgBody ',')+
-		public Alternatives getAlternatives_2_1() { return cAlternatives_2_1; }
-		
-		//args+=ArgBody
-		public Assignment getArgsAssignment_2_1_0() { return cArgsAssignment_2_1_0; }
-		
-		//ArgBody
-		public RuleCall getArgsArgBodyParserRuleCall_2_1_0_0() { return cArgsArgBodyParserRuleCall_2_1_0_0; }
-		
-		//args+=ArgBody ','
-		public Group getGroup_2_1_1() { return cGroup_2_1_1; }
-		
-		//args+=ArgBody
-		public Assignment getArgsAssignment_2_1_1_0() { return cArgsAssignment_2_1_1_0; }
-		
-		//ArgBody
-		public RuleCall getArgsArgBodyParserRuleCall_2_1_1_0_0() { return cArgsArgBodyParserRuleCall_2_1_1_0_0; }
-		
-		//','
-		public Keyword getCommaKeyword_2_1_1_1() { return cCommaKeyword_2_1_1_1; }
-		
-		//CLOSEARG
-		public RuleCall getCLOSEARGTerminalRuleCall_2_2() { return cCLOSEARGTerminalRuleCall_2_2; }
-		
-		//('return' returntype=WORD)?
+		//((args+=ArgBody ',')* args+=ArgBody)?
 		public Group getGroup_3() { return cGroup_3; }
 		
+		//(args+=ArgBody ',')*
+		public Group getGroup_3_0() { return cGroup_3_0; }
+		
+		//args+=ArgBody
+		public Assignment getArgsAssignment_3_0_0() { return cArgsAssignment_3_0_0; }
+		
+		//ArgBody
+		public RuleCall getArgsArgBodyParserRuleCall_3_0_0_0() { return cArgsArgBodyParserRuleCall_3_0_0_0; }
+		
+		//','
+		public Keyword getCommaKeyword_3_0_1() { return cCommaKeyword_3_0_1; }
+		
+		//args+=ArgBody
+		public Assignment getArgsAssignment_3_1() { return cArgsAssignment_3_1; }
+		
+		//ArgBody
+		public RuleCall getArgsArgBodyParserRuleCall_3_1_0() { return cArgsArgBodyParserRuleCall_3_1_0; }
+		
+		//CLOSEARG
+		public RuleCall getCLOSEARGTerminalRuleCall_4() { return cCLOSEARGTerminalRuleCall_4; }
+		
+		//('return' type=ID)?
+		public Group getGroup_5() { return cGroup_5; }
+		
 		//'return'
-		public Keyword getReturnKeyword_3_0() { return cReturnKeyword_3_0; }
+		public Keyword getReturnKeyword_5_0() { return cReturnKeyword_5_0; }
 		
-		//returntype=WORD
-		public Assignment getReturntypeAssignment_3_1() { return cReturntypeAssignment_3_1; }
+		//type=ID
+		public Assignment getTypeAssignment_5_1() { return cTypeAssignment_5_1; }
 		
-		//WORD
-		public RuleCall getReturntypeWORDTerminalRuleCall_3_1_0() { return cReturntypeWORDTerminalRuleCall_3_1_0; }
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_5_1_0() { return cTypeIDTerminalRuleCall_5_1_0; }
 	}
 	public class ArgBodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ArgBody");
@@ -291,17 +291,17 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cInKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
 		private final Keyword cOutKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cArgnameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cArgnameWORDTerminalRuleCall_1_0_0 = (RuleCall)cArgnameAssignment_1_0.eContents().get(0);
+		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0_0 = (RuleCall)cNameAssignment_1_0.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cArgtypeAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cArgtypeWORDTerminalRuleCall_1_2_0 = (RuleCall)cArgtypeAssignment_1_2.eContents().get(0);
+		private final Assignment cTypeAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cTypeIDTerminalRuleCall_1_2_0 = (RuleCall)cTypeAssignment_1_2.eContents().get(0);
 		
 		//ArgBody:
-		//	('in' | 'out') (argname=WORD ':' argtype=WORD);
+		//	('in' | 'out') (name=ID ':' type=ID);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('in' | 'out') (argname=WORD ':' argtype=WORD)
+		//('in' | 'out') (name=ID ':' type=ID)
 		public Group getGroup() { return cGroup; }
 		
 		//'in' | 'out'
@@ -313,28 +313,28 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'out'
 		public Keyword getOutKeyword_0_1() { return cOutKeyword_0_1; }
 		
-		//argname=WORD ':' argtype=WORD
+		//name=ID ':' type=ID
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//argname=WORD
-		public Assignment getArgnameAssignment_1_0() { return cArgnameAssignment_1_0; }
+		//name=ID
+		public Assignment getNameAssignment_1_0() { return cNameAssignment_1_0; }
 		
-		//WORD
-		public RuleCall getArgnameWORDTerminalRuleCall_1_0_0() { return cArgnameWORDTerminalRuleCall_1_0_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0_0() { return cNameIDTerminalRuleCall_1_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
-		//argtype=WORD
-		public Assignment getArgtypeAssignment_1_2() { return cArgtypeAssignment_1_2; }
+		//type=ID
+		public Assignment getTypeAssignment_1_2() { return cTypeAssignment_1_2; }
 		
-		//WORD
-		public RuleCall getArgtypeWORDTerminalRuleCall_1_2_0() { return cArgtypeWORDTerminalRuleCall_1_2_0; }
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_1_2_0() { return cTypeIDTerminalRuleCall_1_2_0; }
 	}
 	
 	
-	private final ModelDefinitionElements pModelDefinition;
-	private final ClassDeclElements pClassDecl;
+	private final ModelElements pModel;
+	private final ClassElements pClass;
 	private final ClassHeaderElements pClassHeader;
 	private final ClassBodyElements pClassBody;
 	private final AttrBodyElements pAttrBody;
@@ -346,9 +346,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tCLOSELINE;
 	private final TerminalRule tOPENARG;
 	private final TerminalRule tCLOSEARG;
-	private final TerminalRule tWORD;
 	private final TerminalRule tLOWERCASE;
-	private final TerminalRule tUPPERACASE;
+	private final TerminalRule tUPPERCASE;
 	
 	private final Grammar grammar;
 	
@@ -359,8 +358,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pModelDefinition = new ModelDefinitionElements();
-		this.pClassDecl = new ClassDeclElements();
+		this.pModel = new ModelElements();
+		this.pClass = new ClassElements();
 		this.pClassHeader = new ClassHeaderElements();
 		this.pClassBody = new ClassBodyElements();
 		this.pAttrBody = new AttrBodyElements();
@@ -372,9 +371,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.tCLOSELINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.CLOSELINE");
 		this.tOPENARG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.OPENARG");
 		this.tCLOSEARG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.CLOSEARG");
-		this.tWORD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.WORD");
 		this.tLOWERCASE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.LOWERCASE");
-		this.tUPPERACASE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.UPPERACASE");
+		this.tUPPERCASE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.UPPERCASE");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -405,28 +403,28 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//// USAR HIDDEN TERMINAL SYMBOLS PARA TRATAR ESPACIOS Y DEMAS MORRALLA
-	//ModelDefinition:
-	//	'model' modelname=WORD OPENDECL ClassDecl CLOSEDECL;
-	public ModelDefinitionElements getModelDefinitionAccess() {
-		return pModelDefinition;
+	//Model:
+	//	'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL;
+	public ModelElements getModelAccess() {
+		return pModel;
 	}
 	
-	public ParserRule getModelDefinitionRule() {
-		return getModelDefinitionAccess().getRule();
+	public ParserRule getModelRule() {
+		return getModelAccess().getRule();
 	}
 	
-	//ClassDecl:
+	//Class:
 	//	header=ClassHeader body=ClassBody;
-	public ClassDeclElements getClassDeclAccess() {
-		return pClassDecl;
+	public ClassElements getClassAccess() {
+		return pClass;
 	}
 	
-	public ParserRule getClassDeclRule() {
-		return getClassDeclAccess().getRule();
+	public ParserRule getClassRule() {
+		return getClassAccess().getRule();
 	}
 	
 	//ClassHeader:
-	//	'class' classname=WORD;
+	//	'class' name=ID;
 	public ClassHeaderElements getClassHeaderAccess() {
 		return pClassHeader;
 	}
@@ -447,7 +445,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AttrBody:
-	//	VISIBILITY (attrname=WORD ':' attrtype=WORD);
+	//	VISIBILITY (name=ID ':' type=ID);
 	public AttrBodyElements getAttrBodyAccess() {
 		return pAttrBody;
 	}
@@ -457,7 +455,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OpBody:
-	//	'operation' opname=WORD (OPENARG (args+=ArgBody | args+=ArgBody ',')+ CLOSEARG)? ('return' returntype=WORD)?;
+	//	'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG ('return' type=ID)?;
 	public OpBodyElements getOpBodyAccess() {
 		return pOpBody;
 	}
@@ -467,7 +465,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ArgBody:
-	//	('in' | 'out') (argname=WORD ':' argtype=WORD);
+	//	('in' | 'out') (name=ID ':' type=ID);
 	public ArgBodyElements getArgBodyAccess() {
 		return pArgBody;
 	}
@@ -512,22 +510,16 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return tCLOSEARG;
 	}
 	
-	//terminal WORD:
-	//	LOWERCASE | UPPERACASE | INT+;
-	public TerminalRule getWORDRule() {
-		return tWORD;
-	}
-	
 	//terminal fragment LOWERCASE:
 	//	'a'..'z';
 	public TerminalRule getLOWERCASERule() {
 		return tLOWERCASE;
 	}
 	
-	//terminal fragment UPPERACASE:
+	//terminal fragment UPPERCASE:
 	//	'A'..'Z';
-	public TerminalRule getUPPERACASERule() {
-		return tUPPERACASE;
+	public TerminalRule getUPPERCASERule() {
+		return tUPPERCASE;
 	}
 	
 	//terminal ID:

@@ -21,8 +21,8 @@ import org.graces.mydsl.myDsl.MyDslPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.graces.mydsl.myDsl.impl.ArgBodyImpl#getArgname <em>Argname</em>}</li>
- *   <li>{@link org.graces.mydsl.myDsl.impl.ArgBodyImpl#getArgtype <em>Argtype</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.ArgBodyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.ArgBodyImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -30,44 +30,44 @@ import org.graces.mydsl.myDsl.MyDslPackage;
 public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
 {
   /**
-   * The default value of the '{@link #getArgname() <em>Argname</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArgname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String ARGNAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getArgname() <em>Argname</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArgname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String argname = ARGNAME_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getArgtype() <em>Argtype</em>}' attribute.
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArgtype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final String ARGTYPE_EDEFAULT = null;
+  protected static final String TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getArgtype() <em>Argtype</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArgtype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected String argtype = ARGTYPE_EDEFAULT;
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,9 +95,9 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getArgname()
+  public String getName()
   {
-    return argname;
+    return name;
   }
 
   /**
@@ -105,12 +105,12 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setArgname(String newArgname)
+  public void setName(String newName)
   {
-    String oldArgname = argname;
-    argname = newArgname;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ARG_BODY__ARGNAME, oldArgname, argname));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ARG_BODY__NAME, oldName, name));
   }
 
   /**
@@ -118,9 +118,9 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getArgtype()
+  public String getType()
   {
-    return argtype;
+    return type;
   }
 
   /**
@@ -128,12 +128,12 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setArgtype(String newArgtype)
+  public void setType(String newType)
   {
-    String oldArgtype = argtype;
-    argtype = newArgtype;
+    String oldType = type;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ARG_BODY__ARGTYPE, oldArgtype, argtype));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ARG_BODY__TYPE, oldType, type));
   }
 
   /**
@@ -146,10 +146,10 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
   {
     switch (featureID)
     {
-      case MyDslPackage.ARG_BODY__ARGNAME:
-        return getArgname();
-      case MyDslPackage.ARG_BODY__ARGTYPE:
-        return getArgtype();
+      case MyDslPackage.ARG_BODY__NAME:
+        return getName();
+      case MyDslPackage.ARG_BODY__TYPE:
+        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,11 +164,11 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
   {
     switch (featureID)
     {
-      case MyDslPackage.ARG_BODY__ARGNAME:
-        setArgname((String)newValue);
+      case MyDslPackage.ARG_BODY__NAME:
+        setName((String)newValue);
         return;
-      case MyDslPackage.ARG_BODY__ARGTYPE:
-        setArgtype((String)newValue);
+      case MyDslPackage.ARG_BODY__TYPE:
+        setType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -184,11 +184,11 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
   {
     switch (featureID)
     {
-      case MyDslPackage.ARG_BODY__ARGNAME:
-        setArgname(ARGNAME_EDEFAULT);
+      case MyDslPackage.ARG_BODY__NAME:
+        setName(NAME_EDEFAULT);
         return;
-      case MyDslPackage.ARG_BODY__ARGTYPE:
-        setArgtype(ARGTYPE_EDEFAULT);
+      case MyDslPackage.ARG_BODY__TYPE:
+        setType(TYPE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -204,10 +204,10 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
   {
     switch (featureID)
     {
-      case MyDslPackage.ARG_BODY__ARGNAME:
-        return ARGNAME_EDEFAULT == null ? argname != null : !ARGNAME_EDEFAULT.equals(argname);
-      case MyDslPackage.ARG_BODY__ARGTYPE:
-        return ARGTYPE_EDEFAULT == null ? argtype != null : !ARGTYPE_EDEFAULT.equals(argtype);
+      case MyDslPackage.ARG_BODY__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case MyDslPackage.ARG_BODY__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
     }
     return super.eIsSet(featureID);
   }
@@ -223,10 +223,10 @@ public class ArgBodyImpl extends MinimalEObjectImpl.Container implements ArgBody
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (argname: ");
-    result.append(argname);
-    result.append(", argtype: ");
-    result.append(argtype);
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

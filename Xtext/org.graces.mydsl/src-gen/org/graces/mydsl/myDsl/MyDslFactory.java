@@ -24,22 +24,22 @@ public interface MyDslFactory extends EFactory
   MyDslFactory eINSTANCE = org.graces.mydsl.myDsl.impl.MyDslFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model Definition</em>'.
+   * Returns a new object of class '<em>Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model Definition</em>'.
+   * @return a new object of class '<em>Model</em>'.
    * @generated
    */
-  ModelDefinition createModelDefinition();
+  Model createModel();
 
   /**
-   * Returns a new object of class '<em>Class Decl</em>'.
+   * Returns a new object of class '<em>Class</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Class Decl</em>'.
+   * @return a new object of class '<em>Class</em>'.
    * @generated
    */
-  ClassDecl createClassDecl();
+  Class createClass();
 
   /**
    * Returns a new object of class '<em>Class Header</em>'.

@@ -7,16 +7,17 @@ generate myDsl "http://www.graces.org/mydsl/MyDsl"
 
 // USAR HIDDEN TERMINAL SYMBOLS PARA TRATAR ESPACIOS Y DEMAS MORRALLA
 
-ModelDefinition:
-	'model' modelname=WORD OPENDECL ClassDecl CLOSEDECL
+
+Model:
+	'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL
 ;
 
-ClassDecl:
+Class:
 	header=ClassHeader body=ClassBody
 ;
 
 ClassHeader:
-	'class' classname=WORD 
+	'class' name=ID 
 ;
 
 ClassBody: // Posible problemon
@@ -26,15 +27,15 @@ ClassBody: // Posible problemon
 ;
 
 AttrBody:
-	VISIBILITY (attrname=WORD ':' attrtype=WORD)
+	VISIBILITY (name=ID ':' type=ID)
 ;
 
 OpBody:
-	'operation' (opname=WORD) (OPENARG (args+=ArgBody | args+=ArgBody ',')+ CLOSEARG)? ('return' (returntype=WORD))?
+	'operation' name=ID OPENARG ( (args+=ArgBody ',')* (args+=ArgBody) )? CLOSEARG ('return' type=ID)?
 ;
 
 ArgBody:
-	('in'|'out') (argname=WORD ':' argtype=WORD)
+	('in'|'out') (name=ID ':' type=ID)
 ;
 
 
@@ -62,9 +63,7 @@ terminal CLOSEARG:
 	')'
 ;
 
-terminal WORD: // Do not move: Needs to be after lexer rules for keywords, so they can be consumed instead of this rule.
-	(LOWERCASE | UPPERCASE | INT)+
-;
+// We use terminal ID from ECore https://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.xtext.doc%2Fcontents%2F020-grammar-language.html&cp=70_1_1_1_2_0&anchor=syntax_4_3
 
 terminal fragment LOWERCASE:
 	('a' .. 'z')

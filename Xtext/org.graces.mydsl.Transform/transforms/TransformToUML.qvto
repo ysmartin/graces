@@ -1,0 +1,25 @@
+modeltype UML uses 'http://www.eclipse.org/uml2/5.0.0/UML';
+modeltype DSL uses 'http://www.graces.org/mydsl/MyDsl'; // My OWN model
+
+transformation TransformToUML(in uml: UML, out dsl:DSL);
+
+main() {
+	uml.rootObjects()[DSL::Model]->map model2Model();
+}
+
+
+mapping DSL::Model::model2Model() : UML::Model {
+	name := self.name;
+	log(self.name);
+	var clazzes := self.clazzes; // Coge las relaciones en el modelo?
+	clazzes -> map clazzes2class();
+	
+}
+
+mapping DSL::Class::clazzes2class() : UML::Class{
+	name := self.header.name;
+	
+	self.body.attributes -> forEach(attr){
+		attribute
+	}
+}

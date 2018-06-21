@@ -8,7 +8,13 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.graces.mydsl.myDsl.*;
+import org.graces.mydsl.myDsl.ArgBody;
+import org.graces.mydsl.myDsl.AttrBody;
+import org.graces.mydsl.myDsl.ClassBody;
+import org.graces.mydsl.myDsl.ClassHeader;
+import org.graces.mydsl.myDsl.Model;
+import org.graces.mydsl.myDsl.MyDslPackage;
+import org.graces.mydsl.myDsl.OpBody;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,18 +79,17 @@ public class MyDslSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case MyDslPackage.MODEL_DEFINITION:
+      case MyDslPackage.MODEL:
       {
-        ModelDefinition modelDefinition = (ModelDefinition)theEObject;
-        T result = caseModelDefinition(modelDefinition);
+        Model model = (Model)theEObject;
+        T result = caseModel(model);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MyDslPackage.CLASS_DECL:
+      case MyDslPackage.CLASS:
       {
-        ClassDecl classDecl = (ClassDecl)theEObject;
-        T result = caseClassDecl(classDecl);
-        if (result == null) result = caseModelDefinition(classDecl);
+        org.graces.mydsl.myDsl.Class class_ = (org.graces.mydsl.myDsl.Class)theEObject;
+        T result = caseClass(class_);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,33 +133,33 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model Definition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model Definition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModelDefinition(ModelDefinition object)
+  public T caseModel(Model object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Class Decl</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Class</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Class Decl</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Class</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseClassDecl(ClassDecl object)
+  public T caseClass(org.graces.mydsl.myDsl.Class object)
   {
     return null;
   }

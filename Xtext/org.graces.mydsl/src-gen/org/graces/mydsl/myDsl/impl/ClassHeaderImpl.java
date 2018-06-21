@@ -21,7 +21,7 @@ import org.graces.mydsl.myDsl.MyDslPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.graces.mydsl.myDsl.impl.ClassHeaderImpl#getClassname <em>Classname</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.ClassHeaderImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,24 +29,24 @@ import org.graces.mydsl.myDsl.MyDslPackage;
 public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements ClassHeader
 {
   /**
-   * The default value of the '{@link #getClassname() <em>Classname</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getClassname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String CLASSNAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getClassname() <em>Classname</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getClassname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String classname = CLASSNAME_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,9 +74,9 @@ public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements Cla
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getClassname()
+  public String getName()
   {
-    return classname;
+    return name;
   }
 
   /**
@@ -84,12 +84,12 @@ public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements Cla
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setClassname(String newClassname)
+  public void setName(String newName)
   {
-    String oldClassname = classname;
-    classname = newClassname;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.CLASS_HEADER__CLASSNAME, oldClassname, classname));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.CLASS_HEADER__NAME, oldName, name));
   }
 
   /**
@@ -102,8 +102,8 @@ public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements Cla
   {
     switch (featureID)
     {
-      case MyDslPackage.CLASS_HEADER__CLASSNAME:
-        return getClassname();
+      case MyDslPackage.CLASS_HEADER__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,8 +118,8 @@ public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements Cla
   {
     switch (featureID)
     {
-      case MyDslPackage.CLASS_HEADER__CLASSNAME:
-        setClassname((String)newValue);
+      case MyDslPackage.CLASS_HEADER__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +135,8 @@ public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements Cla
   {
     switch (featureID)
     {
-      case MyDslPackage.CLASS_HEADER__CLASSNAME:
-        setClassname(CLASSNAME_EDEFAULT);
+      case MyDslPackage.CLASS_HEADER__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +152,8 @@ public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements Cla
   {
     switch (featureID)
     {
-      case MyDslPackage.CLASS_HEADER__CLASSNAME:
-        return CLASSNAME_EDEFAULT == null ? classname != null : !CLASSNAME_EDEFAULT.equals(classname);
+      case MyDslPackage.CLASS_HEADER__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -169,8 +169,8 @@ public class ClassHeaderImpl extends MinimalEObjectImpl.Container implements Cla
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (classname: ");
-    result.append(classname);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

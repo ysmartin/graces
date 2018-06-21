@@ -17,9 +17,8 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import org.graces.mydsl.myDsl.ArgBody;
 import org.graces.mydsl.myDsl.AttrBody;
 import org.graces.mydsl.myDsl.ClassBody;
-import org.graces.mydsl.myDsl.ClassDecl;
 import org.graces.mydsl.myDsl.ClassHeader;
-import org.graces.mydsl.myDsl.ModelDefinition;
+import org.graces.mydsl.myDsl.Model;
 import org.graces.mydsl.myDsl.MyDslPackage;
 import org.graces.mydsl.myDsl.OpBody;
 import org.graces.mydsl.services.MyDslGrammarAccess;
@@ -44,17 +43,17 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.ATTR_BODY:
 				sequence_AttrBody(context, (AttrBody) semanticObject); 
 				return; 
+			case MyDslPackage.CLASS:
+				sequence_Class(context, (org.graces.mydsl.myDsl.Class) semanticObject); 
+				return; 
 			case MyDslPackage.CLASS_BODY:
 				sequence_ClassBody(context, (ClassBody) semanticObject); 
-				return; 
-			case MyDslPackage.CLASS_DECL:
-				sequence_ClassDecl(context, (ClassDecl) semanticObject); 
 				return; 
 			case MyDslPackage.CLASS_HEADER:
 				sequence_ClassHeader(context, (ClassHeader) semanticObject); 
 				return; 
-			case MyDslPackage.MODEL_DEFINITION:
-				sequence_ClassDecl_ModelDefinition(context, (ModelDefinition) semanticObject); 
+			case MyDslPackage.MODEL:
+				sequence_Model(context, (Model) semanticObject); 
 				return; 
 			case MyDslPackage.OP_BODY:
 				sequence_OpBody(context, (OpBody) semanticObject); 
@@ -69,18 +68,18 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     ArgBody returns ArgBody
 	 *
 	 * Constraint:
-	 *     (argname=WORD argtype=WORD)
+	 *     (name=ID type=ID)
 	 */
 	protected void sequence_ArgBody(ISerializationContext context, ArgBody semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ARG_BODY__ARGNAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ARG_BODY__ARGNAME));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ARG_BODY__ARGTYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ARG_BODY__ARGTYPE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ARG_BODY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ARG_BODY__NAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ARG_BODY__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ARG_BODY__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getArgBodyAccess().getArgnameWORDTerminalRuleCall_1_0_0(), semanticObject.getArgname());
-		feeder.accept(grammarAccess.getArgBodyAccess().getArgtypeWORDTerminalRuleCall_1_2_0(), semanticObject.getArgtype());
+		feeder.accept(grammarAccess.getArgBodyAccess().getNameIDTerminalRuleCall_1_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getArgBodyAccess().getTypeIDTerminalRuleCall_1_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	
@@ -90,18 +89,18 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     AttrBody returns AttrBody
 	 *
 	 * Constraint:
-	 *     (attrname=WORD attrtype=WORD)
+	 *     (name=ID type=ID)
 	 */
 	protected void sequence_AttrBody(ISerializationContext context, AttrBody semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ATTR_BODY__ATTRNAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ATTR_BODY__ATTRNAME));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ATTR_BODY__ATTRTYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ATTR_BODY__ATTRTYPE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ATTR_BODY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ATTR_BODY__NAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ATTR_BODY__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ATTR_BODY__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAttrBodyAccess().getAttrnameWORDTerminalRuleCall_1_0_0(), semanticObject.getAttrname());
-		feeder.accept(grammarAccess.getAttrBodyAccess().getAttrtypeWORDTerminalRuleCall_1_2_0(), semanticObject.getAttrtype());
+		feeder.accept(grammarAccess.getAttrBodyAccess().getNameIDTerminalRuleCall_1_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAttrBodyAccess().getTypeIDTerminalRuleCall_1_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	
@@ -120,52 +119,52 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     ClassDecl returns ClassDecl
+	 *     ClassHeader returns ClassHeader
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_ClassHeader(ISerializationContext context, ClassHeader semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CLASS_HEADER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CLASS_HEADER__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getClassHeaderAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Class returns Class
 	 *
 	 * Constraint:
 	 *     (header=ClassHeader body=ClassBody)
 	 */
-	protected void sequence_ClassDecl(ISerializationContext context, ClassDecl semanticObject) {
+	protected void sequence_Class(ISerializationContext context, org.graces.mydsl.myDsl.Class semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CLASS_DECL__HEADER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CLASS_DECL__HEADER));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CLASS_DECL__BODY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CLASS_DECL__BODY));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CLASS__HEADER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CLASS__HEADER));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CLASS__BODY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CLASS__BODY));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getClassDeclAccess().getHeaderClassHeaderParserRuleCall_0_0(), semanticObject.getHeader());
-		feeder.accept(grammarAccess.getClassDeclAccess().getBodyClassBodyParserRuleCall_1_0(), semanticObject.getBody());
+		feeder.accept(grammarAccess.getClassAccess().getHeaderClassHeaderParserRuleCall_0_0(), semanticObject.getHeader());
+		feeder.accept(grammarAccess.getClassAccess().getBodyClassBodyParserRuleCall_1_0(), semanticObject.getBody());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     ModelDefinition returns ModelDefinition
+	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (modelname=WORD header=ClassHeader body=ClassBody)
+	 *     (name=ID clazzes+=Class*)
 	 */
-	protected void sequence_ClassDecl_ModelDefinition(ISerializationContext context, ModelDefinition semanticObject) {
+	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ClassHeader returns ClassHeader
-	 *
-	 * Constraint:
-	 *     classname=WORD
-	 */
-	protected void sequence_ClassHeader(ISerializationContext context, ClassHeader semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.CLASS_HEADER__CLASSNAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.CLASS_HEADER__CLASSNAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getClassHeaderAccess().getClassnameWORDTerminalRuleCall_1_0(), semanticObject.getClassname());
-		feeder.finish();
 	}
 	
 	
@@ -174,7 +173,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     OpBody returns OpBody
 	 *
 	 * Constraint:
-	 *     (opname=WORD (args+=ArgBody | args+=ArgBody)* returntype=WORD?)
+	 *     (name=ID (args+=ArgBody* args+=ArgBody)? type=ID?)
 	 */
 	protected void sequence_OpBody(ISerializationContext context, OpBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

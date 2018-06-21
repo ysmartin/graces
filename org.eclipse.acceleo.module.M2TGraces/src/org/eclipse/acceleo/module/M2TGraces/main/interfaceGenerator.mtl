@@ -69,7 +69,7 @@ La clase es:
 
 [template public operationDescription(aInterface : Interface)]
 [if (aInterface.ownedOperation -> size() > 0) ]
-	<h3 class="operations" id="[aInterface.name/].operations">[loc('operationsInterfaceHeader', Sequence{aInterface.name, loc('interface', Sequence{})})/]</h3>
+	<h3 class="operations" id="[aInterface.name/].operations">[loc('operationsHeader', Sequence{aInterface.name, loc('interface', Sequence{})})/]</h3>
 	<ul>
 	[for (op: Operation | aInterface.ownedOperation) ]
 	<li class="operation" id="[op.name/]">

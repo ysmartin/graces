@@ -129,7 +129,7 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'in' | 'out'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) argname=WORD
+	 *     (rule start) (ambiguity) name=ID
 	 */
 	protected void emit_ArgBody_InKeyword_0_0_or_OutKeyword_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

@@ -13,9 +13,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.graces.mydsl.myDsl.ArgBody;
 import org.graces.mydsl.myDsl.AttrBody;
 import org.graces.mydsl.myDsl.ClassBody;
-import org.graces.mydsl.myDsl.ClassDecl;
 import org.graces.mydsl.myDsl.ClassHeader;
-import org.graces.mydsl.myDsl.ModelDefinition;
+import org.graces.mydsl.myDsl.Model;
 import org.graces.mydsl.myDsl.MyDslFactory;
 import org.graces.mydsl.myDsl.MyDslPackage;
 import org.graces.mydsl.myDsl.OpBody;
@@ -33,14 +32,14 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelDefinitionEClass = null;
+  private EClass modelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass classDeclEClass = null;
+  private EClass classEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -145,9 +144,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModelDefinition()
+  public EClass getModel()
   {
-    return modelDefinitionEClass;
+    return modelEClass;
   }
 
   /**
@@ -155,9 +154,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getModelDefinition_Modelname()
+  public EAttribute getModel_Name()
   {
-    return (EAttribute)modelDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)modelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -165,9 +164,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getClassDecl()
+  public EReference getModel_Clazzes()
   {
-    return classDeclEClass;
+    return (EReference)modelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -175,9 +174,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassDecl_Header()
+  public EClass getClass_()
   {
-    return (EReference)classDeclEClass.getEStructuralFeatures().get(0);
+    return classEClass;
   }
 
   /**
@@ -185,9 +184,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassDecl_Body()
+  public EReference getClass_Header()
   {
-    return (EReference)classDeclEClass.getEStructuralFeatures().get(1);
+    return (EReference)classEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getClass_Body()
+  {
+    return (EReference)classEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -205,7 +214,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassHeader_Classname()
+  public EAttribute getClassHeader_Name()
   {
     return (EAttribute)classHeaderEClass.getEStructuralFeatures().get(0);
   }
@@ -255,7 +264,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttrBody_Attrname()
+  public EAttribute getAttrBody_Name()
   {
     return (EAttribute)attrBodyEClass.getEStructuralFeatures().get(0);
   }
@@ -265,7 +274,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttrBody_Attrtype()
+  public EAttribute getAttrBody_Type()
   {
     return (EAttribute)attrBodyEClass.getEStructuralFeatures().get(1);
   }
@@ -285,7 +294,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOpBody_Opname()
+  public EAttribute getOpBody_Name()
   {
     return (EAttribute)opBodyEClass.getEStructuralFeatures().get(0);
   }
@@ -305,7 +314,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOpBody_Returntype()
+  public EAttribute getOpBody_Type()
   {
     return (EAttribute)opBodyEClass.getEStructuralFeatures().get(2);
   }
@@ -325,7 +334,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getArgBody_Argname()
+  public EAttribute getArgBody_Name()
   {
     return (EAttribute)argBodyEClass.getEStructuralFeatures().get(0);
   }
@@ -335,7 +344,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getArgBody_Argtype()
+  public EAttribute getArgBody_Type()
   {
     return (EAttribute)argBodyEClass.getEStructuralFeatures().get(1);
   }
@@ -370,32 +379,33 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     isCreated = true;
 
     // Create classes and their features
-    modelDefinitionEClass = createEClass(MODEL_DEFINITION);
-    createEAttribute(modelDefinitionEClass, MODEL_DEFINITION__MODELNAME);
+    modelEClass = createEClass(MODEL);
+    createEAttribute(modelEClass, MODEL__NAME);
+    createEReference(modelEClass, MODEL__CLAZZES);
 
-    classDeclEClass = createEClass(CLASS_DECL);
-    createEReference(classDeclEClass, CLASS_DECL__HEADER);
-    createEReference(classDeclEClass, CLASS_DECL__BODY);
+    classEClass = createEClass(CLASS);
+    createEReference(classEClass, CLASS__HEADER);
+    createEReference(classEClass, CLASS__BODY);
 
     classHeaderEClass = createEClass(CLASS_HEADER);
-    createEAttribute(classHeaderEClass, CLASS_HEADER__CLASSNAME);
+    createEAttribute(classHeaderEClass, CLASS_HEADER__NAME);
 
     classBodyEClass = createEClass(CLASS_BODY);
     createEReference(classBodyEClass, CLASS_BODY__ATTRIBUTES);
     createEReference(classBodyEClass, CLASS_BODY__OPERATIONS);
 
     attrBodyEClass = createEClass(ATTR_BODY);
-    createEAttribute(attrBodyEClass, ATTR_BODY__ATTRNAME);
-    createEAttribute(attrBodyEClass, ATTR_BODY__ATTRTYPE);
+    createEAttribute(attrBodyEClass, ATTR_BODY__NAME);
+    createEAttribute(attrBodyEClass, ATTR_BODY__TYPE);
 
     opBodyEClass = createEClass(OP_BODY);
-    createEAttribute(opBodyEClass, OP_BODY__OPNAME);
+    createEAttribute(opBodyEClass, OP_BODY__NAME);
     createEReference(opBodyEClass, OP_BODY__ARGS);
-    createEAttribute(opBodyEClass, OP_BODY__RETURNTYPE);
+    createEAttribute(opBodyEClass, OP_BODY__TYPE);
 
     argBodyEClass = createEClass(ARG_BODY);
-    createEAttribute(argBodyEClass, ARG_BODY__ARGNAME);
-    createEAttribute(argBodyEClass, ARG_BODY__ARGTYPE);
+    createEAttribute(argBodyEClass, ARG_BODY__NAME);
+    createEAttribute(argBodyEClass, ARG_BODY__TYPE);
   }
 
   /**
@@ -427,35 +437,35 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    classDeclEClass.getESuperTypes().add(this.getModelDefinition());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelDefinitionEClass, ModelDefinition.class, "ModelDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getModelDefinition_Modelname(), ecorePackage.getEString(), "modelname", null, 0, 1, ModelDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Clazzes(), this.getClass_(), null, "clazzes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(classDeclEClass, ClassDecl.class, "ClassDecl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getClassDecl_Header(), this.getClassHeader(), null, "header", null, 0, 1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getClassDecl_Body(), this.getClassBody(), null, "body", null, 0, 1, ClassDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(classEClass, org.graces.mydsl.myDsl.Class.class, "Class", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getClass_Header(), this.getClassHeader(), null, "header", null, 0, 1, org.graces.mydsl.myDsl.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClass_Body(), this.getClassBody(), null, "body", null, 0, 1, org.graces.mydsl.myDsl.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classHeaderEClass, ClassHeader.class, "ClassHeader", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getClassHeader_Classname(), ecorePackage.getEString(), "classname", null, 0, 1, ClassHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getClassHeader_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classBodyEClass, ClassBody.class, "ClassBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClassBody_Attributes(), this.getAttrBody(), null, "attributes", null, 0, -1, ClassBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassBody_Operations(), this.getOpBody(), null, "operations", null, 0, -1, ClassBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attrBodyEClass, AttrBody.class, "AttrBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAttrBody_Attrname(), ecorePackage.getEString(), "attrname", null, 0, 1, AttrBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAttrBody_Attrtype(), ecorePackage.getEString(), "attrtype", null, 0, 1, AttrBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttrBody_Name(), ecorePackage.getEString(), "name", null, 0, 1, AttrBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttrBody_Type(), ecorePackage.getEString(), "type", null, 0, 1, AttrBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(opBodyEClass, OpBody.class, "OpBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOpBody_Opname(), ecorePackage.getEString(), "opname", null, 0, 1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOpBody_Name(), ecorePackage.getEString(), "name", null, 0, 1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOpBody_Args(), this.getArgBody(), null, "args", null, 0, -1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOpBody_Returntype(), ecorePackage.getEString(), "returntype", null, 0, 1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOpBody_Type(), ecorePackage.getEString(), "type", null, 0, 1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(argBodyEClass, ArgBody.class, "ArgBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getArgBody_Argname(), ecorePackage.getEString(), "argname", null, 0, 1, ArgBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getArgBody_Argtype(), ecorePackage.getEString(), "argtype", null, 0, 1, ArgBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getArgBody_Name(), ecorePackage.getEString(), "name", null, 0, 1, ArgBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getArgBody_Type(), ecorePackage.getEString(), "type", null, 0, 1, ArgBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

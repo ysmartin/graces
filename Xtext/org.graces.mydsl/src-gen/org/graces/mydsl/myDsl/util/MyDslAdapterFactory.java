@@ -10,7 +10,13 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.graces.mydsl.myDsl.*;
+import org.graces.mydsl.myDsl.ArgBody;
+import org.graces.mydsl.myDsl.AttrBody;
+import org.graces.mydsl.myDsl.ClassBody;
+import org.graces.mydsl.myDsl.ClassHeader;
+import org.graces.mydsl.myDsl.Model;
+import org.graces.mydsl.myDsl.MyDslPackage;
+import org.graces.mydsl.myDsl.OpBody;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,14 +82,14 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
     new MyDslSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModelDefinition(ModelDefinition object)
+      public Adapter caseModel(Model object)
       {
-        return createModelDefinitionAdapter();
+        return createModelAdapter();
       }
       @Override
-      public Adapter caseClassDecl(ClassDecl object)
+      public Adapter caseClass(org.graces.mydsl.myDsl.Class object)
       {
-        return createClassDeclAdapter();
+        return createClassAdapter();
       }
       @Override
       public Adapter caseClassHeader(ClassHeader object)
@@ -133,31 +139,31 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.ModelDefinition <em>Model Definition</em>}'.
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.Model <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.graces.mydsl.myDsl.ModelDefinition
+   * @see org.graces.mydsl.myDsl.Model
    * @generated
    */
-  public Adapter createModelDefinitionAdapter()
+  public Adapter createModelAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.ClassDecl <em>Class Decl</em>}'.
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.Class <em>Class</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.graces.mydsl.myDsl.ClassDecl
+   * @see org.graces.mydsl.myDsl.Class
    * @generated
    */
-  public Adapter createClassDeclAdapter()
+  public Adapter createClassAdapter()
   {
     return null;
   }

@@ -21,8 +21,8 @@ import org.graces.mydsl.myDsl.MyDslPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.graces.mydsl.myDsl.impl.AttrBodyImpl#getAttrname <em>Attrname</em>}</li>
- *   <li>{@link org.graces.mydsl.myDsl.impl.AttrBodyImpl#getAttrtype <em>Attrtype</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.AttrBodyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.AttrBodyImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -30,44 +30,44 @@ import org.graces.mydsl.myDsl.MyDslPackage;
 public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBody
 {
   /**
-   * The default value of the '{@link #getAttrname() <em>Attrname</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAttrname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String ATTRNAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAttrname() <em>Attrname</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAttrname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String attrname = ATTRNAME_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getAttrtype() <em>Attrtype</em>}' attribute.
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAttrtype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final String ATTRTYPE_EDEFAULT = null;
+  protected static final String TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAttrtype() <em>Attrtype</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAttrtype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected String attrtype = ATTRTYPE_EDEFAULT;
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,9 +95,9 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAttrname()
+  public String getName()
   {
-    return attrname;
+    return name;
   }
 
   /**
@@ -105,12 +105,12 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAttrname(String newAttrname)
+  public void setName(String newName)
   {
-    String oldAttrname = attrname;
-    attrname = newAttrname;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ATTR_BODY__ATTRNAME, oldAttrname, attrname));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ATTR_BODY__NAME, oldName, name));
   }
 
   /**
@@ -118,9 +118,9 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAttrtype()
+  public String getType()
   {
-    return attrtype;
+    return type;
   }
 
   /**
@@ -128,12 +128,12 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAttrtype(String newAttrtype)
+  public void setType(String newType)
   {
-    String oldAttrtype = attrtype;
-    attrtype = newAttrtype;
+    String oldType = type;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ATTR_BODY__ATTRTYPE, oldAttrtype, attrtype));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ATTR_BODY__TYPE, oldType, type));
   }
 
   /**
@@ -146,10 +146,10 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
-      case MyDslPackage.ATTR_BODY__ATTRNAME:
-        return getAttrname();
-      case MyDslPackage.ATTR_BODY__ATTRTYPE:
-        return getAttrtype();
+      case MyDslPackage.ATTR_BODY__NAME:
+        return getName();
+      case MyDslPackage.ATTR_BODY__TYPE:
+        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,11 +164,11 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
-      case MyDslPackage.ATTR_BODY__ATTRNAME:
-        setAttrname((String)newValue);
+      case MyDslPackage.ATTR_BODY__NAME:
+        setName((String)newValue);
         return;
-      case MyDslPackage.ATTR_BODY__ATTRTYPE:
-        setAttrtype((String)newValue);
+      case MyDslPackage.ATTR_BODY__TYPE:
+        setType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -184,11 +184,11 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
-      case MyDslPackage.ATTR_BODY__ATTRNAME:
-        setAttrname(ATTRNAME_EDEFAULT);
+      case MyDslPackage.ATTR_BODY__NAME:
+        setName(NAME_EDEFAULT);
         return;
-      case MyDslPackage.ATTR_BODY__ATTRTYPE:
-        setAttrtype(ATTRTYPE_EDEFAULT);
+      case MyDslPackage.ATTR_BODY__TYPE:
+        setType(TYPE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -204,10 +204,10 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
-      case MyDslPackage.ATTR_BODY__ATTRNAME:
-        return ATTRNAME_EDEFAULT == null ? attrname != null : !ATTRNAME_EDEFAULT.equals(attrname);
-      case MyDslPackage.ATTR_BODY__ATTRTYPE:
-        return ATTRTYPE_EDEFAULT == null ? attrtype != null : !ATTRTYPE_EDEFAULT.equals(attrtype);
+      case MyDslPackage.ATTR_BODY__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case MyDslPackage.ATTR_BODY__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
     }
     return super.eIsSet(featureID);
   }
@@ -223,10 +223,10 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (attrname: ");
-    result.append(attrname);
-    result.append(", attrtype: ");
-    result.append(attrtype);
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

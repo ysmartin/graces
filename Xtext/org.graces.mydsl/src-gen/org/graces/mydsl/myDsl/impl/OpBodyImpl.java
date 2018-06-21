@@ -31,9 +31,9 @@ import org.graces.mydsl.myDsl.OpBody;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getOpname <em>Opname</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getReturntype <em>Returntype</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,24 +41,24 @@ import org.graces.mydsl.myDsl.OpBody;
 public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
 {
   /**
-   * The default value of the '{@link #getOpname() <em>Opname</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOpname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String OPNAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getOpname() <em>Opname</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOpname()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String opname = OPNAME_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -71,24 +71,24 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
   protected EList<ArgBody> args;
 
   /**
-   * The default value of the '{@link #getReturntype() <em>Returntype</em>}' attribute.
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReturntype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final String RETURNTYPE_EDEFAULT = null;
+  protected static final String TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getReturntype() <em>Returntype</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReturntype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected String returntype = RETURNTYPE_EDEFAULT;
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,9 +116,9 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getOpname()
+  public String getName()
   {
-    return opname;
+    return name;
   }
 
   /**
@@ -126,12 +126,12 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOpname(String newOpname)
+  public void setName(String newName)
   {
-    String oldOpname = opname;
-    opname = newOpname;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.OP_BODY__OPNAME, oldOpname, opname));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.OP_BODY__NAME, oldName, name));
   }
 
   /**
@@ -153,9 +153,9 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReturntype()
+  public String getType()
   {
-    return returntype;
+    return type;
   }
 
   /**
@@ -163,12 +163,12 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReturntype(String newReturntype)
+  public void setType(String newType)
   {
-    String oldReturntype = returntype;
-    returntype = newReturntype;
+    String oldType = type;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.OP_BODY__RETURNTYPE, oldReturntype, returntype));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.OP_BODY__TYPE, oldType, type));
   }
 
   /**
@@ -197,12 +197,12 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
   {
     switch (featureID)
     {
-      case MyDslPackage.OP_BODY__OPNAME:
-        return getOpname();
+      case MyDslPackage.OP_BODY__NAME:
+        return getName();
       case MyDslPackage.OP_BODY__ARGS:
         return getArgs();
-      case MyDslPackage.OP_BODY__RETURNTYPE:
-        return getReturntype();
+      case MyDslPackage.OP_BODY__TYPE:
+        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -218,15 +218,15 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
   {
     switch (featureID)
     {
-      case MyDslPackage.OP_BODY__OPNAME:
-        setOpname((String)newValue);
+      case MyDslPackage.OP_BODY__NAME:
+        setName((String)newValue);
         return;
       case MyDslPackage.OP_BODY__ARGS:
         getArgs().clear();
         getArgs().addAll((Collection<? extends ArgBody>)newValue);
         return;
-      case MyDslPackage.OP_BODY__RETURNTYPE:
-        setReturntype((String)newValue);
+      case MyDslPackage.OP_BODY__TYPE:
+        setType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -242,14 +242,14 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
   {
     switch (featureID)
     {
-      case MyDslPackage.OP_BODY__OPNAME:
-        setOpname(OPNAME_EDEFAULT);
+      case MyDslPackage.OP_BODY__NAME:
+        setName(NAME_EDEFAULT);
         return;
       case MyDslPackage.OP_BODY__ARGS:
         getArgs().clear();
         return;
-      case MyDslPackage.OP_BODY__RETURNTYPE:
-        setReturntype(RETURNTYPE_EDEFAULT);
+      case MyDslPackage.OP_BODY__TYPE:
+        setType(TYPE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -265,12 +265,12 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
   {
     switch (featureID)
     {
-      case MyDslPackage.OP_BODY__OPNAME:
-        return OPNAME_EDEFAULT == null ? opname != null : !OPNAME_EDEFAULT.equals(opname);
+      case MyDslPackage.OP_BODY__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.OP_BODY__ARGS:
         return args != null && !args.isEmpty();
-      case MyDslPackage.OP_BODY__RETURNTYPE:
-        return RETURNTYPE_EDEFAULT == null ? returntype != null : !RETURNTYPE_EDEFAULT.equals(returntype);
+      case MyDslPackage.OP_BODY__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
     }
     return super.eIsSet(featureID);
   }
@@ -286,10 +286,10 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (opname: ");
-    result.append(opname);
-    result.append(", returntype: ");
-    result.append(returntype);
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

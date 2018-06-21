@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.graces.mydsl.myDsl.OpBody#getOpname <em>Opname</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.OpBody#getName <em>Name</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.OpBody#getArgs <em>Args</em>}</li>
- *   <li>{@link org.graces.mydsl.myDsl.OpBody#getReturntype <em>Returntype</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.OpBody#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody()
@@ -28,30 +28,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface OpBody extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Opname</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Opname</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Opname</em>' attribute.
-   * @see #setOpname(String)
-   * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody_Opname()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody_Name()
    * @model
    * @generated
    */
-  String getOpname();
+  String getName();
 
   /**
-   * Sets the value of the '{@link org.graces.mydsl.myDsl.OpBody#getOpname <em>Opname</em>}' attribute.
+   * Sets the value of the '{@link org.graces.mydsl.myDsl.OpBody#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Opname</em>' attribute.
-   * @see #getOpname()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setOpname(String value);
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Args</b></em>' containment reference list.
@@ -70,29 +70,29 @@ public interface OpBody extends EObject
   EList<ArgBody> getArgs();
 
   /**
-   * Returns the value of the '<em><b>Returntype</b></em>' attribute.
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Returntype</em>' attribute isn't clear,
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Returntype</em>' attribute.
-   * @see #setReturntype(String)
-   * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody_Returntype()
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
+   * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody_Type()
    * @model
    * @generated
    */
-  String getReturntype();
+  String getType();
 
   /**
-   * Sets the value of the '{@link org.graces.mydsl.myDsl.OpBody#getReturntype <em>Returntype</em>}' attribute.
+   * Sets the value of the '{@link org.graces.mydsl.myDsl.OpBody#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Returntype</em>' attribute.
-   * @see #getReturntype()
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see #getType()
    * @generated
    */
-  void setReturntype(String value);
+  void setType(String value);
 
 } // OpBody
