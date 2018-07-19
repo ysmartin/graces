@@ -21,6 +21,7 @@ import org.graces.mydsl.myDsl.MyDslPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.AttrBodyImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.impl.AttrBodyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.impl.AttrBodyImpl#getType <em>Type</em>}</li>
  * </ul>
@@ -29,6 +30,26 @@ import org.graces.mydsl.myDsl.MyDslPackage;
  */
 public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBody
 {
+  /**
+   * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
+  protected static final String VISIBILITY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
+  protected String visibility = VISIBILITY_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -95,6 +116,29 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getVisibility()
+  {
+    return visibility;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVisibility(String newVisibility)
+  {
+    String oldVisibility = visibility;
+    visibility = newVisibility;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ATTR_BODY__VISIBILITY, oldVisibility, visibility));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getName()
   {
     return name;
@@ -146,6 +190,8 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
+      case MyDslPackage.ATTR_BODY__VISIBILITY:
+        return getVisibility();
       case MyDslPackage.ATTR_BODY__NAME:
         return getName();
       case MyDslPackage.ATTR_BODY__TYPE:
@@ -164,6 +210,9 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
+      case MyDslPackage.ATTR_BODY__VISIBILITY:
+        setVisibility((String)newValue);
+        return;
       case MyDslPackage.ATTR_BODY__NAME:
         setName((String)newValue);
         return;
@@ -184,6 +233,9 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
+      case MyDslPackage.ATTR_BODY__VISIBILITY:
+        setVisibility(VISIBILITY_EDEFAULT);
+        return;
       case MyDslPackage.ATTR_BODY__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -204,6 +256,8 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
   {
     switch (featureID)
     {
+      case MyDslPackage.ATTR_BODY__VISIBILITY:
+        return VISIBILITY_EDEFAULT == null ? visibility != null : !VISIBILITY_EDEFAULT.equals(visibility);
       case MyDslPackage.ATTR_BODY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.ATTR_BODY__TYPE:
@@ -223,7 +277,9 @@ public class AttrBodyImpl extends MinimalEObjectImpl.Container implements AttrBo
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (visibility: ");
+    result.append(visibility);
+    result.append(", name: ");
     result.append(name);
     result.append(", type: ");
     result.append(type);

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.graces.mydsl.myDsl.AttrBody#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.AttrBody#getName <em>Name</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.AttrBody#getType <em>Type</em>}</li>
  * </ul>
@@ -24,6 +25,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface AttrBody extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Visibility</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Visibility</em>' attribute.
+   * @see #setVisibility(String)
+   * @see org.graces.mydsl.myDsl.MyDslPackage#getAttrBody_Visibility()
+   * @model
+   * @generated
+   */
+  String getVisibility();
+
+  /**
+   * Sets the value of the '{@link org.graces.mydsl.myDsl.AttrBody#getVisibility <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Visibility</em>' attribute.
+   * @see #getVisibility()
+   * @generated
+   */
+  void setVisibility(String value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

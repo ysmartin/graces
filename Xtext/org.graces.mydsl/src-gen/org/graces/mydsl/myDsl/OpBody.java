@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.graces.mydsl.myDsl.OpBody#getName <em>Name</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.OpBody#getArgs <em>Args</em>}</li>
- *   <li>{@link org.graces.mydsl.myDsl.OpBody#getType <em>Type</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.OpBody#getReturn <em>Return</em>}</li>
  * </ul>
  *
  * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody()
@@ -70,29 +70,29 @@ public interface OpBody extends EObject
   EList<ArgBody> getArgs();
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Return</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Return</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
-   * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody_Type()
-   * @model
+   * @return the value of the '<em>Return</em>' containment reference.
+   * @see #setReturn(ReturnBody)
+   * @see org.graces.mydsl.myDsl.MyDslPackage#getOpBody_Return()
+   * @model containment="true"
    * @generated
    */
-  String getType();
+  ReturnBody getReturn();
 
   /**
-   * Sets the value of the '{@link org.graces.mydsl.myDsl.OpBody#getType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link org.graces.mydsl.myDsl.OpBody#getReturn <em>Return</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #getType()
+   * @param value the new value of the '<em>Return</em>' containment reference.
+   * @see #getReturn()
    * @generated
    */
-  void setType(String value);
+  void setReturn(ReturnBody value);
 
 } // OpBody

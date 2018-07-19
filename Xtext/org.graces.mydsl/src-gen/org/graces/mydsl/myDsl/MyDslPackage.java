@@ -86,13 +86,22 @@ public interface MyDslPackage extends EPackage
   int MODEL__CLAZZES = 1;
 
   /**
+   * The feature id for the '<em><b>Relationships</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__RELATIONSHIPS = 2;
+
+  /**
    * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 2;
+  int MODEL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ClassImpl <em>Class</em>}' class.
@@ -207,13 +216,22 @@ public interface MyDslPackage extends EPackage
   int ATTR_BODY = 4;
 
   /**
+   * The feature id for the '<em><b>Visibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTR_BODY__VISIBILITY = 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTR_BODY__NAME = 0;
+  int ATTR_BODY__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -222,7 +240,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTR_BODY__TYPE = 1;
+  int ATTR_BODY__TYPE = 2;
 
   /**
    * The number of structural features of the '<em>Attr Body</em>' class.
@@ -231,7 +249,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTR_BODY_FEATURE_COUNT = 2;
+  int ATTR_BODY_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.OpBodyImpl <em>Op Body</em>}' class.
@@ -262,13 +280,13 @@ public interface MyDslPackage extends EPackage
   int OP_BODY__ARGS = 1;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The feature id for the '<em><b>Return</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OP_BODY__TYPE = 2;
+  int OP_BODY__RETURN = 2;
 
   /**
    * The number of structural features of the '<em>Op Body</em>' class.
@@ -280,6 +298,34 @@ public interface MyDslPackage extends EPackage
   int OP_BODY_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ReturnBodyImpl <em>Return Body</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.ReturnBodyImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getReturnBody()
+   * @generated
+   */
+  int RETURN_BODY = 6;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RETURN_BODY__TYPE = 0;
+
+  /**
+   * The number of structural features of the '<em>Return Body</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RETURN_BODY_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.ArgBodyImpl <em>Arg Body</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -287,7 +333,7 @@ public interface MyDslPackage extends EPackage
    * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getArgBody()
    * @generated
    */
-  int ARG_BODY = 6;
+  int ARG_BODY = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -315,6 +361,475 @@ public interface MyDslPackage extends EPackage
    * @ordered
    */
   int ARG_BODY_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.GenericAssociationImpl <em>Generic Association</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.GenericAssociationImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getGenericAssociation()
+   * @generated
+   */
+  int GENERIC_ASSOCIATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Header</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_ASSOCIATION__HEADER = 0;
+
+  /**
+   * The number of structural features of the '<em>Generic Association</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_ASSOCIATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.RealizationImpl <em>Realization</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.RealizationImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getRealization()
+   * @generated
+   */
+  int REALIZATION = 9;
+
+  /**
+   * The feature id for the '<em><b>Header</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REALIZATION__HEADER = 0;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REALIZATION__BODY = 1;
+
+  /**
+   * The number of structural features of the '<em>Realization</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REALIZATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.RealizationBodyImpl <em>Realization Body</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.RealizationBodyImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getRealizationBody()
+   * @generated
+   */
+  int REALIZATION_BODY = 10;
+
+  /**
+   * The feature id for the '<em><b>Firstend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REALIZATION_BODY__FIRSTEND = 0;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REALIZATION_BODY__DESCRIPTION = 1;
+
+  /**
+   * The feature id for the '<em><b>Secondend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REALIZATION_BODY__SECONDEND = 2;
+
+  /**
+   * The number of structural features of the '<em>Realization Body</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REALIZATION_BODY_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.CompositionImpl <em>Composition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.CompositionImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getComposition()
+   * @generated
+   */
+  int COMPOSITION = 11;
+
+  /**
+   * The feature id for the '<em><b>Header</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION__HEADER = GENERIC_ASSOCIATION__HEADER;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION__BODY = GENERIC_ASSOCIATION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Composition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION_FEATURE_COUNT = GENERIC_ASSOCIATION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.CompositionBodyImpl <em>Composition Body</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.CompositionBodyImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getCompositionBody()
+   * @generated
+   */
+  int COMPOSITION_BODY = 12;
+
+  /**
+   * The feature id for the '<em><b>Firstendmult</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION_BODY__FIRSTENDMULT = 0;
+
+  /**
+   * The feature id for the '<em><b>Firstend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION_BODY__FIRSTEND = 1;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION_BODY__DESCRIPTION = 2;
+
+  /**
+   * The feature id for the '<em><b>Secondendmult</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION_BODY__SECONDENDMULT = 3;
+
+  /**
+   * The feature id for the '<em><b>Secondend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION_BODY__SECONDEND = 4;
+
+  /**
+   * The number of structural features of the '<em>Composition Body</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITION_BODY_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.AggregationImpl <em>Aggregation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.AggregationImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAggregation()
+   * @generated
+   */
+  int AGGREGATION = 13;
+
+  /**
+   * The feature id for the '<em><b>Header</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION__HEADER = GENERIC_ASSOCIATION__HEADER;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION__BODY = GENERIC_ASSOCIATION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Aggregation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION_FEATURE_COUNT = GENERIC_ASSOCIATION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.AggregationBodyImpl <em>Aggregation Body</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.AggregationBodyImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAggregationBody()
+   * @generated
+   */
+  int AGGREGATION_BODY = 14;
+
+  /**
+   * The feature id for the '<em><b>Firstendmult</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION_BODY__FIRSTENDMULT = 0;
+
+  /**
+   * The feature id for the '<em><b>Firstend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION_BODY__FIRSTEND = 1;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION_BODY__DESCRIPTION = 2;
+
+  /**
+   * The feature id for the '<em><b>Secondendmult</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION_BODY__SECONDENDMULT = 3;
+
+  /**
+   * The feature id for the '<em><b>Secondend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION_BODY__SECONDEND = 4;
+
+  /**
+   * The number of structural features of the '<em>Aggregation Body</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATION_BODY_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.AssociationImpl <em>Association</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.AssociationImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAssociation()
+   * @generated
+   */
+  int ASSOCIATION = 15;
+
+  /**
+   * The feature id for the '<em><b>Header</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION__HEADER = GENERIC_ASSOCIATION__HEADER;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION__BODY = GENERIC_ASSOCIATION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Association</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION_FEATURE_COUNT = GENERIC_ASSOCIATION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.AssociationBodyImpl <em>Association Body</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.AssociationBodyImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAssociationBody()
+   * @generated
+   */
+  int ASSOCIATION_BODY = 16;
+
+  /**
+   * The feature id for the '<em><b>Firstendmult</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION_BODY__FIRSTENDMULT = 0;
+
+  /**
+   * The feature id for the '<em><b>Firstend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION_BODY__FIRSTEND = 1;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION_BODY__DESCRIPTION = 2;
+
+  /**
+   * The feature id for the '<em><b>Secondendmult</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION_BODY__SECONDENDMULT = 3;
+
+  /**
+   * The feature id for the '<em><b>Secondend</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION_BODY__SECONDEND = 4;
+
+  /**
+   * The number of structural features of the '<em>Association Body</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION_BODY_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link org.graces.mydsl.myDsl.impl.MultiImpl <em>Multi</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.graces.mydsl.myDsl.impl.MultiImpl
+   * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getMulti()
+   * @generated
+   */
+  int MULTI = 17;
+
+  /**
+   * The feature id for the '<em><b>Multlow</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI__MULTLOW = 0;
+
+  /**
+   * The feature id for the '<em><b>Multup</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI__MULTUP = 1;
+
+  /**
+   * The feature id for the '<em><b>Multupunbound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI__MULTUPUNBOUND = 2;
+
+  /**
+   * The feature id for the '<em><b>Multdownunbound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI__MULTDOWNUNBOUND = 3;
+
+  /**
+   * The number of structural features of the '<em>Multi</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTI_FEATURE_COUNT = 4;
 
 
   /**
@@ -348,6 +863,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EReference getModel_Clazzes();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.graces.mydsl.myDsl.Model#getRelationships <em>Relationships</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Relationships</em>'.
+   * @see org.graces.mydsl.myDsl.Model#getRelationships()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Relationships();
 
   /**
    * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Class <em>Class</em>}'.
@@ -445,6 +971,17 @@ public interface MyDslPackage extends EPackage
   EClass getAttrBody();
 
   /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AttrBody#getVisibility <em>Visibility</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visibility</em>'.
+   * @see org.graces.mydsl.myDsl.AttrBody#getVisibility()
+   * @see #getAttrBody()
+   * @generated
+   */
+  EAttribute getAttrBody_Visibility();
+
+  /**
    * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AttrBody#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -499,15 +1036,36 @@ public interface MyDslPackage extends EPackage
   EReference getOpBody_Args();
 
   /**
-   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.OpBody#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.OpBody#getReturn <em>Return</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.graces.mydsl.myDsl.OpBody#getType()
+   * @return the meta object for the containment reference '<em>Return</em>'.
+   * @see org.graces.mydsl.myDsl.OpBody#getReturn()
    * @see #getOpBody()
    * @generated
    */
-  EAttribute getOpBody_Type();
+  EReference getOpBody_Return();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.ReturnBody <em>Return Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Return Body</em>'.
+   * @see org.graces.mydsl.myDsl.ReturnBody
+   * @generated
+   */
+  EClass getReturnBody();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.ReturnBody#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.graces.mydsl.myDsl.ReturnBody#getType()
+   * @see #getReturnBody()
+   * @generated
+   */
+  EAttribute getReturnBody_Type();
 
   /**
    * Returns the meta object for class '{@link org.graces.mydsl.myDsl.ArgBody <em>Arg Body</em>}'.
@@ -540,6 +1098,414 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EAttribute getArgBody_Type();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.GenericAssociation <em>Generic Association</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Generic Association</em>'.
+   * @see org.graces.mydsl.myDsl.GenericAssociation
+   * @generated
+   */
+  EClass getGenericAssociation();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.GenericAssociation#getHeader <em>Header</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Header</em>'.
+   * @see org.graces.mydsl.myDsl.GenericAssociation#getHeader()
+   * @see #getGenericAssociation()
+   * @generated
+   */
+  EAttribute getGenericAssociation_Header();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Realization <em>Realization</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Realization</em>'.
+   * @see org.graces.mydsl.myDsl.Realization
+   * @generated
+   */
+  EClass getRealization();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.Realization#getHeader <em>Header</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Header</em>'.
+   * @see org.graces.mydsl.myDsl.Realization#getHeader()
+   * @see #getRealization()
+   * @generated
+   */
+  EAttribute getRealization_Header();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.Realization#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see org.graces.mydsl.myDsl.Realization#getBody()
+   * @see #getRealization()
+   * @generated
+   */
+  EReference getRealization_Body();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.RealizationBody <em>Realization Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Realization Body</em>'.
+   * @see org.graces.mydsl.myDsl.RealizationBody
+   * @generated
+   */
+  EClass getRealizationBody();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.RealizationBody#getFirstend <em>Firstend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Firstend</em>'.
+   * @see org.graces.mydsl.myDsl.RealizationBody#getFirstend()
+   * @see #getRealizationBody()
+   * @generated
+   */
+  EReference getRealizationBody_Firstend();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.RealizationBody#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see org.graces.mydsl.myDsl.RealizationBody#getDescription()
+   * @see #getRealizationBody()
+   * @generated
+   */
+  EAttribute getRealizationBody_Description();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.RealizationBody#getSecondend <em>Secondend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Secondend</em>'.
+   * @see org.graces.mydsl.myDsl.RealizationBody#getSecondend()
+   * @see #getRealizationBody()
+   * @generated
+   */
+  EReference getRealizationBody_Secondend();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Composition <em>Composition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Composition</em>'.
+   * @see org.graces.mydsl.myDsl.Composition
+   * @generated
+   */
+  EClass getComposition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.Composition#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see org.graces.mydsl.myDsl.Composition#getBody()
+   * @see #getComposition()
+   * @generated
+   */
+  EReference getComposition_Body();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.CompositionBody <em>Composition Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Composition Body</em>'.
+   * @see org.graces.mydsl.myDsl.CompositionBody
+   * @generated
+   */
+  EClass getCompositionBody();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.CompositionBody#getFirstendmult <em>Firstendmult</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Firstendmult</em>'.
+   * @see org.graces.mydsl.myDsl.CompositionBody#getFirstendmult()
+   * @see #getCompositionBody()
+   * @generated
+   */
+  EReference getCompositionBody_Firstendmult();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.CompositionBody#getFirstend <em>Firstend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Firstend</em>'.
+   * @see org.graces.mydsl.myDsl.CompositionBody#getFirstend()
+   * @see #getCompositionBody()
+   * @generated
+   */
+  EReference getCompositionBody_Firstend();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.CompositionBody#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see org.graces.mydsl.myDsl.CompositionBody#getDescription()
+   * @see #getCompositionBody()
+   * @generated
+   */
+  EAttribute getCompositionBody_Description();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.CompositionBody#getSecondendmult <em>Secondendmult</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Secondendmult</em>'.
+   * @see org.graces.mydsl.myDsl.CompositionBody#getSecondendmult()
+   * @see #getCompositionBody()
+   * @generated
+   */
+  EReference getCompositionBody_Secondendmult();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.CompositionBody#getSecondend <em>Secondend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Secondend</em>'.
+   * @see org.graces.mydsl.myDsl.CompositionBody#getSecondend()
+   * @see #getCompositionBody()
+   * @generated
+   */
+  EReference getCompositionBody_Secondend();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Aggregation <em>Aggregation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Aggregation</em>'.
+   * @see org.graces.mydsl.myDsl.Aggregation
+   * @generated
+   */
+  EClass getAggregation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.Aggregation#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see org.graces.mydsl.myDsl.Aggregation#getBody()
+   * @see #getAggregation()
+   * @generated
+   */
+  EReference getAggregation_Body();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.AggregationBody <em>Aggregation Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Aggregation Body</em>'.
+   * @see org.graces.mydsl.myDsl.AggregationBody
+   * @generated
+   */
+  EClass getAggregationBody();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.AggregationBody#getFirstendmult <em>Firstendmult</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Firstendmult</em>'.
+   * @see org.graces.mydsl.myDsl.AggregationBody#getFirstendmult()
+   * @see #getAggregationBody()
+   * @generated
+   */
+  EReference getAggregationBody_Firstendmult();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.AggregationBody#getFirstend <em>Firstend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Firstend</em>'.
+   * @see org.graces.mydsl.myDsl.AggregationBody#getFirstend()
+   * @see #getAggregationBody()
+   * @generated
+   */
+  EReference getAggregationBody_Firstend();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AggregationBody#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see org.graces.mydsl.myDsl.AggregationBody#getDescription()
+   * @see #getAggregationBody()
+   * @generated
+   */
+  EAttribute getAggregationBody_Description();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.AggregationBody#getSecondendmult <em>Secondendmult</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Secondendmult</em>'.
+   * @see org.graces.mydsl.myDsl.AggregationBody#getSecondendmult()
+   * @see #getAggregationBody()
+   * @generated
+   */
+  EReference getAggregationBody_Secondendmult();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.AggregationBody#getSecondend <em>Secondend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Secondend</em>'.
+   * @see org.graces.mydsl.myDsl.AggregationBody#getSecondend()
+   * @see #getAggregationBody()
+   * @generated
+   */
+  EReference getAggregationBody_Secondend();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Association <em>Association</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Association</em>'.
+   * @see org.graces.mydsl.myDsl.Association
+   * @generated
+   */
+  EClass getAssociation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.Association#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see org.graces.mydsl.myDsl.Association#getBody()
+   * @see #getAssociation()
+   * @generated
+   */
+  EReference getAssociation_Body();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.AssociationBody <em>Association Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Association Body</em>'.
+   * @see org.graces.mydsl.myDsl.AssociationBody
+   * @generated
+   */
+  EClass getAssociationBody();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.AssociationBody#getFirstendmult <em>Firstendmult</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Firstendmult</em>'.
+   * @see org.graces.mydsl.myDsl.AssociationBody#getFirstendmult()
+   * @see #getAssociationBody()
+   * @generated
+   */
+  EReference getAssociationBody_Firstendmult();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.AssociationBody#getFirstend <em>Firstend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Firstend</em>'.
+   * @see org.graces.mydsl.myDsl.AssociationBody#getFirstend()
+   * @see #getAssociationBody()
+   * @generated
+   */
+  EReference getAssociationBody_Firstend();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.AssociationBody#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see org.graces.mydsl.myDsl.AssociationBody#getDescription()
+   * @see #getAssociationBody()
+   * @generated
+   */
+  EAttribute getAssociationBody_Description();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.graces.mydsl.myDsl.AssociationBody#getSecondendmult <em>Secondendmult</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Secondendmult</em>'.
+   * @see org.graces.mydsl.myDsl.AssociationBody#getSecondendmult()
+   * @see #getAssociationBody()
+   * @generated
+   */
+  EReference getAssociationBody_Secondendmult();
+
+  /**
+   * Returns the meta object for the reference '{@link org.graces.mydsl.myDsl.AssociationBody#getSecondend <em>Secondend</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Secondend</em>'.
+   * @see org.graces.mydsl.myDsl.AssociationBody#getSecondend()
+   * @see #getAssociationBody()
+   * @generated
+   */
+  EReference getAssociationBody_Secondend();
+
+  /**
+   * Returns the meta object for class '{@link org.graces.mydsl.myDsl.Multi <em>Multi</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multi</em>'.
+   * @see org.graces.mydsl.myDsl.Multi
+   * @generated
+   */
+  EClass getMulti();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.Multi#getMultlow <em>Multlow</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Multlow</em>'.
+   * @see org.graces.mydsl.myDsl.Multi#getMultlow()
+   * @see #getMulti()
+   * @generated
+   */
+  EAttribute getMulti_Multlow();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.Multi#getMultup <em>Multup</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Multup</em>'.
+   * @see org.graces.mydsl.myDsl.Multi#getMultup()
+   * @see #getMulti()
+   * @generated
+   */
+  EAttribute getMulti_Multup();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.Multi#getMultupunbound <em>Multupunbound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Multupunbound</em>'.
+   * @see org.graces.mydsl.myDsl.Multi#getMultupunbound()
+   * @see #getMulti()
+   * @generated
+   */
+  EAttribute getMulti_Multupunbound();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.graces.mydsl.myDsl.Multi#getMultdownunbound <em>Multdownunbound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Multdownunbound</em>'.
+   * @see org.graces.mydsl.myDsl.Multi#getMultdownunbound()
+   * @see #getMulti()
+   * @generated
+   */
+  EAttribute getMulti_Multdownunbound();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -589,6 +1555,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EReference MODEL__CLAZZES = eINSTANCE.getModel_Clazzes();
+
+    /**
+     * The meta object literal for the '<em><b>Relationships</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__RELATIONSHIPS = eINSTANCE.getModel_Relationships();
 
     /**
      * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ClassImpl <em>Class</em>}' class.
@@ -671,6 +1645,14 @@ public interface MyDslPackage extends EPackage
     EClass ATTR_BODY = eINSTANCE.getAttrBody();
 
     /**
+     * The meta object literal for the '<em><b>Visibility</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTR_BODY__VISIBILITY = eINSTANCE.getAttrBody_Visibility();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -713,12 +1695,30 @@ public interface MyDslPackage extends EPackage
     EReference OP_BODY__ARGS = eINSTANCE.getOpBody_Args();
 
     /**
+     * The meta object literal for the '<em><b>Return</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OP_BODY__RETURN = eINSTANCE.getOpBody_Return();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ReturnBodyImpl <em>Return Body</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.ReturnBodyImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getReturnBody()
+     * @generated
+     */
+    EClass RETURN_BODY = eINSTANCE.getReturnBody();
+
+    /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OP_BODY__TYPE = eINSTANCE.getOpBody_Type();
+    EAttribute RETURN_BODY__TYPE = eINSTANCE.getReturnBody_Type();
 
     /**
      * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.ArgBodyImpl <em>Arg Body</em>}' class.
@@ -745,6 +1745,330 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EAttribute ARG_BODY__TYPE = eINSTANCE.getArgBody_Type();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.GenericAssociationImpl <em>Generic Association</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.GenericAssociationImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getGenericAssociation()
+     * @generated
+     */
+    EClass GENERIC_ASSOCIATION = eINSTANCE.getGenericAssociation();
+
+    /**
+     * The meta object literal for the '<em><b>Header</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GENERIC_ASSOCIATION__HEADER = eINSTANCE.getGenericAssociation_Header();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.RealizationImpl <em>Realization</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.RealizationImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getRealization()
+     * @generated
+     */
+    EClass REALIZATION = eINSTANCE.getRealization();
+
+    /**
+     * The meta object literal for the '<em><b>Header</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REALIZATION__HEADER = eINSTANCE.getRealization_Header();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REALIZATION__BODY = eINSTANCE.getRealization_Body();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.RealizationBodyImpl <em>Realization Body</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.RealizationBodyImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getRealizationBody()
+     * @generated
+     */
+    EClass REALIZATION_BODY = eINSTANCE.getRealizationBody();
+
+    /**
+     * The meta object literal for the '<em><b>Firstend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REALIZATION_BODY__FIRSTEND = eINSTANCE.getRealizationBody_Firstend();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REALIZATION_BODY__DESCRIPTION = eINSTANCE.getRealizationBody_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Secondend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REALIZATION_BODY__SECONDEND = eINSTANCE.getRealizationBody_Secondend();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.CompositionImpl <em>Composition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.CompositionImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getComposition()
+     * @generated
+     */
+    EClass COMPOSITION = eINSTANCE.getComposition();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITION__BODY = eINSTANCE.getComposition_Body();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.CompositionBodyImpl <em>Composition Body</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.CompositionBodyImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getCompositionBody()
+     * @generated
+     */
+    EClass COMPOSITION_BODY = eINSTANCE.getCompositionBody();
+
+    /**
+     * The meta object literal for the '<em><b>Firstendmult</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITION_BODY__FIRSTENDMULT = eINSTANCE.getCompositionBody_Firstendmult();
+
+    /**
+     * The meta object literal for the '<em><b>Firstend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITION_BODY__FIRSTEND = eINSTANCE.getCompositionBody_Firstend();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPOSITION_BODY__DESCRIPTION = eINSTANCE.getCompositionBody_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Secondendmult</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITION_BODY__SECONDENDMULT = eINSTANCE.getCompositionBody_Secondendmult();
+
+    /**
+     * The meta object literal for the '<em><b>Secondend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITION_BODY__SECONDEND = eINSTANCE.getCompositionBody_Secondend();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.AggregationImpl <em>Aggregation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.AggregationImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAggregation()
+     * @generated
+     */
+    EClass AGGREGATION = eINSTANCE.getAggregation();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AGGREGATION__BODY = eINSTANCE.getAggregation_Body();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.AggregationBodyImpl <em>Aggregation Body</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.AggregationBodyImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAggregationBody()
+     * @generated
+     */
+    EClass AGGREGATION_BODY = eINSTANCE.getAggregationBody();
+
+    /**
+     * The meta object literal for the '<em><b>Firstendmult</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AGGREGATION_BODY__FIRSTENDMULT = eINSTANCE.getAggregationBody_Firstendmult();
+
+    /**
+     * The meta object literal for the '<em><b>Firstend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AGGREGATION_BODY__FIRSTEND = eINSTANCE.getAggregationBody_Firstend();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute AGGREGATION_BODY__DESCRIPTION = eINSTANCE.getAggregationBody_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Secondendmult</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AGGREGATION_BODY__SECONDENDMULT = eINSTANCE.getAggregationBody_Secondendmult();
+
+    /**
+     * The meta object literal for the '<em><b>Secondend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AGGREGATION_BODY__SECONDEND = eINSTANCE.getAggregationBody_Secondend();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.AssociationImpl <em>Association</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.AssociationImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAssociation()
+     * @generated
+     */
+    EClass ASSOCIATION = eINSTANCE.getAssociation();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSOCIATION__BODY = eINSTANCE.getAssociation_Body();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.AssociationBodyImpl <em>Association Body</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.AssociationBodyImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getAssociationBody()
+     * @generated
+     */
+    EClass ASSOCIATION_BODY = eINSTANCE.getAssociationBody();
+
+    /**
+     * The meta object literal for the '<em><b>Firstendmult</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSOCIATION_BODY__FIRSTENDMULT = eINSTANCE.getAssociationBody_Firstendmult();
+
+    /**
+     * The meta object literal for the '<em><b>Firstend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSOCIATION_BODY__FIRSTEND = eINSTANCE.getAssociationBody_Firstend();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ASSOCIATION_BODY__DESCRIPTION = eINSTANCE.getAssociationBody_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Secondendmult</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSOCIATION_BODY__SECONDENDMULT = eINSTANCE.getAssociationBody_Secondendmult();
+
+    /**
+     * The meta object literal for the '<em><b>Secondend</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSOCIATION_BODY__SECONDEND = eINSTANCE.getAssociationBody_Secondend();
+
+    /**
+     * The meta object literal for the '{@link org.graces.mydsl.myDsl.impl.MultiImpl <em>Multi</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.graces.mydsl.myDsl.impl.MultiImpl
+     * @see org.graces.mydsl.myDsl.impl.MyDslPackageImpl#getMulti()
+     * @generated
+     */
+    EClass MULTI = eINSTANCE.getMulti();
+
+    /**
+     * The meta object literal for the '<em><b>Multlow</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTI__MULTLOW = eINSTANCE.getMulti_Multlow();
+
+    /**
+     * The meta object literal for the '<em><b>Multup</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTI__MULTUP = eINSTANCE.getMulti_Multup();
+
+    /**
+     * The meta object literal for the '<em><b>Multupunbound</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTI__MULTUPUNBOUND = eINSTANCE.getMulti_Multupunbound();
+
+    /**
+     * The meta object literal for the '<em><b>Multdownunbound</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTI__MULTDOWNUNBOUND = eINSTANCE.getMulti_Multdownunbound();
 
   }
 

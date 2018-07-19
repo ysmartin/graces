@@ -10,14 +10,25 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.graces.mydsl.myDsl.Aggregation;
+import org.graces.mydsl.myDsl.AggregationBody;
 import org.graces.mydsl.myDsl.ArgBody;
+import org.graces.mydsl.myDsl.Association;
+import org.graces.mydsl.myDsl.AssociationBody;
 import org.graces.mydsl.myDsl.AttrBody;
 import org.graces.mydsl.myDsl.ClassBody;
 import org.graces.mydsl.myDsl.ClassHeader;
+import org.graces.mydsl.myDsl.Composition;
+import org.graces.mydsl.myDsl.CompositionBody;
+import org.graces.mydsl.myDsl.GenericAssociation;
 import org.graces.mydsl.myDsl.Model;
+import org.graces.mydsl.myDsl.Multi;
 import org.graces.mydsl.myDsl.MyDslFactory;
 import org.graces.mydsl.myDsl.MyDslPackage;
 import org.graces.mydsl.myDsl.OpBody;
+import org.graces.mydsl.myDsl.Realization;
+import org.graces.mydsl.myDsl.RealizationBody;
+import org.graces.mydsl.myDsl.ReturnBody;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,7 +85,84 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass returnBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass argBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass genericAssociationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass realizationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass realizationBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass compositionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass compositionBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass aggregationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass aggregationBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass associationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass associationBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -174,6 +262,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getModel_Relationships()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getClass_()
   {
     return classEClass;
@@ -264,7 +362,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttrBody_Name()
+  public EAttribute getAttrBody_Visibility()
   {
     return (EAttribute)attrBodyEClass.getEStructuralFeatures().get(0);
   }
@@ -274,9 +372,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttrBody_Type()
+  public EAttribute getAttrBody_Name()
   {
     return (EAttribute)attrBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttrBody_Type()
+  {
+    return (EAttribute)attrBodyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -314,9 +422,29 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOpBody_Type()
+  public EReference getOpBody_Return()
   {
-    return (EAttribute)opBodyEClass.getEStructuralFeatures().get(2);
+    return (EReference)opBodyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getReturnBody()
+  {
+    return returnBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getReturnBody_Type()
+  {
+    return (EAttribute)returnBodyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -354,6 +482,386 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getGenericAssociation()
+  {
+    return genericAssociationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGenericAssociation_Header()
+  {
+    return (EAttribute)genericAssociationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRealization()
+  {
+    return realizationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRealization_Header()
+  {
+    return (EAttribute)realizationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRealization_Body()
+  {
+    return (EReference)realizationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRealizationBody()
+  {
+    return realizationBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRealizationBody_Firstend()
+  {
+    return (EReference)realizationBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRealizationBody_Description()
+  {
+    return (EAttribute)realizationBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRealizationBody_Secondend()
+  {
+    return (EReference)realizationBodyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getComposition()
+  {
+    return compositionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComposition_Body()
+  {
+    return (EReference)compositionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCompositionBody()
+  {
+    return compositionBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCompositionBody_Firstendmult()
+  {
+    return (EReference)compositionBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCompositionBody_Firstend()
+  {
+    return (EReference)compositionBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCompositionBody_Description()
+  {
+    return (EAttribute)compositionBodyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCompositionBody_Secondendmult()
+  {
+    return (EReference)compositionBodyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCompositionBody_Secondend()
+  {
+    return (EReference)compositionBodyEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAggregation()
+  {
+    return aggregationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAggregation_Body()
+  {
+    return (EReference)aggregationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAggregationBody()
+  {
+    return aggregationBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAggregationBody_Firstendmult()
+  {
+    return (EReference)aggregationBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAggregationBody_Firstend()
+  {
+    return (EReference)aggregationBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAggregationBody_Description()
+  {
+    return (EAttribute)aggregationBodyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAggregationBody_Secondendmult()
+  {
+    return (EReference)aggregationBodyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAggregationBody_Secondend()
+  {
+    return (EReference)aggregationBodyEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAssociation()
+  {
+    return associationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssociation_Body()
+  {
+    return (EReference)associationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAssociationBody()
+  {
+    return associationBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssociationBody_Firstendmult()
+  {
+    return (EReference)associationBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssociationBody_Firstend()
+  {
+    return (EReference)associationBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAssociationBody_Description()
+  {
+    return (EAttribute)associationBodyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssociationBody_Secondendmult()
+  {
+    return (EReference)associationBodyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssociationBody_Secondend()
+  {
+    return (EReference)associationBodyEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMulti()
+  {
+    return multiEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMulti_Multlow()
+  {
+    return (EAttribute)multiEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMulti_Multup()
+  {
+    return (EAttribute)multiEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMulti_Multupunbound()
+  {
+    return (EAttribute)multiEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMulti_Multdownunbound()
+  {
+    return (EAttribute)multiEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public MyDslFactory getMyDslFactory()
   {
     return (MyDslFactory)getEFactoryInstance();
@@ -382,6 +890,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     modelEClass = createEClass(MODEL);
     createEAttribute(modelEClass, MODEL__NAME);
     createEReference(modelEClass, MODEL__CLAZZES);
+    createEReference(modelEClass, MODEL__RELATIONSHIPS);
 
     classEClass = createEClass(CLASS);
     createEReference(classEClass, CLASS__HEADER);
@@ -395,17 +904,69 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(classBodyEClass, CLASS_BODY__OPERATIONS);
 
     attrBodyEClass = createEClass(ATTR_BODY);
+    createEAttribute(attrBodyEClass, ATTR_BODY__VISIBILITY);
     createEAttribute(attrBodyEClass, ATTR_BODY__NAME);
     createEAttribute(attrBodyEClass, ATTR_BODY__TYPE);
 
     opBodyEClass = createEClass(OP_BODY);
     createEAttribute(opBodyEClass, OP_BODY__NAME);
     createEReference(opBodyEClass, OP_BODY__ARGS);
-    createEAttribute(opBodyEClass, OP_BODY__TYPE);
+    createEReference(opBodyEClass, OP_BODY__RETURN);
+
+    returnBodyEClass = createEClass(RETURN_BODY);
+    createEAttribute(returnBodyEClass, RETURN_BODY__TYPE);
 
     argBodyEClass = createEClass(ARG_BODY);
     createEAttribute(argBodyEClass, ARG_BODY__NAME);
     createEAttribute(argBodyEClass, ARG_BODY__TYPE);
+
+    genericAssociationEClass = createEClass(GENERIC_ASSOCIATION);
+    createEAttribute(genericAssociationEClass, GENERIC_ASSOCIATION__HEADER);
+
+    realizationEClass = createEClass(REALIZATION);
+    createEAttribute(realizationEClass, REALIZATION__HEADER);
+    createEReference(realizationEClass, REALIZATION__BODY);
+
+    realizationBodyEClass = createEClass(REALIZATION_BODY);
+    createEReference(realizationBodyEClass, REALIZATION_BODY__FIRSTEND);
+    createEAttribute(realizationBodyEClass, REALIZATION_BODY__DESCRIPTION);
+    createEReference(realizationBodyEClass, REALIZATION_BODY__SECONDEND);
+
+    compositionEClass = createEClass(COMPOSITION);
+    createEReference(compositionEClass, COMPOSITION__BODY);
+
+    compositionBodyEClass = createEClass(COMPOSITION_BODY);
+    createEReference(compositionBodyEClass, COMPOSITION_BODY__FIRSTENDMULT);
+    createEReference(compositionBodyEClass, COMPOSITION_BODY__FIRSTEND);
+    createEAttribute(compositionBodyEClass, COMPOSITION_BODY__DESCRIPTION);
+    createEReference(compositionBodyEClass, COMPOSITION_BODY__SECONDENDMULT);
+    createEReference(compositionBodyEClass, COMPOSITION_BODY__SECONDEND);
+
+    aggregationEClass = createEClass(AGGREGATION);
+    createEReference(aggregationEClass, AGGREGATION__BODY);
+
+    aggregationBodyEClass = createEClass(AGGREGATION_BODY);
+    createEReference(aggregationBodyEClass, AGGREGATION_BODY__FIRSTENDMULT);
+    createEReference(aggregationBodyEClass, AGGREGATION_BODY__FIRSTEND);
+    createEAttribute(aggregationBodyEClass, AGGREGATION_BODY__DESCRIPTION);
+    createEReference(aggregationBodyEClass, AGGREGATION_BODY__SECONDENDMULT);
+    createEReference(aggregationBodyEClass, AGGREGATION_BODY__SECONDEND);
+
+    associationEClass = createEClass(ASSOCIATION);
+    createEReference(associationEClass, ASSOCIATION__BODY);
+
+    associationBodyEClass = createEClass(ASSOCIATION_BODY);
+    createEReference(associationBodyEClass, ASSOCIATION_BODY__FIRSTENDMULT);
+    createEReference(associationBodyEClass, ASSOCIATION_BODY__FIRSTEND);
+    createEAttribute(associationBodyEClass, ASSOCIATION_BODY__DESCRIPTION);
+    createEReference(associationBodyEClass, ASSOCIATION_BODY__SECONDENDMULT);
+    createEReference(associationBodyEClass, ASSOCIATION_BODY__SECONDEND);
+
+    multiEClass = createEClass(MULTI);
+    createEAttribute(multiEClass, MULTI__MULTLOW);
+    createEAttribute(multiEClass, MULTI__MULTUP);
+    createEAttribute(multiEClass, MULTI__MULTUPUNBOUND);
+    createEAttribute(multiEClass, MULTI__MULTDOWNUNBOUND);
   }
 
   /**
@@ -437,11 +998,15 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    compositionEClass.getESuperTypes().add(this.getGenericAssociation());
+    aggregationEClass.getESuperTypes().add(this.getGenericAssociation());
+    associationEClass.getESuperTypes().add(this.getGenericAssociation());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Clazzes(), this.getClass_(), null, "clazzes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Relationships(), this.getGenericAssociation(), null, "relationships", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classEClass, org.graces.mydsl.myDsl.Class.class, "Class", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClass_Header(), this.getClassHeader(), null, "header", null, 0, 1, org.graces.mydsl.myDsl.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -455,17 +1020,69 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getClassBody_Operations(), this.getOpBody(), null, "operations", null, 0, -1, ClassBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attrBodyEClass, AttrBody.class, "AttrBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAttrBody_Visibility(), ecorePackage.getEString(), "visibility", null, 0, 1, AttrBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttrBody_Name(), ecorePackage.getEString(), "name", null, 0, 1, AttrBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttrBody_Type(), ecorePackage.getEString(), "type", null, 0, 1, AttrBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(opBodyEClass, OpBody.class, "OpBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOpBody_Name(), ecorePackage.getEString(), "name", null, 0, 1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOpBody_Args(), this.getArgBody(), null, "args", null, 0, -1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOpBody_Type(), ecorePackage.getEString(), "type", null, 0, 1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOpBody_Return(), this.getReturnBody(), null, "return", null, 0, 1, OpBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(returnBodyEClass, ReturnBody.class, "ReturnBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getReturnBody_Type(), ecorePackage.getEString(), "type", null, 0, 1, ReturnBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(argBodyEClass, ArgBody.class, "ArgBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getArgBody_Name(), ecorePackage.getEString(), "name", null, 0, 1, ArgBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getArgBody_Type(), ecorePackage.getEString(), "type", null, 0, 1, ArgBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(genericAssociationEClass, GenericAssociation.class, "GenericAssociation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGenericAssociation_Header(), ecorePackage.getEString(), "header", null, 0, 1, GenericAssociation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(realizationEClass, Realization.class, "Realization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRealization_Header(), ecorePackage.getEString(), "header", null, 0, 1, Realization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRealization_Body(), this.getCompositionBody(), null, "body", null, 0, 1, Realization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(realizationBodyEClass, RealizationBody.class, "RealizationBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRealizationBody_Firstend(), this.getClassHeader(), null, "firstend", null, 0, 1, RealizationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRealizationBody_Description(), ecorePackage.getEString(), "description", null, 0, 1, RealizationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRealizationBody_Secondend(), this.getClassHeader(), null, "secondend", null, 0, 1, RealizationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(compositionEClass, Composition.class, "Composition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getComposition_Body(), this.getCompositionBody(), null, "body", null, 0, 1, Composition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(compositionBodyEClass, CompositionBody.class, "CompositionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCompositionBody_Firstendmult(), this.getMulti(), null, "firstendmult", null, 0, 1, CompositionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCompositionBody_Firstend(), this.getClassHeader(), null, "firstend", null, 0, 1, CompositionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCompositionBody_Description(), ecorePackage.getEString(), "description", null, 0, 1, CompositionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCompositionBody_Secondendmult(), this.getMulti(), null, "secondendmult", null, 0, 1, CompositionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCompositionBody_Secondend(), this.getClassHeader(), null, "secondend", null, 0, 1, CompositionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(aggregationEClass, Aggregation.class, "Aggregation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAggregation_Body(), this.getAggregationBody(), null, "body", null, 0, 1, Aggregation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(aggregationBodyEClass, AggregationBody.class, "AggregationBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAggregationBody_Firstendmult(), this.getMulti(), null, "firstendmult", null, 0, 1, AggregationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAggregationBody_Firstend(), this.getClassHeader(), null, "firstend", null, 0, 1, AggregationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAggregationBody_Description(), ecorePackage.getEString(), "description", null, 0, 1, AggregationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAggregationBody_Secondendmult(), this.getMulti(), null, "secondendmult", null, 0, 1, AggregationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAggregationBody_Secondend(), this.getClassHeader(), null, "secondend", null, 0, 1, AggregationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(associationEClass, Association.class, "Association", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssociation_Body(), this.getAssociationBody(), null, "body", null, 0, 1, Association.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(associationBodyEClass, AssociationBody.class, "AssociationBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssociationBody_Firstendmult(), this.getMulti(), null, "firstendmult", null, 0, 1, AssociationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssociationBody_Firstend(), this.getClassHeader(), null, "firstend", null, 0, 1, AssociationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAssociationBody_Description(), ecorePackage.getEString(), "description", null, 0, 1, AssociationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssociationBody_Secondendmult(), this.getMulti(), null, "secondendmult", null, 0, 1, AssociationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssociationBody_Secondend(), this.getClassHeader(), null, "secondend", null, 0, 1, AssociationBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiEClass, Multi.class, "Multi", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMulti_Multlow(), ecorePackage.getEInt(), "multlow", null, 0, 1, Multi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMulti_Multup(), ecorePackage.getEInt(), "multup", null, 0, 1, Multi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMulti_Multupunbound(), ecorePackage.getEString(), "multupunbound", null, 0, 1, Multi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMulti_Multdownunbound(), ecorePackage.getEString(), "multdownunbound", null, 0, 1, Multi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

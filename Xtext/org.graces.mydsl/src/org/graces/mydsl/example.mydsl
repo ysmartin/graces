@@ -10,4 +10,35 @@ model ISSTCase {
 					in asignatura:Asignatura)
 			return Boolean;
 	}
+	
+	class Alumno {
+		public nombre:String;
+		public apellido:String;
+	}
+	
+	class Escuela {
+		public nombre:String;
+	}
+	
+	class Expediente {
+		public nota:Int;
+		public fecha:String;
+	}
+	
+	relationship {
+	any Escuela have 1 to any Profesor;
+	}
+	
+	relationship {
+	1 Alumno es_evaluado_por 1 to any Profesor;
+	}
+	
+	relationship {
+	1 Alumno have 1 Expediente;
+	}
+	
+	relationship {
+	1 Profesor adjunta_nota_en 1 to 2 Expediente;
+	}
+	
 }

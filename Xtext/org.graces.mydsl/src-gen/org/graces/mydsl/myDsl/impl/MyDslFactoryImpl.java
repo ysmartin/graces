@@ -11,14 +11,25 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import org.graces.mydsl.myDsl.Aggregation;
+import org.graces.mydsl.myDsl.AggregationBody;
 import org.graces.mydsl.myDsl.ArgBody;
+import org.graces.mydsl.myDsl.Association;
+import org.graces.mydsl.myDsl.AssociationBody;
 import org.graces.mydsl.myDsl.AttrBody;
 import org.graces.mydsl.myDsl.ClassBody;
 import org.graces.mydsl.myDsl.ClassHeader;
+import org.graces.mydsl.myDsl.Composition;
+import org.graces.mydsl.myDsl.CompositionBody;
+import org.graces.mydsl.myDsl.GenericAssociation;
 import org.graces.mydsl.myDsl.Model;
+import org.graces.mydsl.myDsl.Multi;
 import org.graces.mydsl.myDsl.MyDslFactory;
 import org.graces.mydsl.myDsl.MyDslPackage;
 import org.graces.mydsl.myDsl.OpBody;
+import org.graces.mydsl.myDsl.Realization;
+import org.graces.mydsl.myDsl.RealizationBody;
+import org.graces.mydsl.myDsl.ReturnBody;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,7 +89,18 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.CLASS_BODY: return createClassBody();
       case MyDslPackage.ATTR_BODY: return createAttrBody();
       case MyDslPackage.OP_BODY: return createOpBody();
+      case MyDslPackage.RETURN_BODY: return createReturnBody();
       case MyDslPackage.ARG_BODY: return createArgBody();
+      case MyDslPackage.GENERIC_ASSOCIATION: return createGenericAssociation();
+      case MyDslPackage.REALIZATION: return createRealization();
+      case MyDslPackage.REALIZATION_BODY: return createRealizationBody();
+      case MyDslPackage.COMPOSITION: return createComposition();
+      case MyDslPackage.COMPOSITION_BODY: return createCompositionBody();
+      case MyDslPackage.AGGREGATION: return createAggregation();
+      case MyDslPackage.AGGREGATION_BODY: return createAggregationBody();
+      case MyDslPackage.ASSOCIATION: return createAssociation();
+      case MyDslPackage.ASSOCIATION_BODY: return createAssociationBody();
+      case MyDslPackage.MULTI: return createMulti();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -155,10 +177,131 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ReturnBody createReturnBody()
+  {
+    ReturnBodyImpl returnBody = new ReturnBodyImpl();
+    return returnBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ArgBody createArgBody()
   {
     ArgBodyImpl argBody = new ArgBodyImpl();
     return argBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GenericAssociation createGenericAssociation()
+  {
+    GenericAssociationImpl genericAssociation = new GenericAssociationImpl();
+    return genericAssociation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Realization createRealization()
+  {
+    RealizationImpl realization = new RealizationImpl();
+    return realization;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RealizationBody createRealizationBody()
+  {
+    RealizationBodyImpl realizationBody = new RealizationBodyImpl();
+    return realizationBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Composition createComposition()
+  {
+    CompositionImpl composition = new CompositionImpl();
+    return composition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompositionBody createCompositionBody()
+  {
+    CompositionBodyImpl compositionBody = new CompositionBodyImpl();
+    return compositionBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Aggregation createAggregation()
+  {
+    AggregationImpl aggregation = new AggregationImpl();
+    return aggregation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AggregationBody createAggregationBody()
+  {
+    AggregationBodyImpl aggregationBody = new AggregationBodyImpl();
+    return aggregationBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Association createAssociation()
+  {
+    AssociationImpl association = new AssociationImpl();
+    return association;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AssociationBody createAssociationBody()
+  {
+    AssociationBodyImpl associationBody = new AssociationBodyImpl();
+    return associationBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Multi createMulti()
+  {
+    MultiImpl multi = new MultiImpl();
+    return multi;
   }
 
   /**

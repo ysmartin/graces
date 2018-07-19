@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import java.util.List;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -31,14 +32,15 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOPENDECLTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Assignment cClazzesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cClazzesClassParserRuleCall_3_0 = (RuleCall)cClazzesAssignment_3.eContents().get(0);
-		private final RuleCall cCLOSEDECLTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Assignment cRelationshipsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRelationshipsGenericAssociationParserRuleCall_4_0 = (RuleCall)cRelationshipsAssignment_4.eContents().get(0);
+		private final RuleCall cCLOSEDECLTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
-		//// USAR HIDDEN TERMINAL SYMBOLS PARA TRATAR ESPACIOS Y DEMAS MORRALLA
 		//Model:
-		//	'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL;
+		//	'model' name=ID OPENDECL clazzes+=Class* relationships+=GenericAssociation* CLOSEDECL;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL
+		//'model' name=ID OPENDECL clazzes+=Class* relationships+=GenericAssociation* CLOSEDECL
 		public Group getGroup() { return cGroup; }
 		
 		//'model'
@@ -59,8 +61,14 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Class
 		public RuleCall getClazzesClassParserRuleCall_3_0() { return cClazzesClassParserRuleCall_3_0; }
 		
+		//relationships+=GenericAssociation*
+		public Assignment getRelationshipsAssignment_4() { return cRelationshipsAssignment_4; }
+		
+		//GenericAssociation
+		public RuleCall getRelationshipsGenericAssociationParserRuleCall_4_0() { return cRelationshipsGenericAssociationParserRuleCall_4_0; }
+		
 		//CLOSEDECL
-		public RuleCall getCLOSEDECLTerminalRuleCall_4() { return cCLOSEDECLTerminalRuleCall_4; }
+		public RuleCall getCLOSEDECLTerminalRuleCall_5() { return cCLOSEDECLTerminalRuleCall_5; }
 	}
 	public class ClassElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Class");
@@ -97,7 +105,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//ClassHeader:
-		//	'class' name=ID;
+		//	'class' name=ID // Esto genera numerosos headers y numerosos bodys
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'class' name=ID
@@ -173,7 +182,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class AttrBodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.AttrBody");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cVISIBILITYTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cVisibilityAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cVisibilityVISIBILITYTerminalRuleCall_0_0 = (RuleCall)cVisibilityAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
 		private final RuleCall cNameIDTerminalRuleCall_1_0_0 = (RuleCall)cNameAssignment_1_0.eContents().get(0);
@@ -182,14 +192,17 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeIDTerminalRuleCall_1_2_0 = (RuleCall)cTypeAssignment_1_2.eContents().get(0);
 		
 		//AttrBody:
-		//	VISIBILITY (name=ID ':' type=ID);
+		//	visibility=VISIBILITY (name=ID ':' type=ID);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//VISIBILITY (name=ID ':' type=ID)
+		//visibility=VISIBILITY (name=ID ':' type=ID)
 		public Group getGroup() { return cGroup; }
 		
+		//visibility=VISIBILITY
+		public Assignment getVisibilityAssignment_0() { return cVisibilityAssignment_0; }
+		
 		//VISIBILITY
-		public RuleCall getVISIBILITYTerminalRuleCall_0() { return cVISIBILITYTerminalRuleCall_0; }
+		public RuleCall getVisibilityVISIBILITYTerminalRuleCall_0_0() { return cVisibilityVISIBILITYTerminalRuleCall_0_0; }
 		
 		//name=ID ':' type=ID
 		public Group getGroup_1() { return cGroup_1; }
@@ -224,16 +237,14 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cArgsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cArgsArgBodyParserRuleCall_3_1_0 = (RuleCall)cArgsAssignment_3_1.eContents().get(0);
 		private final RuleCall cCLOSEARGTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cReturnKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cTypeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cTypeIDTerminalRuleCall_5_1_0 = (RuleCall)cTypeAssignment_5_1.eContents().get(0);
+		private final Assignment cReturnAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cReturnReturnBodyParserRuleCall_5_0 = (RuleCall)cReturnAssignment_5.eContents().get(0);
 		
 		//OpBody:
-		//	'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG ('return' type=ID)?;
+		//	'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG return=ReturnBody?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG ('return' type=ID)?
+		//'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG return=ReturnBody?
 		public Group getGroup() { return cGroup; }
 		
 		//'operation'
@@ -272,17 +283,34 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//CLOSEARG
 		public RuleCall getCLOSEARGTerminalRuleCall_4() { return cCLOSEARGTerminalRuleCall_4; }
 		
-		//('return' type=ID)?
-		public Group getGroup_5() { return cGroup_5; }
+		//return=ReturnBody?
+		public Assignment getReturnAssignment_5() { return cReturnAssignment_5; }
+		
+		//ReturnBody
+		public RuleCall getReturnReturnBodyParserRuleCall_5_0() { return cReturnReturnBodyParserRuleCall_5_0; }
+	}
+	public class ReturnBodyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ReturnBody");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cReturnKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeIDTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		
+		//ReturnBody:
+		//	'return' type=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'return' type=ID
+		public Group getGroup() { return cGroup; }
 		
 		//'return'
-		public Keyword getReturnKeyword_5_0() { return cReturnKeyword_5_0; }
+		public Keyword getReturnKeyword_0() { return cReturnKeyword_0; }
 		
 		//type=ID
-		public Assignment getTypeAssignment_5_1() { return cTypeAssignment_5_1; }
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
 		
 		//ID
-		public RuleCall getTypeIDTerminalRuleCall_5_1_0() { return cTypeIDTerminalRuleCall_5_1_0; }
+		public RuleCall getTypeIDTerminalRuleCall_1_0() { return cTypeIDTerminalRuleCall_1_0; }
 	}
 	public class ArgBodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ArgBody");
@@ -331,6 +359,485 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTypeIDTerminalRuleCall_1_2_0() { return cTypeIDTerminalRuleCall_1_2_0; }
 	}
+	public class GenericAssociationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.GenericAssociation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCompositionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAggregationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cAssociationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//GenericAssociation:
+		//	Composition | Aggregation | Association;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Composition | Aggregation | Association
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Composition
+		public RuleCall getCompositionParserRuleCall_0() { return cCompositionParserRuleCall_0; }
+		
+		//Aggregation
+		public RuleCall getAggregationParserRuleCall_1() { return cAggregationParserRuleCall_1; }
+		
+		//Association
+		public RuleCall getAssociationParserRuleCall_2() { return cAssociationParserRuleCall_2; }
+	}
+	public class RealizationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Realization");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cHeaderAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cHeaderRelationshipHeaderParserRuleCall_0_0 = (RuleCall)cHeaderAssignment_0.eContents().get(0);
+		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cBodyCompositionBodyParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
+		
+		//Realization:
+		//	header=RelationshipHeader body=CompositionBody;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//header=RelationshipHeader body=CompositionBody
+		public Group getGroup() { return cGroup; }
+		
+		//header=RelationshipHeader
+		public Assignment getHeaderAssignment_0() { return cHeaderAssignment_0; }
+		
+		//RelationshipHeader
+		public RuleCall getHeaderRelationshipHeaderParserRuleCall_0_0() { return cHeaderRelationshipHeaderParserRuleCall_0_0; }
+		
+		//body=CompositionBody
+		public Assignment getBodyAssignment_1() { return cBodyAssignment_1; }
+		
+		//CompositionBody
+		public RuleCall getBodyCompositionBodyParserRuleCall_1_0() { return cBodyCompositionBodyParserRuleCall_1_0; }
+	}
+	public class RealizationBodyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.RealizationBody");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cOPENDECLTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cFirstendAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cFirstendClassHeaderCrossReference_1_0 = (CrossReference)cFirstendAssignment_1.eContents().get(0);
+		private final RuleCall cFirstendClassHeaderIDTerminalRuleCall_1_0_1 = (RuleCall)cFirstendClassHeaderCrossReference_1_0.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cDescriptionAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final Keyword cDescriptionImplementKeyword_2_0_0 = (Keyword)cDescriptionAssignment_2_0.eContents().get(0);
+		private final Keyword cImplementsKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Assignment cSecondendAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cSecondendClassHeaderCrossReference_3_0 = (CrossReference)cSecondendAssignment_3.eContents().get(0);
+		private final RuleCall cSecondendClassHeaderIDTerminalRuleCall_3_0_1 = (RuleCall)cSecondendClassHeaderCrossReference_3_0.eContents().get(1);
+		private final RuleCall cCLOSEDECLTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		
+		//RealizationBody:
+		//	OPENDECL
+		//	firstend=[ClassHeader] (description='implement' | 'implements') secondend=[ClassHeader] CLOSEDECL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OPENDECL firstend=[ClassHeader] (description='implement' | 'implements') secondend=[ClassHeader] CLOSEDECL
+		public Group getGroup() { return cGroup; }
+		
+		//OPENDECL
+		public RuleCall getOPENDECLTerminalRuleCall_0() { return cOPENDECLTerminalRuleCall_0; }
+		
+		//firstend=[ClassHeader]
+		public Assignment getFirstendAssignment_1() { return cFirstendAssignment_1; }
+		
+		//[ClassHeader]
+		public CrossReference getFirstendClassHeaderCrossReference_1_0() { return cFirstendClassHeaderCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getFirstendClassHeaderIDTerminalRuleCall_1_0_1() { return cFirstendClassHeaderIDTerminalRuleCall_1_0_1; }
+		
+		//description='implement' | 'implements'
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//description='implement'
+		public Assignment getDescriptionAssignment_2_0() { return cDescriptionAssignment_2_0; }
+		
+		//'implement'
+		public Keyword getDescriptionImplementKeyword_2_0_0() { return cDescriptionImplementKeyword_2_0_0; }
+		
+		//'implements'
+		public Keyword getImplementsKeyword_2_1() { return cImplementsKeyword_2_1; }
+		
+		//secondend=[ClassHeader]
+		public Assignment getSecondendAssignment_3() { return cSecondendAssignment_3; }
+		
+		//[ClassHeader]
+		public CrossReference getSecondendClassHeaderCrossReference_3_0() { return cSecondendClassHeaderCrossReference_3_0; }
+		
+		//ID
+		public RuleCall getSecondendClassHeaderIDTerminalRuleCall_3_0_1() { return cSecondendClassHeaderIDTerminalRuleCall_3_0_1; }
+		
+		//CLOSEDECL
+		public RuleCall getCLOSEDECLTerminalRuleCall_4() { return cCLOSEDECLTerminalRuleCall_4; }
+	}
+	public class CompositionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Composition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cHeaderAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cHeaderRelationshipHeaderParserRuleCall_0_0 = (RuleCall)cHeaderAssignment_0.eContents().get(0);
+		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cBodyCompositionBodyParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
+		
+		//Composition:
+		//	header=RelationshipHeader body=CompositionBody;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//header=RelationshipHeader body=CompositionBody
+		public Group getGroup() { return cGroup; }
+		
+		//header=RelationshipHeader
+		public Assignment getHeaderAssignment_0() { return cHeaderAssignment_0; }
+		
+		//RelationshipHeader
+		public RuleCall getHeaderRelationshipHeaderParserRuleCall_0_0() { return cHeaderRelationshipHeaderParserRuleCall_0_0; }
+		
+		//body=CompositionBody
+		public Assignment getBodyAssignment_1() { return cBodyAssignment_1; }
+		
+		//CompositionBody
+		public RuleCall getBodyCompositionBodyParserRuleCall_1_0() { return cBodyCompositionBodyParserRuleCall_1_0; }
+	}
+	public class CompositionBodyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.CompositionBody");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cOPENDECLTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cFirstendmultAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFirstendmultMultiParserRuleCall_1_0 = (RuleCall)cFirstendmultAssignment_1.eContents().get(0);
+		private final Assignment cFirstendAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cFirstendClassHeaderCrossReference_2_0 = (CrossReference)cFirstendAssignment_2.eContents().get(0);
+		private final RuleCall cFirstendClassHeaderIDTerminalRuleCall_2_0_1 = (RuleCall)cFirstendClassHeaderCrossReference_2_0.eContents().get(1);
+		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDescriptionCOMPKEYWORDTerminalRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		private final Assignment cSecondendmultAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSecondendmultMultiParserRuleCall_4_0 = (RuleCall)cSecondendmultAssignment_4.eContents().get(0);
+		private final Assignment cSecondendAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSecondendClassHeaderCrossReference_5_0 = (CrossReference)cSecondendAssignment_5.eContents().get(0);
+		private final RuleCall cSecondendClassHeaderIDTerminalRuleCall_5_0_1 = (RuleCall)cSecondendClassHeaderCrossReference_5_0.eContents().get(1);
+		private final RuleCall cCLOSEDECLTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		
+		//CompositionBody:
+		//	OPENDECL
+		//	firstendmult=Multi firstend=[ClassHeader] description=COMPKEYWORD secondendmult=Multi secondend=[ClassHeader]
+		//	CLOSEDECL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OPENDECL firstendmult=Multi firstend=[ClassHeader] description=COMPKEYWORD secondendmult=Multi secondend=[ClassHeader]
+		//CLOSEDECL
+		public Group getGroup() { return cGroup; }
+		
+		//OPENDECL
+		public RuleCall getOPENDECLTerminalRuleCall_0() { return cOPENDECLTerminalRuleCall_0; }
+		
+		//firstendmult=Multi
+		public Assignment getFirstendmultAssignment_1() { return cFirstendmultAssignment_1; }
+		
+		//Multi
+		public RuleCall getFirstendmultMultiParserRuleCall_1_0() { return cFirstendmultMultiParserRuleCall_1_0; }
+		
+		//firstend=[ClassHeader]
+		public Assignment getFirstendAssignment_2() { return cFirstendAssignment_2; }
+		
+		//[ClassHeader]
+		public CrossReference getFirstendClassHeaderCrossReference_2_0() { return cFirstendClassHeaderCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getFirstendClassHeaderIDTerminalRuleCall_2_0_1() { return cFirstendClassHeaderIDTerminalRuleCall_2_0_1; }
+		
+		//description=COMPKEYWORD
+		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
+		
+		//COMPKEYWORD
+		public RuleCall getDescriptionCOMPKEYWORDTerminalRuleCall_3_0() { return cDescriptionCOMPKEYWORDTerminalRuleCall_3_0; }
+		
+		//secondendmult=Multi
+		public Assignment getSecondendmultAssignment_4() { return cSecondendmultAssignment_4; }
+		
+		//Multi
+		public RuleCall getSecondendmultMultiParserRuleCall_4_0() { return cSecondendmultMultiParserRuleCall_4_0; }
+		
+		//secondend=[ClassHeader]
+		public Assignment getSecondendAssignment_5() { return cSecondendAssignment_5; }
+		
+		//[ClassHeader]
+		public CrossReference getSecondendClassHeaderCrossReference_5_0() { return cSecondendClassHeaderCrossReference_5_0; }
+		
+		//ID
+		public RuleCall getSecondendClassHeaderIDTerminalRuleCall_5_0_1() { return cSecondendClassHeaderIDTerminalRuleCall_5_0_1; }
+		
+		//CLOSEDECL
+		public RuleCall getCLOSEDECLTerminalRuleCall_6() { return cCLOSEDECLTerminalRuleCall_6; }
+	}
+	public class AggregationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Aggregation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cHeaderAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cHeaderRelationshipHeaderParserRuleCall_0_0 = (RuleCall)cHeaderAssignment_0.eContents().get(0);
+		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cBodyAggregationBodyParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
+		
+		//Aggregation:
+		//	header=RelationshipHeader body=AggregationBody;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//header=RelationshipHeader body=AggregationBody
+		public Group getGroup() { return cGroup; }
+		
+		//header=RelationshipHeader
+		public Assignment getHeaderAssignment_0() { return cHeaderAssignment_0; }
+		
+		//RelationshipHeader
+		public RuleCall getHeaderRelationshipHeaderParserRuleCall_0_0() { return cHeaderRelationshipHeaderParserRuleCall_0_0; }
+		
+		//body=AggregationBody
+		public Assignment getBodyAssignment_1() { return cBodyAssignment_1; }
+		
+		//AggregationBody
+		public RuleCall getBodyAggregationBodyParserRuleCall_1_0() { return cBodyAggregationBodyParserRuleCall_1_0; }
+	}
+	public class AggregationBodyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.AggregationBody");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cOPENDECLTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cFirstendmultAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFirstendmultMultiParserRuleCall_1_0 = (RuleCall)cFirstendmultAssignment_1.eContents().get(0);
+		private final Assignment cFirstendAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cFirstendClassHeaderCrossReference_2_0 = (CrossReference)cFirstendAssignment_2.eContents().get(0);
+		private final RuleCall cFirstendClassHeaderIDTerminalRuleCall_2_0_1 = (RuleCall)cFirstendClassHeaderCrossReference_2_0.eContents().get(1);
+		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDescriptionAGGRKEYWORDTerminalRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		private final Assignment cSecondendmultAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSecondendmultMultiParserRuleCall_4_0 = (RuleCall)cSecondendmultAssignment_4.eContents().get(0);
+		private final Assignment cSecondendAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSecondendClassHeaderCrossReference_5_0 = (CrossReference)cSecondendAssignment_5.eContents().get(0);
+		private final RuleCall cSecondendClassHeaderIDTerminalRuleCall_5_0_1 = (RuleCall)cSecondendClassHeaderCrossReference_5_0.eContents().get(1);
+		private final RuleCall cCLOSEDECLTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		
+		//AggregationBody:
+		//	OPENDECL
+		//	firstendmult=Multi firstend=[ClassHeader] description=AGGRKEYWORD secondendmult=Multi secondend=[ClassHeader]
+		//	CLOSEDECL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OPENDECL firstendmult=Multi firstend=[ClassHeader] description=AGGRKEYWORD secondendmult=Multi secondend=[ClassHeader]
+		//CLOSEDECL
+		public Group getGroup() { return cGroup; }
+		
+		//OPENDECL
+		public RuleCall getOPENDECLTerminalRuleCall_0() { return cOPENDECLTerminalRuleCall_0; }
+		
+		//firstendmult=Multi
+		public Assignment getFirstendmultAssignment_1() { return cFirstendmultAssignment_1; }
+		
+		//Multi
+		public RuleCall getFirstendmultMultiParserRuleCall_1_0() { return cFirstendmultMultiParserRuleCall_1_0; }
+		
+		//firstend=[ClassHeader]
+		public Assignment getFirstendAssignment_2() { return cFirstendAssignment_2; }
+		
+		//[ClassHeader]
+		public CrossReference getFirstendClassHeaderCrossReference_2_0() { return cFirstendClassHeaderCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getFirstendClassHeaderIDTerminalRuleCall_2_0_1() { return cFirstendClassHeaderIDTerminalRuleCall_2_0_1; }
+		
+		//description=AGGRKEYWORD
+		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
+		
+		//AGGRKEYWORD
+		public RuleCall getDescriptionAGGRKEYWORDTerminalRuleCall_3_0() { return cDescriptionAGGRKEYWORDTerminalRuleCall_3_0; }
+		
+		//secondendmult=Multi
+		public Assignment getSecondendmultAssignment_4() { return cSecondendmultAssignment_4; }
+		
+		//Multi
+		public RuleCall getSecondendmultMultiParserRuleCall_4_0() { return cSecondendmultMultiParserRuleCall_4_0; }
+		
+		//secondend=[ClassHeader]
+		public Assignment getSecondendAssignment_5() { return cSecondendAssignment_5; }
+		
+		//[ClassHeader]
+		public CrossReference getSecondendClassHeaderCrossReference_5_0() { return cSecondendClassHeaderCrossReference_5_0; }
+		
+		//ID
+		public RuleCall getSecondendClassHeaderIDTerminalRuleCall_5_0_1() { return cSecondendClassHeaderIDTerminalRuleCall_5_0_1; }
+		
+		//CLOSEDECL
+		public RuleCall getCLOSEDECLTerminalRuleCall_6() { return cCLOSEDECLTerminalRuleCall_6; }
+	}
+	public class AssociationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Association");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cHeaderAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cHeaderRelationshipHeaderParserRuleCall_0_0 = (RuleCall)cHeaderAssignment_0.eContents().get(0);
+		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cBodyAssociationBodyParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
+		
+		//// This has to be the last rule because is the most generic one
+		//Association:
+		//	header=RelationshipHeader body=AssociationBody;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//header=RelationshipHeader body=AssociationBody
+		public Group getGroup() { return cGroup; }
+		
+		//header=RelationshipHeader
+		public Assignment getHeaderAssignment_0() { return cHeaderAssignment_0; }
+		
+		//RelationshipHeader
+		public RuleCall getHeaderRelationshipHeaderParserRuleCall_0_0() { return cHeaderRelationshipHeaderParserRuleCall_0_0; }
+		
+		//body=AssociationBody
+		public Assignment getBodyAssignment_1() { return cBodyAssignment_1; }
+		
+		//AssociationBody
+		public RuleCall getBodyAssociationBodyParserRuleCall_1_0() { return cBodyAssociationBodyParserRuleCall_1_0; }
+	}
+	public class AssociationBodyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.AssociationBody");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cOPENDECLTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cFirstendmultAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFirstendmultMultiParserRuleCall_1_0 = (RuleCall)cFirstendmultAssignment_1.eContents().get(0);
+		private final Assignment cFirstendAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cFirstendClassHeaderCrossReference_2_0 = (CrossReference)cFirstendAssignment_2.eContents().get(0);
+		private final RuleCall cFirstendClassHeaderIDTerminalRuleCall_2_0_1 = (RuleCall)cFirstendClassHeaderCrossReference_2_0.eContents().get(1);
+		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDescriptionIDTerminalRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		private final Assignment cSecondendmultAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSecondendmultMultiParserRuleCall_4_0 = (RuleCall)cSecondendmultAssignment_4.eContents().get(0);
+		private final Assignment cSecondendAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSecondendClassHeaderCrossReference_5_0 = (CrossReference)cSecondendAssignment_5.eContents().get(0);
+		private final RuleCall cSecondendClassHeaderIDTerminalRuleCall_5_0_1 = (RuleCall)cSecondendClassHeaderCrossReference_5_0.eContents().get(1);
+		private final RuleCall cCLOSEDECLTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		
+		//// Se podrían definir distintas reglas segun el tipo de relacion
+		////AssociationHeader:
+		////	'relationship' type=('association') (description=STRING)?
+		////;
+		//// Falla
+		//AssociationBody:
+		//	OPENDECL
+		//	firstendmult=Multi firstend=[ClassHeader] description=ID? secondendmult=Multi secondend=[ClassHeader] CLOSEDECL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OPENDECL firstendmult=Multi firstend=[ClassHeader] description=ID? secondendmult=Multi secondend=[ClassHeader] CLOSEDECL
+		public Group getGroup() { return cGroup; }
+		
+		//OPENDECL
+		public RuleCall getOPENDECLTerminalRuleCall_0() { return cOPENDECLTerminalRuleCall_0; }
+		
+		//firstendmult=Multi
+		public Assignment getFirstendmultAssignment_1() { return cFirstendmultAssignment_1; }
+		
+		//Multi
+		public RuleCall getFirstendmultMultiParserRuleCall_1_0() { return cFirstendmultMultiParserRuleCall_1_0; }
+		
+		//firstend=[ClassHeader]
+		public Assignment getFirstendAssignment_2() { return cFirstendAssignment_2; }
+		
+		//[ClassHeader]
+		public CrossReference getFirstendClassHeaderCrossReference_2_0() { return cFirstendClassHeaderCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getFirstendClassHeaderIDTerminalRuleCall_2_0_1() { return cFirstendClassHeaderIDTerminalRuleCall_2_0_1; }
+		
+		//description=ID?
+		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
+		
+		//ID
+		public RuleCall getDescriptionIDTerminalRuleCall_3_0() { return cDescriptionIDTerminalRuleCall_3_0; }
+		
+		//secondendmult=Multi
+		public Assignment getSecondendmultAssignment_4() { return cSecondendmultAssignment_4; }
+		
+		//Multi
+		public RuleCall getSecondendmultMultiParserRuleCall_4_0() { return cSecondendmultMultiParserRuleCall_4_0; }
+		
+		//secondend=[ClassHeader]
+		public Assignment getSecondendAssignment_5() { return cSecondendAssignment_5; }
+		
+		//[ClassHeader]
+		public CrossReference getSecondendClassHeaderCrossReference_5_0() { return cSecondendClassHeaderCrossReference_5_0; }
+		
+		//ID
+		public RuleCall getSecondendClassHeaderIDTerminalRuleCall_5_0_1() { return cSecondendClassHeaderIDTerminalRuleCall_5_0_1; }
+		
+		//CLOSEDECL
+		public RuleCall getCLOSEDECLTerminalRuleCall_6() { return cCLOSEDECLTerminalRuleCall_6; }
+	}
+	public class RelationshipHeaderElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.RelationshipHeader");
+		private final Keyword cRelationshipKeyword = (Keyword)rule.eContents().get(1);
+		
+		//RelationshipHeader:
+		//	'relationship';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'relationship'
+		public Keyword getRelationshipKeyword() { return cRelationshipKeyword; }
+	}
+	public class MultiElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.Multi");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Assignment cMultlowAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cMultlowINTTerminalRuleCall_0_0_0 = (RuleCall)cMultlowAssignment_0_0.eContents().get(0);
+		private final Keyword cToKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Alternatives cAlternatives_0_2 = (Alternatives)cGroup_0.eContents().get(2);
+		private final Assignment cMultupAssignment_0_2_0 = (Assignment)cAlternatives_0_2.eContents().get(0);
+		private final RuleCall cMultupINTTerminalRuleCall_0_2_0_0 = (RuleCall)cMultupAssignment_0_2_0.eContents().get(0);
+		private final Assignment cMultupunboundAssignment_0_2_1 = (Assignment)cAlternatives_0_2.eContents().get(1);
+		private final Keyword cMultupunboundAnyKeyword_0_2_1_0 = (Keyword)cMultupunboundAssignment_0_2_1.eContents().get(0);
+		private final Assignment cMultlowAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cMultlowINTTerminalRuleCall_1_0 = (RuleCall)cMultlowAssignment_1.eContents().get(0);
+		private final Assignment cMultdownunboundAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final Keyword cMultdownunboundAnyKeyword_2_0 = (Keyword)cMultdownunboundAssignment_2.eContents().get(0);
+		
+		//Multi:
+		//	multlow=INT "to" (multup=INT | multupunbound="any") | multlow=INT | multdownunbound="any";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//multlow=INT "to" (multup=INT | multupunbound="any") | multlow=INT | multdownunbound="any"
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//multlow=INT "to" (multup=INT | multupunbound="any")
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//multlow=INT
+		public Assignment getMultlowAssignment_0_0() { return cMultlowAssignment_0_0; }
+		
+		//INT
+		public RuleCall getMultlowINTTerminalRuleCall_0_0_0() { return cMultlowINTTerminalRuleCall_0_0_0; }
+		
+		//"to"
+		public Keyword getToKeyword_0_1() { return cToKeyword_0_1; }
+		
+		//multup=INT | multupunbound="any"
+		public Alternatives getAlternatives_0_2() { return cAlternatives_0_2; }
+		
+		//multup=INT
+		public Assignment getMultupAssignment_0_2_0() { return cMultupAssignment_0_2_0; }
+		
+		//INT
+		public RuleCall getMultupINTTerminalRuleCall_0_2_0_0() { return cMultupINTTerminalRuleCall_0_2_0_0; }
+		
+		//multupunbound="any"
+		public Assignment getMultupunboundAssignment_0_2_1() { return cMultupunboundAssignment_0_2_1; }
+		
+		//"any"
+		public Keyword getMultupunboundAnyKeyword_0_2_1_0() { return cMultupunboundAnyKeyword_0_2_1_0; }
+		
+		//multlow=INT
+		public Assignment getMultlowAssignment_1() { return cMultlowAssignment_1; }
+		
+		//INT
+		public RuleCall getMultlowINTTerminalRuleCall_1_0() { return cMultlowINTTerminalRuleCall_1_0; }
+		
+		//multdownunbound="any"
+		public Assignment getMultdownunboundAssignment_2() { return cMultdownunboundAssignment_2; }
+		
+		//"any"
+		public Keyword getMultdownunboundAnyKeyword_2_0() { return cMultdownunboundAnyKeyword_2_0; }
+	}
 	
 	
 	private final ModelElements pModel;
@@ -339,15 +846,29 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final ClassBodyElements pClassBody;
 	private final AttrBodyElements pAttrBody;
 	private final OpBodyElements pOpBody;
+	private final ReturnBodyElements pReturnBody;
 	private final ArgBodyElements pArgBody;
+	private final GenericAssociationElements pGenericAssociation;
+	private final RealizationElements pRealization;
+	private final RealizationBodyElements pRealizationBody;
+	private final CompositionElements pComposition;
+	private final CompositionBodyElements pCompositionBody;
+	private final AggregationElements pAggregation;
+	private final AggregationBodyElements pAggregationBody;
+	private final AssociationElements pAssociation;
+	private final AssociationBodyElements pAssociationBody;
+	private final RelationshipHeaderElements pRelationshipHeader;
+	private final MultiElements pMulti;
 	private final TerminalRule tVISIBILITY;
 	private final TerminalRule tOPENDECL;
 	private final TerminalRule tCLOSEDECL;
 	private final TerminalRule tCLOSELINE;
 	private final TerminalRule tOPENARG;
 	private final TerminalRule tCLOSEARG;
-	private final TerminalRule tLOWERCASE;
-	private final TerminalRule tUPPERCASE;
+	private final TerminalRule tAGGRKEYWORD;
+	private final TerminalRule tCOMPKEYWORD;
+	private final TerminalRule tSTRING;
+	private final TerminalRule tID;
 	
 	private final Grammar grammar;
 	
@@ -364,15 +885,29 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pClassBody = new ClassBodyElements();
 		this.pAttrBody = new AttrBodyElements();
 		this.pOpBody = new OpBodyElements();
+		this.pReturnBody = new ReturnBodyElements();
 		this.pArgBody = new ArgBodyElements();
+		this.pGenericAssociation = new GenericAssociationElements();
+		this.pRealization = new RealizationElements();
+		this.pRealizationBody = new RealizationBodyElements();
+		this.pComposition = new CompositionElements();
+		this.pCompositionBody = new CompositionBodyElements();
+		this.pAggregation = new AggregationElements();
+		this.pAggregationBody = new AggregationBodyElements();
+		this.pAssociation = new AssociationElements();
+		this.pAssociationBody = new AssociationBodyElements();
+		this.pRelationshipHeader = new RelationshipHeaderElements();
+		this.pMulti = new MultiElements();
 		this.tVISIBILITY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.VISIBILITY");
 		this.tOPENDECL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.OPENDECL");
 		this.tCLOSEDECL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.CLOSEDECL");
 		this.tCLOSELINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.CLOSELINE");
 		this.tOPENARG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.OPENARG");
 		this.tCLOSEARG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.CLOSEARG");
-		this.tLOWERCASE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.LOWERCASE");
-		this.tUPPERCASE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.UPPERCASE");
+		this.tAGGRKEYWORD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.AGGRKEYWORD");
+		this.tCOMPKEYWORD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.COMPKEYWORD");
+		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.STRING");
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.graces.mydsl.MyDsl.ID");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -402,9 +937,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//// USAR HIDDEN TERMINAL SYMBOLS PARA TRATAR ESPACIOS Y DEMAS MORRALLA
 	//Model:
-	//	'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL;
+	//	'model' name=ID OPENDECL clazzes+=Class* relationships+=GenericAssociation* CLOSEDECL;
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
@@ -424,7 +958,8 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ClassHeader:
-	//	'class' name=ID;
+	//	'class' name=ID // Esto genera numerosos headers y numerosos bodys
+	//;
 	public ClassHeaderElements getClassHeaderAccess() {
 		return pClassHeader;
 	}
@@ -445,7 +980,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AttrBody:
-	//	VISIBILITY (name=ID ':' type=ID);
+	//	visibility=VISIBILITY (name=ID ':' type=ID);
 	public AttrBodyElements getAttrBodyAccess() {
 		return pAttrBody;
 	}
@@ -455,13 +990,23 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OpBody:
-	//	'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG ('return' type=ID)?;
+	//	'operation' name=ID OPENARG ((args+=ArgBody ',')* args+=ArgBody)? CLOSEARG return=ReturnBody?;
 	public OpBodyElements getOpBodyAccess() {
 		return pOpBody;
 	}
 	
 	public ParserRule getOpBodyRule() {
 		return getOpBodyAccess().getRule();
+	}
+	
+	//ReturnBody:
+	//	'return' type=ID;
+	public ReturnBodyElements getReturnBodyAccess() {
+		return pReturnBody;
+	}
+	
+	public ParserRule getReturnBodyRule() {
+		return getReturnBodyAccess().getRule();
 	}
 	
 	//ArgBody:
@@ -472,6 +1017,128 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getArgBodyRule() {
 		return getArgBodyAccess().getRule();
+	}
+	
+	//GenericAssociation:
+	//	Composition | Aggregation | Association;
+	public GenericAssociationElements getGenericAssociationAccess() {
+		return pGenericAssociation;
+	}
+	
+	public ParserRule getGenericAssociationRule() {
+		return getGenericAssociationAccess().getRule();
+	}
+	
+	//Realization:
+	//	header=RelationshipHeader body=CompositionBody;
+	public RealizationElements getRealizationAccess() {
+		return pRealization;
+	}
+	
+	public ParserRule getRealizationRule() {
+		return getRealizationAccess().getRule();
+	}
+	
+	//RealizationBody:
+	//	OPENDECL
+	//	firstend=[ClassHeader] (description='implement' | 'implements') secondend=[ClassHeader] CLOSEDECL;
+	public RealizationBodyElements getRealizationBodyAccess() {
+		return pRealizationBody;
+	}
+	
+	public ParserRule getRealizationBodyRule() {
+		return getRealizationBodyAccess().getRule();
+	}
+	
+	//Composition:
+	//	header=RelationshipHeader body=CompositionBody;
+	public CompositionElements getCompositionAccess() {
+		return pComposition;
+	}
+	
+	public ParserRule getCompositionRule() {
+		return getCompositionAccess().getRule();
+	}
+	
+	//CompositionBody:
+	//	OPENDECL
+	//	firstendmult=Multi firstend=[ClassHeader] description=COMPKEYWORD secondendmult=Multi secondend=[ClassHeader]
+	//	CLOSEDECL;
+	public CompositionBodyElements getCompositionBodyAccess() {
+		return pCompositionBody;
+	}
+	
+	public ParserRule getCompositionBodyRule() {
+		return getCompositionBodyAccess().getRule();
+	}
+	
+	//Aggregation:
+	//	header=RelationshipHeader body=AggregationBody;
+	public AggregationElements getAggregationAccess() {
+		return pAggregation;
+	}
+	
+	public ParserRule getAggregationRule() {
+		return getAggregationAccess().getRule();
+	}
+	
+	//AggregationBody:
+	//	OPENDECL
+	//	firstendmult=Multi firstend=[ClassHeader] description=AGGRKEYWORD secondendmult=Multi secondend=[ClassHeader]
+	//	CLOSEDECL;
+	public AggregationBodyElements getAggregationBodyAccess() {
+		return pAggregationBody;
+	}
+	
+	public ParserRule getAggregationBodyRule() {
+		return getAggregationBodyAccess().getRule();
+	}
+	
+	//// This has to be the last rule because is the most generic one
+	//Association:
+	//	header=RelationshipHeader body=AssociationBody;
+	public AssociationElements getAssociationAccess() {
+		return pAssociation;
+	}
+	
+	public ParserRule getAssociationRule() {
+		return getAssociationAccess().getRule();
+	}
+	
+	//// Se podrían definir distintas reglas segun el tipo de relacion
+	////AssociationHeader:
+	////	'relationship' type=('association') (description=STRING)?
+	////;
+	//// Falla
+	//AssociationBody:
+	//	OPENDECL
+	//	firstendmult=Multi firstend=[ClassHeader] description=ID? secondendmult=Multi secondend=[ClassHeader] CLOSEDECL;
+	public AssociationBodyElements getAssociationBodyAccess() {
+		return pAssociationBody;
+	}
+	
+	public ParserRule getAssociationBodyRule() {
+		return getAssociationBodyAccess().getRule();
+	}
+	
+	//RelationshipHeader:
+	//	'relationship';
+	public RelationshipHeaderElements getRelationshipHeaderAccess() {
+		return pRelationshipHeader;
+	}
+	
+	public ParserRule getRelationshipHeaderRule() {
+		return getRelationshipHeaderAccess().getRule();
+	}
+	
+	//Multi:
+	//	multlow=INT "to" (multup=INT | multupunbound="any") | multlow=INT | multdownunbound="any";
+	public MultiElements getMultiAccess() {
+		return pMulti;
+	}
+	
+	public ParserRule getMultiRule() {
+		return getMultiAccess().getRule();
 	}
 	
 	//terminal VISIBILITY:
@@ -510,35 +1177,35 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return tCLOSEARG;
 	}
 	
-	//terminal fragment LOWERCASE:
-	//	'a'..'z';
-	public TerminalRule getLOWERCASERule() {
-		return tLOWERCASE;
+	//terminal AGGRKEYWORD:
+	//	"have";
+	public TerminalRule getAGGRKEYWORDRule() {
+		return tAGGRKEYWORD;
 	}
 	
-	//terminal fragment UPPERCASE:
-	//	'A'..'Z';
-	public TerminalRule getUPPERCASERule() {
-		return tUPPERCASE;
+	//terminal COMPKEYWORD:
+	//	"compose of";
+	public TerminalRule getCOMPKEYWORDRule() {
+		return tCOMPKEYWORD;
 	}
 	
-	//terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+	//@ Override terminal STRING:
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
+	public TerminalRule getSTRINGRule() {
+		return tSTRING;
+	}
+	
+	//@ Override terminal ID:
+	//	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
-		return gaTerminals.getIDRule();
+		return tID;
 	}
 	
 	//terminal INT returns ecore::EInt:
 	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
-	}
-	
-	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' |
-	//	"'" ('\\' . | !('\\' | "'"))* "'";
-	public TerminalRule getSTRINGRule() {
-		return gaTerminals.getSTRINGRule();
 	}
 	
 	//terminal ML_COMMENT:

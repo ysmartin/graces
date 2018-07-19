@@ -10,13 +10,24 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.graces.mydsl.myDsl.Aggregation;
+import org.graces.mydsl.myDsl.AggregationBody;
 import org.graces.mydsl.myDsl.ArgBody;
+import org.graces.mydsl.myDsl.Association;
+import org.graces.mydsl.myDsl.AssociationBody;
 import org.graces.mydsl.myDsl.AttrBody;
 import org.graces.mydsl.myDsl.ClassBody;
 import org.graces.mydsl.myDsl.ClassHeader;
+import org.graces.mydsl.myDsl.Composition;
+import org.graces.mydsl.myDsl.CompositionBody;
+import org.graces.mydsl.myDsl.GenericAssociation;
 import org.graces.mydsl.myDsl.Model;
+import org.graces.mydsl.myDsl.Multi;
 import org.graces.mydsl.myDsl.MyDslPackage;
 import org.graces.mydsl.myDsl.OpBody;
+import org.graces.mydsl.myDsl.Realization;
+import org.graces.mydsl.myDsl.RealizationBody;
+import org.graces.mydsl.myDsl.ReturnBody;
 
 /**
  * <!-- begin-user-doc -->
@@ -112,9 +123,64 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createOpBodyAdapter();
       }
       @Override
+      public Adapter caseReturnBody(ReturnBody object)
+      {
+        return createReturnBodyAdapter();
+      }
+      @Override
       public Adapter caseArgBody(ArgBody object)
       {
         return createArgBodyAdapter();
+      }
+      @Override
+      public Adapter caseGenericAssociation(GenericAssociation object)
+      {
+        return createGenericAssociationAdapter();
+      }
+      @Override
+      public Adapter caseRealization(Realization object)
+      {
+        return createRealizationAdapter();
+      }
+      @Override
+      public Adapter caseRealizationBody(RealizationBody object)
+      {
+        return createRealizationBodyAdapter();
+      }
+      @Override
+      public Adapter caseComposition(Composition object)
+      {
+        return createCompositionAdapter();
+      }
+      @Override
+      public Adapter caseCompositionBody(CompositionBody object)
+      {
+        return createCompositionBodyAdapter();
+      }
+      @Override
+      public Adapter caseAggregation(Aggregation object)
+      {
+        return createAggregationAdapter();
+      }
+      @Override
+      public Adapter caseAggregationBody(AggregationBody object)
+      {
+        return createAggregationBodyAdapter();
+      }
+      @Override
+      public Adapter caseAssociation(Association object)
+      {
+        return createAssociationAdapter();
+      }
+      @Override
+      public Adapter caseAssociationBody(AssociationBody object)
+      {
+        return createAssociationBodyAdapter();
+      }
+      @Override
+      public Adapter caseMulti(Multi object)
+      {
+        return createMultiAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -229,6 +295,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.ReturnBody <em>Return Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.ReturnBody
+   * @generated
+   */
+  public Adapter createReturnBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.ArgBody <em>Arg Body</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -239,6 +320,156 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createArgBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.GenericAssociation <em>Generic Association</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.GenericAssociation
+   * @generated
+   */
+  public Adapter createGenericAssociationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.Realization <em>Realization</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.Realization
+   * @generated
+   */
+  public Adapter createRealizationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.RealizationBody <em>Realization Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.RealizationBody
+   * @generated
+   */
+  public Adapter createRealizationBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.Composition <em>Composition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.Composition
+   * @generated
+   */
+  public Adapter createCompositionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.CompositionBody <em>Composition Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.CompositionBody
+   * @generated
+   */
+  public Adapter createCompositionBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.Aggregation <em>Aggregation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.Aggregation
+   * @generated
+   */
+  public Adapter createAggregationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.AggregationBody <em>Aggregation Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.AggregationBody
+   * @generated
+   */
+  public Adapter createAggregationBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.Association <em>Association</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.Association
+   * @generated
+   */
+  public Adapter createAssociationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.AssociationBody <em>Association Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.AssociationBody
+   * @generated
+   */
+  public Adapter createAssociationBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.graces.mydsl.myDsl.Multi <em>Multi</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.graces.mydsl.myDsl.Multi
+   * @generated
+   */
+  public Adapter createMultiAdapter()
   {
     return null;
   }

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.graces.mydsl.myDsl.Model#getName <em>Name</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.Model#getClazzes <em>Clazzes</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.Model#getRelationships <em>Relationships</em>}</li>
  * </ul>
  *
  * @see org.graces.mydsl.myDsl.MyDslPackage#getModel()
@@ -67,5 +68,21 @@ public interface Model extends EObject
    * @generated
    */
   EList<org.graces.mydsl.myDsl.Class> getClazzes();
+
+  /**
+   * Returns the value of the '<em><b>Relationships</b></em>' containment reference list.
+   * The list contents are of type {@link org.graces.mydsl.myDsl.GenericAssociation}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Relationships</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Relationships</em>' containment reference list.
+   * @see org.graces.mydsl.myDsl.MyDslPackage#getModel_Relationships()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GenericAssociation> getRelationships();
 
 } // Model

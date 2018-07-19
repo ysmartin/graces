@@ -9,6 +9,7 @@
     <genClasses ecoreClass="MyDsl.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Model/clazzes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Model/relationships"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Class">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Class/header"/>
@@ -22,17 +23,69 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//ClassBody/operations"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//AttrBody">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AttrBody/visibility"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AttrBody/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AttrBody/type"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//OpBody">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//OpBody/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//OpBody/args"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//OpBody/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//OpBody/return"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//ReturnBody">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ReturnBody/type"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ArgBody">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ArgBody/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ArgBody/type"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//GenericAssociation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//GenericAssociation/header"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Realization">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Realization/header"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Realization/body"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//RealizationBody">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//RealizationBody/firstend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//RealizationBody/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//RealizationBody/secondend"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Composition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Composition/body"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//CompositionBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CompositionBody/firstendmult"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CompositionBody/firstend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//CompositionBody/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CompositionBody/secondendmult"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CompositionBody/secondend"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Aggregation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Aggregation/body"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//AggregationBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AggregationBody/firstendmult"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AggregationBody/firstend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AggregationBody/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AggregationBody/secondendmult"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AggregationBody/secondend"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Association">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Association/body"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//AssociationBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AssociationBody/firstendmult"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AssociationBody/firstend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AssociationBody/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AssociationBody/secondendmult"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AssociationBody/secondend"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Multi">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Multi/multlow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Multi/multup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Multi/multupunbound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Multi/multdownunbound"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

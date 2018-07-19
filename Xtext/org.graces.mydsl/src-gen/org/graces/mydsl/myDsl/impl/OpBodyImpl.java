@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.graces.mydsl.myDsl.ArgBody;
 import org.graces.mydsl.myDsl.MyDslPackage;
 import org.graces.mydsl.myDsl.OpBody;
+import org.graces.mydsl.myDsl.ReturnBody;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +34,7 @@ import org.graces.mydsl.myDsl.OpBody;
  * <ul>
  *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.graces.mydsl.myDsl.impl.OpBodyImpl#getReturn <em>Return</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,24 +72,14 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
   protected EList<ArgBody> args;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getReturn() <em>Return</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getReturn()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
+  protected ReturnBody return_;
 
   /**
    * <!-- begin-user-doc -->
@@ -153,9 +144,9 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public ReturnBody getReturn()
   {
-    return type;
+    return return_;
   }
 
   /**
@@ -163,12 +154,37 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public NotificationChain basicSetReturn(ReturnBody newReturn, NotificationChain msgs)
   {
-    String oldType = type;
-    type = newType;
+    ReturnBody oldReturn = return_;
+    return_ = newReturn;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.OP_BODY__TYPE, oldType, type));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.OP_BODY__RETURN, oldReturn, newReturn);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReturn(ReturnBody newReturn)
+  {
+    if (newReturn != return_)
+    {
+      NotificationChain msgs = null;
+      if (return_ != null)
+        msgs = ((InternalEObject)return_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.OP_BODY__RETURN, null, msgs);
+      if (newReturn != null)
+        msgs = ((InternalEObject)newReturn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.OP_BODY__RETURN, null, msgs);
+      msgs = basicSetReturn(newReturn, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.OP_BODY__RETURN, newReturn, newReturn));
   }
 
   /**
@@ -183,6 +199,8 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
     {
       case MyDslPackage.OP_BODY__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.OP_BODY__RETURN:
+        return basicSetReturn(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -201,8 +219,8 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
         return getName();
       case MyDslPackage.OP_BODY__ARGS:
         return getArgs();
-      case MyDslPackage.OP_BODY__TYPE:
-        return getType();
+      case MyDslPackage.OP_BODY__RETURN:
+        return getReturn();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -225,8 +243,8 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
         getArgs().clear();
         getArgs().addAll((Collection<? extends ArgBody>)newValue);
         return;
-      case MyDslPackage.OP_BODY__TYPE:
-        setType((String)newValue);
+      case MyDslPackage.OP_BODY__RETURN:
+        setReturn((ReturnBody)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -248,8 +266,8 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
       case MyDslPackage.OP_BODY__ARGS:
         getArgs().clear();
         return;
-      case MyDslPackage.OP_BODY__TYPE:
-        setType(TYPE_EDEFAULT);
+      case MyDslPackage.OP_BODY__RETURN:
+        setReturn((ReturnBody)null);
         return;
     }
     super.eUnset(featureID);
@@ -269,8 +287,8 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.OP_BODY__ARGS:
         return args != null && !args.isEmpty();
-      case MyDslPackage.OP_BODY__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case MyDslPackage.OP_BODY__RETURN:
+        return return_ != null;
     }
     return super.eIsSet(featureID);
   }
@@ -288,8 +306,6 @@ public class OpBodyImpl extends MinimalEObjectImpl.Container implements OpBody
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", type: ");
-    result.append(type);
     result.append(')');
     return result.toString();
   }

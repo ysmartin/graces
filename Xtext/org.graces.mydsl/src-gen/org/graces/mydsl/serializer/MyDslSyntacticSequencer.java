@@ -41,8 +41,6 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getOPENARGToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOPENDECLRule())
 			return getOPENDECLToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getVISIBILITYRule())
-			return getVISIBILITYToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -99,17 +97,6 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "{";
-	}
-	
-	/**
-	 * terminal VISIBILITY:
-	 * 	('public' | 'private' | 'protected' | 'package')
-	 * ;
-	 */
-	protected String getVISIBILITYToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "public";
 	}
 	
 	@Override

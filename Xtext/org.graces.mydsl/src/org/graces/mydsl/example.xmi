@@ -1,19 +1,64 @@
 <?xml version="1.0" encoding="ASCII"?>
-<myDsl:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:myDsl="http://www.graces.org/mydsl/MyDsl" name="ISSTCase">
+<myDsl:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:myDsl="http://www.graces.org/mydsl/MyDsl" name="ISSTCase">
   <clazzes>
     <header name="Profesor"/>
     <body>
-      <attributes name="nombre" type="String"/>
-      <attributes name="nrp" type="String"/>
-      <attributes name="despacho" type="String"/>
-      <attributes name="email" type="String"/>
+      <attributes visibility="public" name="nombre" type="String"/>
+      <attributes visibility="public" name="nrp" type="String"/>
+      <attributes visibility="public" name="despacho" type="String"/>
+      <attributes visibility="public" name="email" type="String"/>
       <operations name="Profesor">
         <args name="nombre" type="String"/>
       </operations>
-      <operations name="evalua" type="Boolean">
+      <operations name="evalua">
         <args name="estudiante" type="Estudiante"/>
         <args name="asignatura" type="Asignatura"/>
+        <return type="Boolean"/>
       </operations>
     </body>
   </clazzes>
+  <clazzes>
+    <header name="Alumno"/>
+    <body>
+      <attributes visibility="public" name="nombre" type="String"/>
+      <attributes visibility="public" name="apellido" type="String"/>
+    </body>
+  </clazzes>
+  <clazzes>
+    <header name="Escuela"/>
+    <body>
+      <attributes visibility="public" name="nombre" type="String"/>
+    </body>
+  </clazzes>
+  <clazzes>
+    <header name="Expediente"/>
+    <body>
+      <attributes visibility="public" name="nota" type="Int"/>
+      <attributes visibility="public" name="fecha" type="String"/>
+    </body>
+  </clazzes>
+  <relationships xsi:type="myDsl:Aggregation" header="relationship">
+    <body firstend="//@clazzes.2/@header" description="have" secondend="//@clazzes.0/@header">
+      <firstendmult multdownunbound="any"/>
+      <secondendmult multlow="1" multupunbound="any"/>
+    </body>
+  </relationships>
+  <relationships xsi:type="myDsl:Association" header="relationship">
+    <body firstend="//@clazzes.1/@header" description="es_evaluado_por" secondend="//@clazzes.0/@header">
+      <firstendmult multlow="1"/>
+      <secondendmult multlow="1" multupunbound="any"/>
+    </body>
+  </relationships>
+  <relationships xsi:type="myDsl:Aggregation" header="relationship">
+    <body firstend="//@clazzes.1/@header" description="have" secondend="//@clazzes.3/@header">
+      <firstendmult multlow="1"/>
+      <secondendmult multlow="1"/>
+    </body>
+  </relationships>
+  <relationships xsi:type="myDsl:Association" header="relationship">
+    <body firstend="//@clazzes.0/@header" description="adjunta_nota_en" secondend="//@clazzes.3/@header">
+      <firstendmult multlow="1"/>
+      <secondendmult multlow="1" multup="2"/>
+    </body>
+  </relationships>
 </myDsl:Model>

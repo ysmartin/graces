@@ -5,11 +5,8 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate myDsl "http://www.graces.org/mydsl/MyDsl"
 
 
-// USAR HIDDEN TERMINAL SYMBOLS PARA TRATAR ESPACIOS Y DEMAS MORRALLA
-
-
 Model:
-	'model' name=ID OPENDECL clazzes+=Class* CLOSEDECL
+	'model' name=ID OPENDECL clazzes+=Class* relationships+=GenericAssociation* CLOSEDECL
 ;
 
 Class:
@@ -17,7 +14,7 @@ Class:
 ;
 
 ClassHeader:
-	'class' name=ID 
+	'class' name=ID // Esto genera numerosos headers y numerosos bodys
 ;
 
 ClassBody: // Posible problemon
@@ -27,17 +24,82 @@ ClassBody: // Posible problemon
 ;
 
 AttrBody:
-	VISIBILITY (name=ID ':' type=ID)
+	visibility=VISIBILITY (name=ID ':' type=ID)
 ;
 
 OpBody:
-	'operation' name=ID OPENARG ( (args+=ArgBody ',')* (args+=ArgBody) )? CLOSEARG ('return' type=ID)?
+	'operation' name=ID OPENARG ( (args+=ArgBody ',')* (args+=ArgBody) )? CLOSEARG return=ReturnBody?
+;
+
+ReturnBody:
+	('return' type=ID)
 ;
 
 ArgBody:
 	('in'|'out') (name=ID ':' type=ID)
 ;
 
+GenericAssociation:
+	Composition | Aggregation | Association
+;
+
+Realization:
+	header=RelationshipHeader body=CompositionBody
+;
+
+RealizationBody:
+	OPENDECL
+	(firstend=[ClassHeader|ID]) (description='implement'|'implements') (secondend=[ClassHeader|ID])
+	CLOSEDECL
+;
+
+Composition:
+	header=RelationshipHeader body=CompositionBody
+;
+
+CompositionBody:
+	OPENDECL
+	(firstendmult = Multi) (firstend=[ClassHeader|ID]) (description=COMPKEYWORD) (secondendmult = Multi) (secondend=[ClassHeader|ID])
+	CLOSEDECL
+;
+
+Aggregation:
+	header=RelationshipHeader body=AggregationBody
+;
+
+AggregationBody:
+	OPENDECL
+	(firstendmult = Multi) (firstend=[ClassHeader|ID]) (description=AGGRKEYWORD) (secondendmult = Multi) (secondend=[ClassHeader|ID])
+	CLOSEDECL
+;
+
+// This has to be the last rule because is the most generic one
+Association: 
+	header=RelationshipHeader body=AssociationBody
+;
+// Se podrían definir distintas reglas segun el tipo de relacion
+//AssociationHeader:
+//	'relationship' type=('association') (description=STRING)?
+//;
+// Falla
+AssociationBody: 
+	OPENDECL
+	(firstendmult = Multi) (firstend=[ClassHeader|ID]) (description=ID)? (secondendmult = Multi) (secondend=[ClassHeader|ID])
+	CLOSEDECL
+;
+RelationshipHeader:
+	'relationship'
+;
+ // TODO: Si el multlow es mas grande que el multup, el multup debe ser igual a multlow. Mirar lo de usar acciones.
+Multi:
+	(((multlow=INT) "to" ((multup=INT) | multupunbound = "any")) | (multlow=INT) | multdownunbound = "any")
+;
+
+
+// Definir regla propia para multiplicidad, y que se pueda definir solo con uno (en este caso la primera opcion que sea la que contempla los dos limites y la segunda opcion la de un solo limite)
+//terminal RELATIONTYPE:
+//	('association' | 'aggregation' | 'realization' | 'composition' | 'dependency')
+//;
 
 terminal VISIBILITY:
 	('public' | 'private' | 'protected' | 'package')
@@ -63,13 +125,22 @@ terminal CLOSEARG:
 	')'
 ;
 
+terminal AGGRKEYWORD:
+	"have"
+;
+
+terminal COMPKEYWORD:
+	"compose of"
+;
+
 // We use terminal ID from ECore https://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.xtext.doc%2Fcontents%2F020-grammar-language.html&cp=70_1_1_1_2_0&anchor=syntax_4_3
 
-terminal fragment LOWERCASE:
-	('a' .. 'z')
+@Override
+terminal STRING:
+	'"' ( '\\' . | !('\\'|'"') )* '"' |
+			"'" ( '\\' . | !('\\'|"'") )* "'"
 ;
 
-terminal fragment UPPERCASE:
-	('A' .. 'Z')
-;
-
+// OJO, los IDs de UML pueden tener espacio
+@Override
+terminal ID: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

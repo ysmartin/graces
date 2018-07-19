@@ -78,6 +78,15 @@ public interface MyDslFactory extends EFactory
   OpBody createOpBody();
 
   /**
+   * Returns a new object of class '<em>Return Body</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Return Body</em>'.
+   * @generated
+   */
+  ReturnBody createReturnBody();
+
+  /**
    * Returns a new object of class '<em>Arg Body</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +94,96 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   ArgBody createArgBody();
+
+  /**
+   * Returns a new object of class '<em>Generic Association</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generic Association</em>'.
+   * @generated
+   */
+  GenericAssociation createGenericAssociation();
+
+  /**
+   * Returns a new object of class '<em>Realization</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Realization</em>'.
+   * @generated
+   */
+  Realization createRealization();
+
+  /**
+   * Returns a new object of class '<em>Realization Body</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Realization Body</em>'.
+   * @generated
+   */
+  RealizationBody createRealizationBody();
+
+  /**
+   * Returns a new object of class '<em>Composition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Composition</em>'.
+   * @generated
+   */
+  Composition createComposition();
+
+  /**
+   * Returns a new object of class '<em>Composition Body</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Composition Body</em>'.
+   * @generated
+   */
+  CompositionBody createCompositionBody();
+
+  /**
+   * Returns a new object of class '<em>Aggregation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Aggregation</em>'.
+   * @generated
+   */
+  Aggregation createAggregation();
+
+  /**
+   * Returns a new object of class '<em>Aggregation Body</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Aggregation Body</em>'.
+   * @generated
+   */
+  AggregationBody createAggregationBody();
+
+  /**
+   * Returns a new object of class '<em>Association</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Association</em>'.
+   * @generated
+   */
+  Association createAssociation();
+
+  /**
+   * Returns a new object of class '<em>Association Body</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Association Body</em>'.
+   * @generated
+   */
+  AssociationBody createAssociationBody();
+
+  /**
+   * Returns a new object of class '<em>Multi</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multi</em>'.
+   * @generated
+   */
+  Multi createMulti();
 
   /**
    * Returns the package supported by this factory.

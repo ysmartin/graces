@@ -1,25 +1,273 @@
 modeltype UML uses 'http://www.eclipse.org/uml2/5.0.0/UML';
 modeltype DSL uses 'http://www.graces.org/mydsl/MyDsl'; // My OWN model
 
-transformation TransformToUML(in uml: UML, out dsl:DSL);
+transformation TransformToUML(in dsl: DSL, out uml:UML);
 
 main() {
-	uml.rootObjects()[DSL::Model]->map model2Model();
+	dsl.rootObjects()[DSL::Model]->map model2Model();
 }
-
 
 mapping DSL::Model::model2Model() : UML::Model {
 	name := self.name;
-	log(self.name);
-	var clazzes := self.clazzes; // Coge las relaciones en el modelo?
-	clazzes -> map clazzes2class();
+	//var clazzes := self.clazzes; // Coge las relaciones en el modelo?
+	result.ownedType += self.allSubobjectsOfType(DSL::Class) -> map clazzes2class();
+	result.ownedType := result.ownedType -> union(self.allSubobjectsOfType(DSL::Association) -> map association2association(result)) -> asOrderedSet();
+	result.ownedType := result.ownedType -> union(self.allSubobjectsOfType(DSL::Aggregation) -> map association2association(result)) -> asOrderedSet();
+	result.ownedType := result.ownedType -> union(self.allSubobjectsOfType(DSL::Composition) -> map association2association(result)) -> asOrderedSet();
 	
+	
+//	// Por hacer
+//	result.ownedType = result.ownedType -> union(self.allSubobjectsOfType(DSL::Composition) -> map composition2association(result)) -> asOrderedSet();
+//	
+//	// Por hacer
+//	result.ownedType = result.ownedType -> union(self.allSubobjectsOfType(DSL::Aggregation) -> map aggregation2association(result)) -> asOrderedSet();
+
 }
 
 mapping DSL::Class::clazzes2class() : UML::Class{
-	name := self.header.name;
+	result.name := self.header.name;
 	
-	self.body.attributes -> forEach(attr){
-		attribute
-	}
+//	result.createOwnedAttribute()
+	
+	result.ownedAttribute := self.body.attributes -> map DSLAttrToUMLAttr() -> asOrderedSet();
+	result.ownedOperation := self.body.operations -> map DSLOpToUMLOp() -> asOrderedSet();
+
 }
+mapping DSL::AttrBody::DSLAttrToUMLAttr() : UML::Property{
+	result.name := self.name;
+//	result.type := self.type.oclAsType(UML::Type); 
+	result.type := result.getModel().createOwnedPrimitiveType(self.type);
+}
+
+mapping DSL::OpBody::DSLOpToUMLOp() : UML::Operation{
+	result.name := self.name;
+	result.ownedParameter := self.args -> map DSLArgsToUMLArgs() -> asOrderedSet();
+	// 	result.ownedParameter := self.args -> map DSLArgsToUMLArgs() -> union(self.) asOrderedSet();
+	// Hacer union cuando tenga los return arreglados
+}
+
+mapping DSL::ArgBody::DSLArgsToUMLArgs() : UML::Parameter{
+	result.name := self.name;
+	result.type := self.type.oclAsType(UML::Type);
+}
+
+mapping DSL::Association::association2association(in model : UML::Model) : UML::Association{
+init{
+	result := model.clazzFromAssociation(self);
+}
+	if(not (self.body.description.oclIsInvalid() or self.body.description = "")) then {
+		result.name := self.body.description;
+	}endif
+	;
+
+}
+
+mapping DSL::Aggregation::association2association(in model : UML::Model) : UML::Association{
+init{
+	result := model.clazzFromAggregation(self);
+
+}
+		result.name := "";
+
+}
+
+mapping DSL::Composition::association2association(in model : UML::Model) : UML::Association{
+init{
+	result := model.clazzFromComposition(self);
+}
+		result.name := "";
+
+}
+
+query UML::Model::clazzFromAssociation(relation : DSL::Association) : UML::Association{
+var relationship : UML::Association;
+var firstendmultlow : Integer;
+var firstendmultup : Integer;
+var secondendmultlow : Integer;
+var secondendmultup : Integer;
+
+			firstendmultlow := relation.body.firstendmult.multlow;
+			firstendmultup := relation.body.firstendmult.multup;
+			secondendmultlow := relation.body.secondendmult.multlow;
+			secondendmultup := relation.body.secondendmult.multup;
+			
+			if ( relation.body.firstendmult.multup = 0) then{
+				firstendmultup := firstendmultlow;
+			}endif;
+			
+			if ( relation.body.secondendmult.multup = 0) then{
+				secondendmultup := secondendmultlow;
+			}endif;
+			
+			if ( relation.body.firstendmult.multdownunbound = "any") then{
+				firstendmultlow := 0;
+				firstendmultup := *;
+			}endif;
+			
+			if ( relation.body.secondendmult.multdownunbound = "any") then{
+				
+				secondendmultlow := 0;
+				secondendmultup := *;
+				
+			}endif;
+			
+			if ( relation.body.firstendmult.multupunbound= "any") then{
+				
+				firstendmultup := *;
+				
+			}endif;
+			
+			if ( relation.body.secondendmult.multupunbound= "any") then{
+				
+				secondendmultup := *;
+				
+			}endif;
+
+self.allSubobjectsOfType(UML::Class) -> forEach(clazz1){
+	if(relation.body.firstend.name = clazz1.name) then {
+	self.allSubobjectsOfType(UML::Class) -> forEach(clazz2){
+		if(relation.body.secondend.name = clazz2.name) then {
+		
+			relationship := clazz1.createAssociation(true, AggregationKind::none, clazz2.name, secondendmultlow, secondendmultup, clazz2, false, AggregationKind::none, clazz1.name, firstendmultlow, firstendmultup);
+			
+		}endif;
+	};
+	}endif;
+};
+
+	return relationship;
+}
+
+
+query UML::Model::clazzFromAggregation(relation : DSL::Aggregation) : UML::Association{
+var relationship : UML::Association;
+var firstendmultlow : Integer;
+var firstendmultup : Integer;
+var secondendmultlow : Integer;
+var secondendmultup : Integer;
+			
+			firstendmultlow := relation.body.firstendmult.multlow;
+			firstendmultup := relation.body.firstendmult.multup;
+			secondendmultlow := relation.body.secondendmult.multlow;
+			secondendmultup := relation.body.secondendmult.multup;
+			
+			if ( relation.body.firstendmult.multup = 0) then{
+				firstendmultup := firstendmultlow;
+			}endif;
+			
+			if ( relation.body.secondendmult.multup = 0) then{
+				secondendmultup := secondendmultlow;
+			}endif;
+			
+			if ( relation.body.firstendmult.multdownunbound = "any") then{
+				firstendmultlow := 0;
+				firstendmultup := *;
+			}endif;
+			
+			if ( relation.body.firstendmult.multdownunbound = "any") then{
+				firstendmultlow := 0;
+				firstendmultup := *;
+			}endif;
+			
+			if ( relation.body.secondendmult.multdownunbound = "any") then{
+				
+				secondendmultlow := 0;
+				secondendmultup := *;
+				
+			}endif;
+			
+			if ( relation.body.firstendmult.multupunbound= "any") then{
+				
+				firstendmultup := *;
+				
+			}endif;
+			
+			if ( relation.body.secondendmult.multupunbound= "any") then{
+				
+				secondendmultup := *;
+				
+			}endif;
+
+self.allSubobjectsOfType(UML::Class) -> forEach(clazz1){
+	if(relation.body.firstend.name = clazz1.name) then {
+	self.allSubobjectsOfType(UML::Class) -> forEach(clazz2){
+		if(relation.body.secondend.name = clazz2.name) then {
+			relationship := clazz1.createAssociation(false, AggregationKind::none, clazz2.name, secondendmultlow, secondendmultup, clazz2, false, AggregationKind::shared, clazz1.name, firstendmultlow, firstendmultup);
+			
+		}endif;
+	};
+	}endif;
+};
+
+	return relationship;
+}
+
+query UML::Model::clazzFromComposition(relation : DSL::Composition) : UML::Association{
+var relationship : UML::Association;
+var firstendmultlow : Integer;
+var firstendmultup : Integer;
+var secondendmultlow : Integer;
+var secondendmultup : Integer;
+
+			firstendmultlow := relation.body.firstendmult.multlow;
+			firstendmultup := relation.body.firstendmult.multup;
+			secondendmultlow := relation.body.secondendmult.multlow;
+			secondendmultup := relation.body.secondendmult.multup;
+			
+			if ( relation.body.firstendmult.multup = 0) then{
+				firstendmultup := firstendmultlow;
+			}endif;
+			
+			if ( relation.body.secondendmult.multup = 0) then{
+				secondendmultup := secondendmultlow;
+			}endif;
+			
+			if ( relation.body.firstendmult.multdownunbound = "any") then{
+				firstendmultlow := 0;
+				firstendmultup := *;
+			}endif;
+			
+			if ( relation.body.secondendmult.multdownunbound = "any") then{
+				
+				secondendmultlow := 0;
+				secondendmultup := *;
+				
+			}endif;
+			
+			if ( relation.body.firstendmult.multupunbound= "any") then{
+				
+				firstendmultup := *;
+				
+			}endif;
+			
+			if ( relation.body.secondendmult.multupunbound= "any") then{
+				
+				secondendmultup := *;
+				
+			}endif;
+
+self.allSubobjectsOfType(UML::Class) -> forEach(clazz1){
+	if(relation.body.firstend.name = clazz1.name) then {
+	self.allSubobjectsOfType(UML::Class) -> forEach(clazz2){
+		if(relation.body.secondend.name = clazz2.name) then {
+		
+			relationship := clazz1.createAssociation(false, AggregationKind::none, clazz2.name, secondendmultlow, secondendmultup, clazz2, false, AggregationKind::composite, clazz1.name, firstendmultlow, firstendmultup);
+			
+		}endif;
+	};
+	}endif;
+};
+
+	return relationship;
+}
+
+//mapping DSL::Composition::compositionassociation(in model : UML::Model) : UML::Association{
+//init{
+//	result := model.clazzFromComposition(self);
+//}
+//	if(not (self.body.description.oclIsInvalid() or self.body.description = "")) then {
+//		result.name := self.body.description;
+//	}endif
+//	;
+//
+//}

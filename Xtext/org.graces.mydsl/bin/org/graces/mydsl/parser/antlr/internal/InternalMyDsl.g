@@ -94,7 +94,7 @@ ruleModel returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"org.graces.mydsl.MyDsl.ID");
 				}
 			)
 		)
@@ -121,9 +121,28 @@ ruleModel returns [EObject current=null]
 				}
 			)
 		)*
-		this_CLOSEDECL_4=RULE_CLOSEDECL
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getModelAccess().getRelationshipsGenericAssociationParserRuleCall_4_0());
+				}
+				lv_relationships_4_0=ruleGenericAssociation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getModelRule());
+					}
+					add(
+						$current,
+						"relationships",
+						lv_relationships_4_0,
+						"org.graces.mydsl.MyDsl.GenericAssociation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		this_CLOSEDECL_5=RULE_CLOSEDECL
 		{
-			newLeafNode(this_CLOSEDECL_4, grammarAccess.getModelAccess().getCLOSEDECLTerminalRuleCall_4());
+			newLeafNode(this_CLOSEDECL_5, grammarAccess.getModelAccess().getCLOSEDECLTerminalRuleCall_5());
 		}
 	)
 ;
@@ -219,7 +238,7 @@ ruleClassHeader returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"org.graces.mydsl.MyDsl.ID");
 				}
 			)
 		)
@@ -322,10 +341,24 @@ ruleAttrBody returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		this_VISIBILITY_0=RULE_VISIBILITY
-		{
-			newLeafNode(this_VISIBILITY_0, grammarAccess.getAttrBodyAccess().getVISIBILITYTerminalRuleCall_0());
-		}
+		(
+			(
+				lv_visibility_0_0=RULE_VISIBILITY
+				{
+					newLeafNode(lv_visibility_0_0, grammarAccess.getAttrBodyAccess().getVisibilityVISIBILITYTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAttrBodyRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"visibility",
+						lv_visibility_0_0,
+						"org.graces.mydsl.MyDsl.VISIBILITY");
+				}
+			)
+		)
 		(
 			(
 				(
@@ -341,7 +374,7 @@ ruleAttrBody returns [EObject current=null]
 							$current,
 							"name",
 							lv_name_1_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+							"org.graces.mydsl.MyDsl.ID");
 					}
 				)
 			)
@@ -363,7 +396,7 @@ ruleAttrBody returns [EObject current=null]
 							$current,
 							"type",
 							lv_type_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+							"org.graces.mydsl.MyDsl.ID");
 					}
 				)
 			)
@@ -405,7 +438,7 @@ ruleOpBody returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"org.graces.mydsl.MyDsl.ID");
 				}
 			)
 		)
@@ -464,29 +497,65 @@ ruleOpBody returns [EObject current=null]
 			newLeafNode(this_CLOSEARG_6, grammarAccess.getOpBodyAccess().getCLOSEARGTerminalRuleCall_4());
 		}
 		(
-			otherlv_7='return'
-			{
-				newLeafNode(otherlv_7, grammarAccess.getOpBodyAccess().getReturnKeyword_5_0());
-			}
 			(
-				(
-					lv_type_8_0=RULE_ID
-					{
-						newLeafNode(lv_type_8_0, grammarAccess.getOpBodyAccess().getTypeIDTerminalRuleCall_5_1_0());
+				{
+					newCompositeNode(grammarAccess.getOpBodyAccess().getReturnReturnBodyParserRuleCall_5_0());
+				}
+				lv_return_7_0=ruleReturnBody
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getOpBodyRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getOpBodyRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"type",
-							lv_type_8_0,
-							"org.eclipse.xtext.common.Terminals.ID");
-					}
-				)
+					set(
+						$current,
+						"return",
+						lv_return_7_0,
+						"org.graces.mydsl.MyDsl.ReturnBody");
+					afterParserOrEnumRuleCall();
+				}
 			)
 		)?
+	)
+;
+
+// Entry rule entryRuleReturnBody
+entryRuleReturnBody returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getReturnBodyRule()); }
+	iv_ruleReturnBody=ruleReturnBody
+	{ $current=$iv_ruleReturnBody.current; }
+	EOF;
+
+// Rule ReturnBody
+ruleReturnBody returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='return'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getReturnBodyAccess().getReturnKeyword_0());
+		}
+		(
+			(
+				lv_type_1_0=RULE_ID
+				{
+					newLeafNode(lv_type_1_0, grammarAccess.getReturnBodyAccess().getTypeIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getReturnBodyRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"type",
+						lv_type_1_0,
+						"org.graces.mydsl.MyDsl.ID");
+				}
+			)
+		)
 	)
 ;
 
@@ -532,7 +601,7 @@ ruleArgBody returns [EObject current=null]
 							$current,
 							"name",
 							lv_name_2_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+							"org.graces.mydsl.MyDsl.ID");
 					}
 				)
 			)
@@ -554,9 +623,686 @@ ruleArgBody returns [EObject current=null]
 							$current,
 							"type",
 							lv_type_4_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+							"org.graces.mydsl.MyDsl.ID");
 					}
 				)
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleGenericAssociation
+entryRuleGenericAssociation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getGenericAssociationRule()); }
+	iv_ruleGenericAssociation=ruleGenericAssociation
+	{ $current=$iv_ruleGenericAssociation.current; }
+	EOF;
+
+// Rule GenericAssociation
+ruleGenericAssociation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getGenericAssociationAccess().getCompositionParserRuleCall_0());
+		}
+		this_Composition_0=ruleComposition
+		{
+			$current = $this_Composition_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getGenericAssociationAccess().getAggregationParserRuleCall_1());
+		}
+		this_Aggregation_1=ruleAggregation
+		{
+			$current = $this_Aggregation_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getGenericAssociationAccess().getAssociationParserRuleCall_2());
+		}
+		this_Association_2=ruleAssociation
+		{
+			$current = $this_Association_2.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleComposition
+entryRuleComposition returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCompositionRule()); }
+	iv_ruleComposition=ruleComposition
+	{ $current=$iv_ruleComposition.current; }
+	EOF;
+
+// Rule Composition
+ruleComposition returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCompositionAccess().getHeaderRelationshipHeaderParserRuleCall_0_0());
+				}
+				lv_header_0_0=ruleRelationshipHeader
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCompositionRule());
+					}
+					set(
+						$current,
+						"header",
+						lv_header_0_0,
+						"org.graces.mydsl.MyDsl.RelationshipHeader");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCompositionAccess().getBodyCompositionBodyParserRuleCall_1_0());
+				}
+				lv_body_1_0=ruleCompositionBody
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCompositionRule());
+					}
+					set(
+						$current,
+						"body",
+						lv_body_1_0,
+						"org.graces.mydsl.MyDsl.CompositionBody");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleCompositionBody
+entryRuleCompositionBody returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCompositionBodyRule()); }
+	iv_ruleCompositionBody=ruleCompositionBody
+	{ $current=$iv_ruleCompositionBody.current; }
+	EOF;
+
+// Rule CompositionBody
+ruleCompositionBody returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_OPENDECL_0=RULE_OPENDECL
+		{
+			newLeafNode(this_OPENDECL_0, grammarAccess.getCompositionBodyAccess().getOPENDECLTerminalRuleCall_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCompositionBodyAccess().getFirstendmultMultiParserRuleCall_1_0());
+				}
+				lv_firstendmult_1_0=ruleMulti
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCompositionBodyRule());
+					}
+					set(
+						$current,
+						"firstendmult",
+						lv_firstendmult_1_0,
+						"org.graces.mydsl.MyDsl.Multi");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCompositionBodyRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getCompositionBodyAccess().getFirstendClassHeaderCrossReference_2_0());
+				}
+			)
+		)
+		(
+			(
+				lv_description_3_0=RULE_COMPKEYWORD
+				{
+					newLeafNode(lv_description_3_0, grammarAccess.getCompositionBodyAccess().getDescriptionCOMPKEYWORDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCompositionBodyRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"description",
+						lv_description_3_0,
+						"org.graces.mydsl.MyDsl.COMPKEYWORD");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCompositionBodyAccess().getSecondendmultMultiParserRuleCall_4_0());
+				}
+				lv_secondendmult_4_0=ruleMulti
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCompositionBodyRule());
+					}
+					set(
+						$current,
+						"secondendmult",
+						lv_secondendmult_4_0,
+						"org.graces.mydsl.MyDsl.Multi");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCompositionBodyRule());
+					}
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getCompositionBodyAccess().getSecondendClassHeaderCrossReference_5_0());
+				}
+			)
+		)
+		this_CLOSEDECL_6=RULE_CLOSEDECL
+		{
+			newLeafNode(this_CLOSEDECL_6, grammarAccess.getCompositionBodyAccess().getCLOSEDECLTerminalRuleCall_6());
+		}
+	)
+;
+
+// Entry rule entryRuleAggregation
+entryRuleAggregation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAggregationRule()); }
+	iv_ruleAggregation=ruleAggregation
+	{ $current=$iv_ruleAggregation.current; }
+	EOF;
+
+// Rule Aggregation
+ruleAggregation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAggregationAccess().getHeaderRelationshipHeaderParserRuleCall_0_0());
+				}
+				lv_header_0_0=ruleRelationshipHeader
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAggregationRule());
+					}
+					set(
+						$current,
+						"header",
+						lv_header_0_0,
+						"org.graces.mydsl.MyDsl.RelationshipHeader");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAggregationAccess().getBodyAggregationBodyParserRuleCall_1_0());
+				}
+				lv_body_1_0=ruleAggregationBody
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAggregationRule());
+					}
+					set(
+						$current,
+						"body",
+						lv_body_1_0,
+						"org.graces.mydsl.MyDsl.AggregationBody");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleAggregationBody
+entryRuleAggregationBody returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAggregationBodyRule()); }
+	iv_ruleAggregationBody=ruleAggregationBody
+	{ $current=$iv_ruleAggregationBody.current; }
+	EOF;
+
+// Rule AggregationBody
+ruleAggregationBody returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_OPENDECL_0=RULE_OPENDECL
+		{
+			newLeafNode(this_OPENDECL_0, grammarAccess.getAggregationBodyAccess().getOPENDECLTerminalRuleCall_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAggregationBodyAccess().getFirstendmultMultiParserRuleCall_1_0());
+				}
+				lv_firstendmult_1_0=ruleMulti
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAggregationBodyRule());
+					}
+					set(
+						$current,
+						"firstendmult",
+						lv_firstendmult_1_0,
+						"org.graces.mydsl.MyDsl.Multi");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAggregationBodyRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getAggregationBodyAccess().getFirstendClassHeaderCrossReference_2_0());
+				}
+			)
+		)
+		(
+			(
+				lv_description_3_0=RULE_AGGRKEYWORD
+				{
+					newLeafNode(lv_description_3_0, grammarAccess.getAggregationBodyAccess().getDescriptionAGGRKEYWORDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAggregationBodyRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"description",
+						lv_description_3_0,
+						"org.graces.mydsl.MyDsl.AGGRKEYWORD");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAggregationBodyAccess().getSecondendmultMultiParserRuleCall_4_0());
+				}
+				lv_secondendmult_4_0=ruleMulti
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAggregationBodyRule());
+					}
+					set(
+						$current,
+						"secondendmult",
+						lv_secondendmult_4_0,
+						"org.graces.mydsl.MyDsl.Multi");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAggregationBodyRule());
+					}
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getAggregationBodyAccess().getSecondendClassHeaderCrossReference_5_0());
+				}
+			)
+		)
+		this_CLOSEDECL_6=RULE_CLOSEDECL
+		{
+			newLeafNode(this_CLOSEDECL_6, grammarAccess.getAggregationBodyAccess().getCLOSEDECLTerminalRuleCall_6());
+		}
+	)
+;
+
+// Entry rule entryRuleAssociation
+entryRuleAssociation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAssociationRule()); }
+	iv_ruleAssociation=ruleAssociation
+	{ $current=$iv_ruleAssociation.current; }
+	EOF;
+
+// Rule Association
+ruleAssociation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAssociationAccess().getHeaderRelationshipHeaderParserRuleCall_0_0());
+				}
+				lv_header_0_0=ruleRelationshipHeader
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAssociationRule());
+					}
+					set(
+						$current,
+						"header",
+						lv_header_0_0,
+						"org.graces.mydsl.MyDsl.RelationshipHeader");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAssociationAccess().getBodyAssociationBodyParserRuleCall_1_0());
+				}
+				lv_body_1_0=ruleAssociationBody
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAssociationRule());
+					}
+					set(
+						$current,
+						"body",
+						lv_body_1_0,
+						"org.graces.mydsl.MyDsl.AssociationBody");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleAssociationBody
+entryRuleAssociationBody returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAssociationBodyRule()); }
+	iv_ruleAssociationBody=ruleAssociationBody
+	{ $current=$iv_ruleAssociationBody.current; }
+	EOF;
+
+// Rule AssociationBody
+ruleAssociationBody returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_OPENDECL_0=RULE_OPENDECL
+		{
+			newLeafNode(this_OPENDECL_0, grammarAccess.getAssociationBodyAccess().getOPENDECLTerminalRuleCall_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAssociationBodyAccess().getFirstendmultMultiParserRuleCall_1_0());
+				}
+				lv_firstendmult_1_0=ruleMulti
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAssociationBodyRule());
+					}
+					set(
+						$current,
+						"firstendmult",
+						lv_firstendmult_1_0,
+						"org.graces.mydsl.MyDsl.Multi");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAssociationBodyRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getAssociationBodyAccess().getFirstendClassHeaderCrossReference_2_0());
+				}
+			)
+		)
+		(
+			(
+				lv_description_3_0=RULE_ID
+				{
+					newLeafNode(lv_description_3_0, grammarAccess.getAssociationBodyAccess().getDescriptionIDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAssociationBodyRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"description",
+						lv_description_3_0,
+						"org.graces.mydsl.MyDsl.ID");
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAssociationBodyAccess().getSecondendmultMultiParserRuleCall_4_0());
+				}
+				lv_secondendmult_4_0=ruleMulti
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAssociationBodyRule());
+					}
+					set(
+						$current,
+						"secondendmult",
+						lv_secondendmult_4_0,
+						"org.graces.mydsl.MyDsl.Multi");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAssociationBodyRule());
+					}
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getAssociationBodyAccess().getSecondendClassHeaderCrossReference_5_0());
+				}
+			)
+		)
+		this_CLOSEDECL_6=RULE_CLOSEDECL
+		{
+			newLeafNode(this_CLOSEDECL_6, grammarAccess.getAssociationBodyAccess().getCLOSEDECLTerminalRuleCall_6());
+		}
+	)
+;
+
+// Entry rule entryRuleRelationshipHeader
+entryRuleRelationshipHeader returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getRelationshipHeaderRule()); }
+	iv_ruleRelationshipHeader=ruleRelationshipHeader
+	{ $current=$iv_ruleRelationshipHeader.current.getText(); }
+	EOF;
+
+// Rule RelationshipHeader
+ruleRelationshipHeader returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	kw='relationship'
+	{
+		$current.merge(kw);
+		newLeafNode(kw, grammarAccess.getRelationshipHeaderAccess().getRelationshipKeyword());
+	}
+;
+
+// Entry rule entryRuleMulti
+entryRuleMulti returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMultiRule()); }
+	iv_ruleMulti=ruleMulti
+	{ $current=$iv_ruleMulti.current; }
+	EOF;
+
+// Rule Multi
+ruleMulti returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				(
+					lv_multlow_0_0=RULE_INT
+					{
+						newLeafNode(lv_multlow_0_0, grammarAccess.getMultiAccess().getMultlowINTTerminalRuleCall_0_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMultiRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"multlow",
+							lv_multlow_0_0,
+							"org.eclipse.xtext.common.Terminals.INT");
+					}
+				)
+			)
+			otherlv_1='to'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getMultiAccess().getToKeyword_0_1());
+			}
+			(
+				(
+					(
+						lv_multup_2_0=RULE_INT
+						{
+							newLeafNode(lv_multup_2_0, grammarAccess.getMultiAccess().getMultupINTTerminalRuleCall_0_2_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getMultiRule());
+							}
+							setWithLastConsumed(
+								$current,
+								"multup",
+								lv_multup_2_0,
+								"org.eclipse.xtext.common.Terminals.INT");
+						}
+					)
+				)
+				    |
+				(
+					(
+						lv_multupunbound_3_0='any'
+						{
+							newLeafNode(lv_multupunbound_3_0, grammarAccess.getMultiAccess().getMultupunboundAnyKeyword_0_2_1_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getMultiRule());
+							}
+							setWithLastConsumed($current, "multupunbound", lv_multupunbound_3_0, "any");
+						}
+					)
+				)
+			)
+		)
+		    |
+		(
+			(
+				lv_multlow_4_0=RULE_INT
+				{
+					newLeafNode(lv_multlow_4_0, grammarAccess.getMultiAccess().getMultlowINTTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMultiRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"multlow",
+						lv_multlow_4_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		    |
+		(
+			(
+				lv_multdownunbound_5_0='any'
+				{
+					newLeafNode(lv_multdownunbound_5_0, grammarAccess.getMultiAccess().getMultdownunboundAnyKeyword_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMultiRule());
+					}
+					setWithLastConsumed($current, "multdownunbound", lv_multdownunbound_5_0, "any");
+				}
 			)
 		)
 	)
@@ -574,15 +1320,15 @@ RULE_OPENARG : '(';
 
 RULE_CLOSEARG : ')';
 
-fragment RULE_LOWERCASE : 'a'..'z';
+RULE_AGGRKEYWORD : 'have';
 
-fragment RULE_UPPERCASE : 'A'..'Z';
-
-RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-
-RULE_INT : ('0'..'9')+;
+RULE_COMPKEYWORD : 'compose of';
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
+
+RULE_ID : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+
+RULE_INT : ('0'..'9')+;
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
