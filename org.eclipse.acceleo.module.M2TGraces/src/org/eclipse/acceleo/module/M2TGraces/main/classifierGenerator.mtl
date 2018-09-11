@@ -7,12 +7,17 @@
 
 
 [**
- * The documentation of the template generateElement.
+ * Has the generalized functions for the classifiers.
  * @param aClass
  */]
 [template public generateElement(aClass : Class)]
 
 [/template]
+
+[**
+ * Generate the description of the relationships of generalization of the classifier.
+ * @param aClassifier
+ */]
 
 [template public generalizationClassifierDescription(aClassifier : Classifier)]
 [if (aClassifier.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
@@ -38,9 +43,19 @@
 [/if]
 [/template]
 
+[**
+ * Describe a relationship of inhetirance where the analyzed class is the superclass (with hyperlink)
+ * @param gen
+ */]
+
 [template public inheritance(gen : Generalization)]
 	<a href="#[gen.general.namespace.name/].[gen.general.name/]">[gen.general.name/]</a>
 [/template]
+
+[**
+ * Describe a relationship of inhetirance where the analyzed class is the inherited class (with hyperlink)
+ * @param gen
+ */]
 
 [template public superclass(gen : Generalization)]
 	<a href="#[gen.specific.namespace.name/].[gen.specific.name/]">[gen.specific.name/]</a>
@@ -120,9 +135,6 @@
 [/template]
 
 [template public RealizationDescription(aClassifier : Classifier)]
-[comment][for (ireal: InterfaceRealization | (aClassifier.getRelationships() -> filter(InterfaceRealization) -> asOrderedSet() -> sortedBy(toString())))]
-	<li class="interfaceRealization">[ireal.interfaceRealizationString()/]</li>
-[/for][/comment]
 [for (real: Realization | (aClassifier.getRelationships() -> filter(Realization) -> asOrderedSet() -> sortedBy(toString())))]
 	<li class="interfaceRealization">[real.realizationString()/]</li>
 [/for]
@@ -136,10 +148,14 @@
 <a href="#[real.client.namespace.name/].[real.client.name/]">[real.client.name/]</a> [loc('implements', Sequence{})/] <a href="#[real.supplier.namespace.name/].[real.supplier.name/]">[real.supplier.name/]</a>
 [/template]
 
+[**
+ * Check if the association is composite, aggregate or simple, and call the appropiate function.
+ * @param aClassifier
+ */]
+
 [template public doAssociation(aClassifier : Classifier)]
 
 [for (assoc: Association | (aClassifier.getRelationships() -> filter(Association) -> asOrderedSet() -> sortedBy(name.toString())))]
-[comment]    Lo del toString estropea el orden[/comment]
 	[if assoc.memberEnd -> first().isComposite or assoc.memberEnd -> last().isComposite]
 	<li class="Association" id="composition">[assoc.compositeAssociation() /]
 
@@ -152,6 +168,11 @@
 [/for]
 [/template]
 
+[**
+ * Describe a relationship of composite association, including multiplicity, alias of both ends of the relationship, hyperlinks...
+ * @param assoc
+ */]
+
 [template public compositeAssociation(assoc : Association)]
 
 [if assoc.memberEnd -> first().isComposite]
@@ -163,6 +184,11 @@
 [/if]
 [/template]
 
+[**
+ * Describe a relationship of aggregate association, including multiplicity, alias of both ends of the relationship, hyperlinks...
+ * @param assoc
+ */]
+
 [template public aggregateAssociation(assoc : Association)]
 
 [if assoc.memberEnd -> first().aggregation.toString() = 'shared']
@@ -173,6 +199,11 @@
 	[multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> first().name})/][/if] <b>[loc('aggregateRelationship', Sequence{})/]</b> [multiplicity(assoc.memberEnd -> last())/] <a href="#[assoc.memberEnd -> last().type.namespace.name/].[assoc.memberEnd -> last().type.name/]">[assoc.memberEnd -> last().type.name/]</a> [if not(assoc.memberEnd -> first().name = null)][loc('relationshipRol', Sequence{assoc.memberEnd -> last().name})/][/if] [navigability(assoc)/]
 [/if]
 [/template]
+
+[**
+ * Describe a relationship of association, including multiplicity, alias of both ends of the relationship, hyperlinks...
+ * @param assoc
+ */]
 
 [template public simpleAssociation(assoc : Association)]
 	[multiplicity(assoc.memberEnd -> first())/] <a href="#[assoc.memberEnd -> first().type.namespace.name/].[assoc.memberEnd -> first().type.name/]">[assoc.memberEnd -> first().type.name/]</a>

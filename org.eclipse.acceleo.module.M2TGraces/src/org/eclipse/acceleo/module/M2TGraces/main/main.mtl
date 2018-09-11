@@ -5,13 +5,23 @@
 [import org::eclipse::acceleo::module::M2TGraces::main::classGenerator/]
 [import org::eclipse::acceleo::module::M2TGraces::main::interfaceGenerator/]
 
+[**
+ * Here is defined the initial description of the model and its Classes and interfaces..
+ * @param aModel
+ */]
 
 [template public main(aModel : Model)]
-	
+
+[comment]
+Here is defined the initial description of the model and its Classes and interfaces.
+[/comment]
+
 [comment @main /]
 [file (aModel.name.concat('.html'), false, 'UTF-8')]
 <html>
 <head>
+[comment]Loc function for localization purposes. Its a call to the locationServices.java
+functions, in the services package. [/comment]
 <title class="model" id="[aModel.name/]">[loc('modelHeader', Sequence{aModel.name})/]</title>
 </head>
 <body>

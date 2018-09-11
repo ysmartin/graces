@@ -35,9 +35,9 @@ Clase Asignatura con visibilidad pública
 
 
 
-
+	
 		<h3 class="attributes" id="Asignatura.properties">Los atributos de la clase Asignatura son:</h3>
-
+	
 	<ul>
 		<li class="attribute" id="acrónimo">
 				<b>acrónimo</b>  de tipo <em>String</em> con visibilidad pública
@@ -61,36 +61,36 @@ Clase Asignatura con visibilidad pública
 		<h3 class="relationship" id="Asignatura.relationships">La clase Asignatura tiene las siguientes relaciones:</h3>
 	<ul>
 
-
-
-
-	<li class="Association" id="asiste a">	0 o más
+	
+	
+	
+	<li class="Association" id="asiste a  ▶">	0 o más
 		 <a href="#ISSTCase.Estudiante">Estudiante</a>
 	 <b>
-		asiste a
+		asiste a  ▶
 	</b> 0 o más
-	 <a href="#ISSTCase.Asignatura">Asignatura</a>
+	 <a href="#ISSTCase.Asignatura">Asignatura</a> 
 	</li>
-
-	<li class="Association" id="organiza">	1
+	
+	<li class="Association" id="organiza▼">	1
 		 <a href="#ISSTCase.Departamento">Departamento</a>
 	 <b>
-		organiza
+		organiza▼
 	</b> 1 o más
-	 <a href="#ISSTCase.Asignatura">Asignatura</a>
+	 <a href="#ISSTCase.Asignatura">Asignatura</a> 
 			navegable en ambos sentidos
 	</li>
-
-	<li class="Association" id="imparte">	1 o más
+	
+	<li class="Association" id="◀ imparte">	1 o más
 		 <a href="#ISSTCase.Profesor">Profesor</a>
 	 <b>
-		imparte
+		◀ imparte
 	</b> 0 o más
-	 <a href="#ISSTCase.Asignatura">Asignatura</a>
+	 <a href="#ISSTCase.Asignatura">Asignatura</a> 
 	</li>
-
-
-
+	
+	
+	
 	</ul>
 
 
@@ -112,9 +112,9 @@ Clase Becario con visibilidad pública
 
 
 
-
+	
 		<h3 class="attributes" id="Becario.properties">Los atributos de la clase Becario son:</h3>
-
+	
 	<ul>
 	</ul>
 
@@ -125,7 +125,7 @@ Clase Becario con visibilidad pública
 
 
 					Operación <b>trabaja</b> <em>estático</em>  con visibilidad pública sin parámetros
-
+		
 	</li>
 	</ul>
 
@@ -135,22 +135,22 @@ Clase Becario con visibilidad pública
 		<h3 class="relationship" id="Becario.relationships">La clase Becario tiene las siguientes relaciones:</h3>
 	<ul>
 
-
-
-
+	
+	
+	
 	<li class="Association" id="">	1
 		 <a href="#ISSTCase.Universidad">Universidad</a>
 		con rol universidad
 	 <b>
 		está asociado con
 	</b> 1 o más
-	 <a href="#ISSTCase.Becario">Becario</a>
+	 <a href="#ISSTCase.Becario">Becario</a> 
 	con rol becario
 			navegable desde Becario a Universidad
 	</li>
-
-
-
+	
+	
+	
 	</ul>
 
 
@@ -167,9 +167,9 @@ Clase Departamento con visibilidad pública
 
 
 
-
+	
 		<h3 class="attributes" id="Departamento.properties">Los atributos de la clase Departamento son:</h3>
-
+	
 	<ul>
 		<li class="attribute" id="nombre">
 				<b>nombre</b>  de tipo <em>String</em> con visibilidad pública
@@ -193,38 +193,38 @@ Clase Departamento con visibilidad pública
 		<h3 class="relationship" id="Departamento.relationships">La clase Departamento tiene las siguientes relaciones:</h3>
 	<ul>
 
-
-
-
-	<li class="Association" id="organiza">	1
+	
+	
+	
+	<li class="Association" id="organiza▼">	1
 		 <a href="#ISSTCase.Departamento">Departamento</a>
 	 <b>
-		organiza
+		organiza▼
 	</b> 1 o más
-	 <a href="#ISSTCase.Asignatura">Asignatura</a>
+	 <a href="#ISSTCase.Asignatura">Asignatura</a> 
 			navegable en ambos sentidos
 	</li>
-
-	<li class="Association" id="tiene">	1
+	
+	<li class="Association" id="tiene  ▶">	1
 		 <a href="#ISSTCase.Escuela">Escuela</a>
 	 <b>
-		tiene
+		tiene  ▶
 	</b> 1 o más
-	 <a href="#ISSTCase.Departamento">Departamento</a>
+	 <a href="#ISSTCase.Departamento">Departamento</a> 
 			navegable en ambos sentidos
 	</li>
-
-	<li class="Association" id="asignado a">	1 o más
+	
+	<li class="Association" id="◀ asignado a">	1 o más
 		 <a href="#ISSTCase.Profesor">Profesor</a>
 	 <b>
-		asignado a
+		◀ asignado a
 	</b> 0 o 1
-	 <a href="#ISSTCase.Departamento">Departamento</a>
+	 <a href="#ISSTCase.Departamento">Departamento</a> 
 			navegable desde Departamento a Profesor
 	</li>
-
-
-
+	
+	
+	
 	</ul>
 
 
@@ -241,9 +241,9 @@ Clase Escuela con visibilidad pública
 
 
 
-
+	
 		<h3 class="attributes" id="Escuela.properties">Los atributos de la clase Escuela son:</h3>
-
+	
 	<ul>
 		<li class="attribute" id="nombre">
 				<b>nombre</b>  de tipo <em>String</em> con visibilidad pública
@@ -263,37 +263,37 @@ Clase Escuela con visibilidad pública
 		<h3 class="relationship" id="Escuela.relationships">La clase Escuela tiene las siguientes relaciones:</h3>
 	<ul>
 
-
-
-
+	
+	
+	
 		<li class="Association" id="composition">
 			1
 			 <a href="#ISSTCase.Universidad">Universidad</a> con rol universidad <b>está compuesto por</b> 0 o 1
 			  <a href="#ISSTCase.Escuela">Escuela</a> con rol escuela 		navegable desde Universidad a Escuela
-
-
-
-
-	<li class="Association" id="tiene">	1
+			  
+		
+		
+	
+	<li class="Association" id="tiene  ▶">	1
 		 <a href="#ISSTCase.Escuela">Escuela</a>
 	 <b>
-		tiene
+		tiene  ▶
 	</b> 1 o más
-	 <a href="#ISSTCase.Departamento">Departamento</a>
+	 <a href="#ISSTCase.Departamento">Departamento</a> 
 			navegable en ambos sentidos
 	</li>
-
-	<li class="Association" id="matriculado en">	0 o más
+	
+	<li class="Association" id="▲ matriculado en">	0 o más
 		 <a href="#ISSTCase.Estudiante">Estudiante</a>
 	 <b>
-		matriculado en
+		▲ matriculado en
 	</b> 1 o más
-	 <a href="#ISSTCase.Escuela">Escuela</a>
+	 <a href="#ISSTCase.Escuela">Escuela</a> 
 			navegable desde Estudiante a Escuela
 	</li>
-
-
-
+	
+	
+	
 	</ul>
 
 
@@ -310,9 +310,9 @@ Clase Estudiante con visibilidad pública
 
 
 
-
+	
 		<h3 class="attributes" id="Estudiante.properties">Los atributos de la clase Estudiante son:</h3>
-
+	
 	<ul>
 		<li class="attribute" id="nombre">
 				<b>nombre</b>  de tipo <em>String</em> con visibilidad pública
@@ -338,7 +338,7 @@ Clase Estudiante con visibilidad pública
 
 
 					Operación <b>estudia</b> <em>estático</em>  con visibilidad pública sin parámetros
-
+		
 	</li>
 	</ul>
 
@@ -348,39 +348,39 @@ Clase Estudiante con visibilidad pública
 		<h3 class="relationship" id="Estudiante.relationships">La clase Estudiante tiene las siguientes relaciones:</h3>
 	<ul>
 
-
-
-
+	
+	
+	
 	<li class="Association" id="amigo de">	0 o 1
 		 <a href="#ISSTCase.Estudiante">Estudiante</a>
 		con rol estudiante
 	 <b>
 		amigo de
 	</b> 1
-	 <a href="#ISSTCase.Estudiante">Estudiante</a>
+	 <a href="#ISSTCase.Estudiante">Estudiante</a> 
 	con rol estudiante
 			navegable desde Estudiante a Estudiante
 	</li>
-
-	<li class="Association" id="asiste a">	0 o más
+	
+	<li class="Association" id="asiste a  ▶">	0 o más
 		 <a href="#ISSTCase.Estudiante">Estudiante</a>
 	 <b>
-		asiste a
+		asiste a  ▶
 	</b> 0 o más
-	 <a href="#ISSTCase.Asignatura">Asignatura</a>
+	 <a href="#ISSTCase.Asignatura">Asignatura</a> 
 	</li>
-
-	<li class="Association" id="matriculado en">	0 o más
+	
+	<li class="Association" id="▲ matriculado en">	0 o más
 		 <a href="#ISSTCase.Estudiante">Estudiante</a>
 	 <b>
-		matriculado en
+		▲ matriculado en
 	</b> 1 o más
-	 <a href="#ISSTCase.Escuela">Escuela</a>
+	 <a href="#ISSTCase.Escuela">Escuela</a> 
 			navegable desde Estudiante a Escuela
 	</li>
-
-
-
+	
+	
+	
 	</ul>
 
 
@@ -397,9 +397,9 @@ Clase Profesor con visibilidad pública
 
 
 
-
+	
 		<h3 class="attributes" id="Profesor.properties">Los atributos de la clase Profesor son:</h3>
-
+	
 	<ul>
 		<li class="attribute" id="nombre">
 				<b>nombre</b>  de tipo <em>String</em> con visibilidad pública
@@ -424,13 +424,13 @@ Clase Profesor con visibilidad pública
 	<li class="operation" id="evalua">
 
 
-					Operación <b>evalua</b>  <em>abstracta</em> con visibilidad pública con parámetros:
+					Operación <b>evalua</b>  <em>abstracta</em> con visibilidad pública con parámetros: 
 			<ol>
 				<li class="Parameter" name"estudiante"><b>estudiante</b> de tipo <em>Estudiante</em></li>
 				<li class="Parameter" name"asignatura"><b>asignatura</b> de tipo <em>Asignatura</em></li>
 				<li class="Parameter" name"aprobado"><b>aprobado</b> de tipo <em>Boolean</em></li>
 			</ol>
-
+		
 			<p class="Return" name"aprobado">y que devuelve <b>aprobado</b> de tipo <em>Boolean</em></p>
 	</li>
 	<li class="operation" id="Profesor">
@@ -450,28 +450,28 @@ Clase Profesor con visibilidad pública
 	<ul>
 
 		<li class="interfaceRealization"><a href="#ISSTCase.Profesor">Profesor</a> implementa <a href="#ISSTCase.Investigador">Investigador</a></li>
-
-
-
-	<li class="Association" id="asignado a">	1 o más
+	
+	
+	
+	<li class="Association" id="◀ asignado a">	1 o más
 		 <a href="#ISSTCase.Profesor">Profesor</a>
 	 <b>
-		asignado a
+		◀ asignado a
 	</b> 0 o 1
-	 <a href="#ISSTCase.Departamento">Departamento</a>
+	 <a href="#ISSTCase.Departamento">Departamento</a> 
 			navegable desde Departamento a Profesor
 	</li>
-
-	<li class="Association" id="imparte">	1 o más
+	
+	<li class="Association" id="◀ imparte">	1 o más
 		 <a href="#ISSTCase.Profesor">Profesor</a>
 	 <b>
-		imparte
+		◀ imparte
 	</b> 0 o más
-	 <a href="#ISSTCase.Asignatura">Asignatura</a>
+	 <a href="#ISSTCase.Asignatura">Asignatura</a> 
 	</li>
-
-
-
+	
+	
+	
 	</ul>
 
 
@@ -488,9 +488,9 @@ Clase Universidad con visibilidad pública
 
 
 
-
+	
 		<h3 class="attributes" id="Universidad.properties">Los atributos de la clase Universidad son:</h3>
-
+	
 	<ul>
 		<li class="attribute" id="nombre">
 				<b>nombre</b>  de tipo <em>String</em> con visibilidad pública
@@ -510,30 +510,30 @@ Clase Universidad con visibilidad pública
 		<h3 class="relationship" id="Universidad.relationships">La clase Universidad tiene las siguientes relaciones:</h3>
 	<ul>
 
-
-
-
-		<li class="Association" id="composition">
-			1
-			 <a href="#ISSTCase.Universidad">Universidad</a> con rol universidad <b>está compuesto por</b> 0 o 1
-			  <a href="#ISSTCase.Escuela">Escuela</a> con rol escuela 		navegable desde Universidad a Escuela
-
-
-
-
+	
+	
+	
 	<li class="Association" id="">	1
 		 <a href="#ISSTCase.Universidad">Universidad</a>
 		con rol universidad
 	 <b>
 		está asociado con
 	</b> 1 o más
-	 <a href="#ISSTCase.Becario">Becario</a>
+	 <a href="#ISSTCase.Becario">Becario</a> 
 	con rol becario
 			navegable desde Becario a Universidad
 	</li>
-
-
-
+	
+		<li class="Association" id="composition">
+			1
+			 <a href="#ISSTCase.Universidad">Universidad</a> con rol universidad <b>está compuesto por</b> 0 o 1
+			  <a href="#ISSTCase.Escuela">Escuela</a> con rol escuela 		navegable desde Universidad a Escuela
+			  
+		
+		
+	
+	
+	
 	</ul>
 
 
@@ -549,9 +549,9 @@ Interfaz Investigador
 
 
 
-
+	
 		<h3 class="attributes" id="Investigador.properties">Los atributos de la interfaz Investigador son:</h3>
-
+	
 	<ul>
 		<li class="attribute" id="nombre">
 				<b>nombre</b>  de tipo <em>String</em> con visibilidad pública
@@ -564,11 +564,11 @@ Interfaz Investigador
 	<li class="operation" id="Investiga">
 
 
-					Operación <b>Investiga</b>  <em>abstracta</em> con visibilidad pública con parámetros:
+					Operación <b>Investiga</b>  <em>abstracta</em> con visibilidad pública con parámetros: 
 			<ol>
 				<li class="Parameter" name"Paper"><b>Paper</b> de tipo <em>String</em></li>
 			</ol>
-
+		
 			<p class="Return" name"Paper">y que devuelve <b>Paper</b> de tipo <em>String</em></p>
 	</li>
 	</ul>
@@ -578,11 +578,11 @@ Interfaz Investigador
 	<ul>
 
 		<li class="interfaceRealization"><a href="#ISSTCase.Profesor">Profesor</a> implementa <a href="#ISSTCase.Investigador">Investigador</a></li>
-
-
-
-
-
+	
+	
+	
+	
+	
 	</ul>
 
 

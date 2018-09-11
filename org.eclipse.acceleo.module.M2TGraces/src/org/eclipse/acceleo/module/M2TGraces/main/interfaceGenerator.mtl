@@ -17,13 +17,6 @@
 
 [generalizationDescription(aInterface)/]
 
-[comment][if (aClass.getAppliedStereotypes() -> size() > 0)]
-La clase es:
-[for (stereotype: Stereotype | aClass.getAppliedStereotypes()) separator(', ')]
-[stereotype.name/]
-[/for]
-[/if][/comment]
-
 [attributeDescription(aInterface)/]
 
 [operationDescription(aInterface)/]
@@ -35,31 +28,11 @@ La clase es:
 
 [template public interfaceDescription(aInterface : Interface)]
 <h2 class="class" id="[aInterface.namespace.name/].[aInterface.name/]">
-[comment][if (aInterface.isAbstract)][loc('interfaceAbstract', Sequence{aInterface.name, loc(aInterface.visibility.toString(), Sequence{}) })/]
-[else][loc('interfaceNotAbstract', Sequence{aInterface.name, loc(aInterface.visibility.toString(), Sequence{}) })/]
-[/if][/comment]
 [loc('interfaceNotAbstract', Sequence{aInterface.name})/]
 </h2>
 [/template]
 
 [template public generalizationDescription(aInterface : Interface)]
-[comment][if (aInterface.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
-<h3 class="inheritance">[loc('inheritanceList', Sequence{})/]</h3>
-<ul>
-[for (gen: Generalization | (aInterface.getSourceDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(name)))]
-	<li class="inheritance">[gen.inheritance()/]</li>
-[/for]
-</ul>
-[else]<h3 class="inheritance">[loc('notInheritance', Sequence{})/]</h3>[/if]
-
-[if (aInterface.getSourceDirectedRelationships() -> filter(Generalization) -> size() > 0)]
-<h3 class="superclass">[loc('extendedList', Sequence{})/]</h3>
-<ul>
-[for (gen: Generalization | (aInterface.getTargetDirectedRelationships() -> filter(Generalization) -> asOrderedSet() -> sortedBy(name)))]
-	<li class="Generalization">[gen.superclass()/]</li>
-[/for]
-</ul>
-[else]<h3 class="superclass">[loc('notExtended', Sequence{})/]</h3>[/if][/comment]
 [generalizationClassifierDescription(aInterface)/]
 [/template]
 
@@ -89,9 +62,9 @@ La clase es:
 		[/if]
 [comment]	If is not, treat it like a normal interface[/comment]
 	[else]
-[comment]Has parameters? then load the operationList string. If not, the operationNoParamList string[/comment]
+[comment] Has parameters? then load the operationList string. If not, the operationNoParamList string[/comment]
 		[if (op.ownedParameter -> size() > 0)]
-[comment]Check if its static or abstract, and insert the words in the string[/comment]
+[comment] Check if its static or abstract, and insert the words in the string[/comment]
 			[if (op.isStatic)]
 				[if (op.isAbstract)]
 					[loc('operationList', Sequence{'<b>'+op.name+'</b>', '<em>'+loc('static', Sequence{})+'</em>', '<em>'+loc('abstract', Sequence{})+'</em>', loc(op.visibility.toString(), Sequence{}) })/]
