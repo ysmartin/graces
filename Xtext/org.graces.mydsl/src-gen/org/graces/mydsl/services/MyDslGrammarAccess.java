@@ -792,6 +792,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMultdownunboundAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
 		private final Keyword cMultdownunboundAnyKeyword_2_0 = (Keyword)cMultdownunboundAssignment_2.eContents().get(0);
 		
+		//// TODO: Si el multlow es mas grande que el multup, el multup debe ser igual a multlow. Mirar lo de usar acciones.
 		//Multi:
 		//	multlow=INT "to" (multup=INT | multupunbound="any") | multlow=INT | multdownunbound="any";
 		@Override public ParserRule getRule() { return rule; }
@@ -1131,6 +1132,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getRelationshipHeaderAccess().getRule();
 	}
 	
+	//// TODO: Si el multlow es mas grande que el multup, el multup debe ser igual a multlow. Mirar lo de usar acciones.
 	//Multi:
 	//	multlow=INT "to" (multup=INT | multupunbound="any") | multlow=INT | multdownunbound="any";
 	public MultiElements getMultiAccess() {

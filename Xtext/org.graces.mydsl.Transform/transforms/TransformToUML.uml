@@ -1,52 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="ISSTCase">
-  <packagedElement xsi:type="uml:Association" name="" memberEnd="//@packagedElement.0/Expediente //@packagedElement.0/Alumno">
-    <ownedEnd name="Expediente" type="//Expediente" association="//@packagedElement.0">
-      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-    </ownedEnd>
-    <ownedEnd name="Alumno" type="//Alumno" aggregation="shared" association="//@packagedElement.0">
-      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xsi:type="uml:Class" name="Expediente">
-    <ownedAttribute name="nota"/>
-    <ownedAttribute name="fecha"/>
-  </packagedElement>
-  <packagedElement xsi:type="uml:Class" name="Escuela">
-    <ownedAttribute name="nombre"/>
-  </packagedElement>
-  <packagedElement xsi:type="uml:Association" name="adjunta_nota_en" memberEnd="//Profesor/Expediente //adjunta_nota_en/Profesor">
-    <ownedEnd name="Profesor" type="//Profesor" association="//adjunta_nota_en">
-      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xsi:type="uml:Association" name="es_evaluado_por" memberEnd="//Alumno/Profesor //es_evaluado_por/Alumno">
-    <ownedEnd name="Alumno" type="//Alumno" association="//es_evaluado_por">
-      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xsi:type="uml:Class" name="Alumno">
-    <ownedAttribute name="nombre"/>
-    <ownedAttribute name="apellido"/>
-    <ownedAttribute name="Profesor" type="//Profesor" association="//es_evaluado_por">
-      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xsi:type="uml:Association" name="" memberEnd="//@packagedElement.6/Profesor //@packagedElement.6/Escuela">
-    <ownedEnd name="Profesor" type="//Profesor" association="//@packagedElement.6">
-      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
-    </ownedEnd>
-    <ownedEnd name="Escuela" type="//Escuela" aggregation="shared" association="//@packagedElement.6">
-      <lowerValue xsi:type="uml:LiteralInteger"/>
-      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
-    </ownedEnd>
-  </packagedElement>
   <packagedElement xsi:type="uml:Class" name="Profesor">
     <ownedAttribute name="nombre"/>
     <ownedAttribute name="nrp"/>
@@ -63,5 +16,52 @@
       <ownedParameter name="estudiante"/>
       <ownedParameter name="asignatura"/>
     </ownedOperation>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Association" name="adjunta_nota_en" memberEnd="//Profesor/Expediente //adjunta_nota_en/Profesor">
+    <ownedEnd name="Profesor" type="//Profesor" association="//adjunta_nota_en">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Association" name="" memberEnd="//@packagedElement.2/Profesor //@packagedElement.2/Escuela">
+    <ownedEnd name="Profesor" type="//Profesor" association="//@packagedElement.2">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    </ownedEnd>
+    <ownedEnd name="Escuela" type="//Escuela" aggregation="shared" association="//@packagedElement.2">
+      <lowerValue xsi:type="uml:LiteralInteger"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Class" name="Alumno">
+    <ownedAttribute name="nombre"/>
+    <ownedAttribute name="apellido"/>
+    <ownedAttribute name="Profesor" type="//Profesor" association="//es_evaluado_por">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Class" name="Escuela">
+    <ownedAttribute name="nombre"/>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Association" name="es_evaluado_por" memberEnd="//Alumno/Profesor //es_evaluado_por/Alumno">
+    <ownedEnd name="Alumno" type="//Alumno" association="//es_evaluado_por">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Association" name="" memberEnd="//@packagedElement.6/Expediente //@packagedElement.6/Alumno">
+    <ownedEnd name="Expediente" type="//Expediente" association="//@packagedElement.6">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+    <ownedEnd name="Alumno" type="//Alumno" aggregation="shared" association="//@packagedElement.6">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Class" name="Expediente">
+    <ownedAttribute name="nota"/>
+    <ownedAttribute name="fecha"/>
   </packagedElement>
 </uml:Model>

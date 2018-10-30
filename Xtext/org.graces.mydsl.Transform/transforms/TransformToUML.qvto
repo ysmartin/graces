@@ -6,51 +6,42 @@ transformation TransformToUML(in dsl: DSL, out uml:UML);
 main() {
 	dsl.rootObjects()[DSL::Model]->map model2Model();
 }
-
+// Transform DSL model to UML model
 mapping DSL::Model::model2Model() : UML::Model {
 	name := self.name;
-	//var clazzes := self.clazzes; // Coge las relaciones en el modelo?
 	result.ownedType += self.allSubobjectsOfType(DSL::Class) -> map clazzes2class();
 	result.ownedType := result.ownedType -> union(self.allSubobjectsOfType(DSL::Association) -> map association2association(result)) -> asOrderedSet();
 	result.ownedType := result.ownedType -> union(self.allSubobjectsOfType(DSL::Aggregation) -> map association2association(result)) -> asOrderedSet();
 	result.ownedType := result.ownedType -> union(self.allSubobjectsOfType(DSL::Composition) -> map association2association(result)) -> asOrderedSet();
 	
-	
-//	// Por hacer
-//	result.ownedType = result.ownedType -> union(self.allSubobjectsOfType(DSL::Composition) -> map composition2association(result)) -> asOrderedSet();
-//	
-//	// Por hacer
-//	result.ownedType = result.ownedType -> union(self.allSubobjectsOfType(DSL::Aggregation) -> map aggregation2association(result)) -> asOrderedSet();
-
 }
-
+// Transform classes from DSL model to classes from the UML model, with attributes and operations.
+// And add the attributes and operations to the classes.
 mapping DSL::Class::clazzes2class() : UML::Class{
-	result.name := self.header.name;
-	
-//	result.createOwnedAttribute()
-	
+	result.name := self.header.name;	
 	result.ownedAttribute := self.body.attributes -> map DSLAttrToUMLAttr() -> asOrderedSet();
 	result.ownedOperation := self.body.operations -> map DSLOpToUMLOp() -> asOrderedSet();
 
 }
+// Transform DSL attributes to UML attributes.
 mapping DSL::AttrBody::DSLAttrToUMLAttr() : UML::Property{
 	result.name := self.name;
-//	result.type := self.type.oclAsType(UML::Type); 
 	result.type := result.getModel().createOwnedPrimitiveType(self.type);
 }
 
+// Transform DSL operations to UML operations and add the parameters to the UML one.
 mapping DSL::OpBody::DSLOpToUMLOp() : UML::Operation{
 	result.name := self.name;
 	result.ownedParameter := self.args -> map DSLArgsToUMLArgs() -> asOrderedSet();
-	// 	result.ownedParameter := self.args -> map DSLArgsToUMLArgs() -> union(self.) asOrderedSet();
-	// Hacer union cuando tenga los return arreglados
 }
 
+// Transform DSL arguments of the operations to UML arguments.
 mapping DSL::ArgBody::DSLArgsToUMLArgs() : UML::Parameter{
 	result.name := self.name;
 	result.type := self.type.oclAsType(UML::Type);
 }
 
+// Transform associations of the DSL model to the UML model.
 mapping DSL::Association::association2association(in model : UML::Model) : UML::Association{
 init{
 	result := model.clazzFromAssociation(self);
@@ -62,6 +53,7 @@ init{
 
 }
 
+// Transform aggregations (kind of association) from DSL model to UML model.
 mapping DSL::Aggregation::association2association(in model : UML::Model) : UML::Association{
 init{
 	result := model.clazzFromAggregation(self);
@@ -71,6 +63,7 @@ init{
 
 }
 
+// Transform composition (kind of association) from DSL model to UML model.
 mapping DSL::Composition::association2association(in model : UML::Model) : UML::Association{
 init{
 	result := model.clazzFromComposition(self);
@@ -79,6 +72,7 @@ init{
 
 }
 
+// Get the classes from the ends of the association defined in the DSL and create an association with them in both ends in the UML model.
 query UML::Model::clazzFromAssociation(relation : DSL::Association) : UML::Association{
 var relationship : UML::Association;
 var firstendmultlow : Integer;
@@ -138,7 +132,7 @@ self.allSubobjectsOfType(UML::Class) -> forEach(clazz1){
 	return relationship;
 }
 
-
+// Get the classes from the ends of the association defined in the DSL and create an association (aggregation) with them in both ends in the UML model.
 query UML::Model::clazzFromAggregation(relation : DSL::Aggregation) : UML::Association{
 var relationship : UML::Association;
 var firstendmultlow : Integer;
@@ -202,6 +196,7 @@ self.allSubobjectsOfType(UML::Class) -> forEach(clazz1){
 	return relationship;
 }
 
+// Get the classes from the ends of the association defined in the DSL and create an association (composition) with them in both ends in the UML model.
 query UML::Model::clazzFromComposition(relation : DSL::Composition) : UML::Association{
 var relationship : UML::Association;
 var firstendmultlow : Integer;
@@ -260,14 +255,3 @@ self.allSubobjectsOfType(UML::Class) -> forEach(clazz1){
 
 	return relationship;
 }
-
-//mapping DSL::Composition::compositionassociation(in model : UML::Model) : UML::Association{
-//init{
-//	result := model.clazzFromComposition(self);
-//}
-//	if(not (self.body.description.oclIsInvalid() or self.body.description = "")) then {
-//		result.name := self.body.description;
-//	}endif
-//	;
-//
-//}

@@ -10,45 +10,62 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.MeasurementUnit;
+import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.ui.internal.Model;
-import org.graces.mydsl.MyDslStandaloneSetup;
-import org.eclipse.m2m.qvt.oml.BasicModelExtent;
+import org.graces.mydsl.MyDslStandaloneSetup; // Register locally in maven
+import org.eclipse.m2m.qvt.oml.BasicModelExtent; 
 import org.eclipse.m2m.qvt.oml.ExecutionContextImpl;
 import org.eclipse.m2m.qvt.oml.ExecutionDiagnostic;
 import org.eclipse.m2m.qvt.oml.ModelExtent;
 import org.eclipse.m2m.qvt.oml.TransformationExecutor;
-import org.eclipse.papyrus.infra.architecture.commands.IModelCreationCommand;
-import org.eclipse.papyrus.uml.diagram.common.commands.CreateUMLModelCommand;
-import org.eclipse.papyrus.uml.diagram.sequence.CreateSequenceDiagramCommand;
-import org.eclipse.uml2.uml.*;
+import org.eclipse.papyrus.infra.core.resource.ModelSet; 
+import org.eclipse.papyrus.infra.core.resource.ModelsReader;
+import org.eclipse.papyrus.infra.core.resource.sasheditor.DiModel;
+import org.eclipse.uml2.uml.*; // Error in dependencies (there's multiple versions in maven repository)
+import org.eclipse.papyrus.infra.gmfdiag.common.model.NotationModel;
 
-import com.google.common.io.Resources;
 import com.google.inject.Injector;
 
 
 public class MainApp {
 	public MainApp() {
 
-	}
+	} 
 	
+	public static void main(String[] args) {
+    	MainApp app = new MainApp();
+    	try { 
+			
+			Resource inResource = app.setup();
+//			System.out.println(inResource.getContents());
+			Resource umlResource = app.transform(inResource);
+//			app.arrange(umlResource);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }	
+	
+	// Transform the code in myDSL language to the myDSL model
 	public Resource setup() throws IOException{
-		// Set the platform URI to the one we want
+		// Set the platform URI to the one we want.
 		new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri("../");
 		
+		// Set the input and output URI for later use.
+		String inputURI = "platform:/resource/org.graces.mydsl/src/org/graces/mydsl/example.mydsl";
+	    String outputURI = "platform:/resource/org.graces.mydsl/src/org/graces/mydsl/example.xmi";
+		
+	    // Get and create the resources in the URIs.
 		Injector injector = new MyDslStandaloneSetup().createInjectorAndDoEMFRegistration();
 		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-	    String inputURI = "platform:/resource/org.graces.mydsl/src/org/graces/mydsl/example.mydsl";
-	    String outputURI = "platform:/resource/org.graces.mydsl/src/org/graces/mydsl/example.xmi";
-		Resource mydslresource = resourceSet.getResource(
-		    URI.createURI(inputURI), true);
+		Resource mydslresource = resourceSet.getResource(URI.createURI(inputURI), true);
 		EObject myModel = mydslresource.getAllContents().next();
 		System.out.println(mydslresource.getContents());
-
 		Resource xmiResource = resourceSet.createResource(URI.createURI(outputURI));
 	    xmiResource.getContents().add(myModel);
 	    
@@ -60,24 +77,11 @@ public class MainApp {
 		
 	    return xmiResource;
 	}
-	   	
-	   	public static void main(String[] args){
-	    	MainApp app = new MainApp();
-	    	try {
-				Resource inResource = app.setup();
-//				System.out.println(inResource.getContents());
-				Resource umlResource = app.transform(inResource);
-//				app.arrange(umlResource);
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
-	   	
+	  // Do the actual transformation
 	  public Resource transform(Resource inResource) throws IOException{
 		  new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri("../");
 		  		  
-		  // Register URIs (quizá hay que usar EPackage para registrar)
+		  // Register URIs
 		  
 		  ResourceSet resourceSet = new ResourceSetImpl();
 		  
@@ -125,8 +129,7 @@ public class MainApp {
 				List<EObject> outObjects = output.getContents();
 				// let's persist them using a resource 
 			        ResourceSet resourceSet2 = new ResourceSetImpl();
-			        
-			    // TODO: Deberia crear el fichero nuevo antes de rrealizar la transformacion    
+			           
 				Resource outResource = resourceSet2.createResource(
 						URI.createURI("platform:/resource/XtextToUML/transforms/TransformToUML.uml"));
 				outResource.getContents().addAll(outObjects);
@@ -141,12 +144,53 @@ public class MainApp {
 			return null;
 	  }
 	  
-//	  public void arrange(Resource umlResource) {
-//		  final IModelCreationCommand creationCommand = new CreateUMLModelCommand();
-//		  creationCommand.createModel(umlResource.getContents().get(0).);
-//			
-//			final CreateSequenceDiagramCommand diagramCommand = new CreateSequenceDiagramCommand();
-//			diagramCommand.createDiagram(modelset, null, diagramName);
-//	  }
+	  public void arrange(Resource umlResource) throws Exception {
+		  // Creates the modelSet and reader
+		  final ModelSet modelset;
+		  final ModelsReader reader = new ModelsReader();
+		  
+		  
+		  DiModel dimodel = new DiModel();
+		  NotationModel notationmodel = new NotationModel();
+//		  UmlModel umlmodel = (UmlModel) umlResource.getContents().get(0);
+		  
+//		  modelset = new ModelSet();
+
+//		  modelset = ServiceUtilsForResource.getInstance().getModelSet(umlResource); // NO FUNCIONA
+//		  
+//		  try {
+//			  modelset.registerModel(dimodel);
+//			  modelset.registerModel(notationmodel);
+//		  } catch (Exception e) {
+//		  }
+//		  System.out.println(modelset.getResources());
+//		  System.out.println("hola");
+//		  
+//		  
+//		  for(Resource resource: modelset.getResources()) {
+//			  System.out.println(resource);
+//		  }
+		  
+		  Diagram diagram = NotationFactory.eINSTANCE.createDiagram();
+		    diagram.setMeasurementUnit(MeasurementUnit.PIXEL_LITERAL);
+		    diagram.getStyles().add(NotationFactory.eINSTANCE.createDiagramStyle());
+		    diagram.setElement(umlResource.getContents().get(0)); //your EObject that should be referenced to this diagram (probably an ecore file)
+		    diagram.setType("Ecore");
+		    diagram.setName("diagrama");
+		    System.out.println(diagram);
+		    URI diagUri = URI.createFileURI("platform:/resource/XtextToUML/transforms/diagram"); //
+		    diagram.getStyles().add(NotationFactory.eINSTANCE.createDiagramStyle());
+		  
+//		  
+//		  
+//		  reader.readModel(modelset);
+//		  
+////		  ICreationCommand command = new CreateClassDiagramCommand();
+////		  command.createDiagram(modelset, null, "prueba");
+//		  
+////			
+////			final CreateClassDiagramCommand diagramCommand = new CreateClassDiagramCommand();
+////			diagramCommand.createDiagram(modelset, null, diagramName);
+	  }
 
 }
